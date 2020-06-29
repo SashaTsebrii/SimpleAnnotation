@@ -26,7 +26,6 @@ class AnnotationController: UIViewController {
         scrollView.backgroundColor = .white
         scrollView.showsVerticalScrollIndicator = false
         scrollView.showsHorizontalScrollIndicator = true
-        
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         return scrollView
     }()
@@ -43,8 +42,9 @@ class AnnotationController: UIViewController {
         pdfView.backgroundColor = .clear
         pdfView.autoScales = true
         pdfView.displayDirection = .vertical
+        pdfView.isUserInteractionEnabled = false
+        pdfView.displayMode = .singlePage
         pdfView.pageShadowsEnabled = false
-        pdfView.pageBreakMargins = UIEdgeInsets(top: 16, left: 16, bottom: 0, right: 16)
         pdfView.translatesAutoresizingMaskIntoConstraints = false
         return pdfView
     }()
@@ -56,22 +56,8 @@ class AnnotationController: UIViewController {
         return canvasView
     }()
     
-    fileprivate let undoButton: UIButton = {
-        let button = UIButton(frame: .zero)
-        button.setImage(UIImage(named: "undo"), for: .normal)
-        button.addTarget(self, action: #selector(undoButtonTapped(_:)), for: .touchUpInside)
-        button.backgroundColor = .white
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
-    
-    let clearButton: UIButton = {
-        let button = UIButton(frame: .zero)
-        button.setImage(UIImage(named: "clear"), for: .normal)
-        button.addTarget(self, action: #selector(clearButtonTapped(_:)), for: .touchUpInside)
-        button.backgroundColor = .white
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
+    fileprivate let previewScrollView: UIScrollView = {
+        return UIScrollView()
     }()
     
     // MARK: Lifecycle
@@ -86,6 +72,12 @@ class AnnotationController: UIViewController {
         view.backgroundColor = UIColor.Design.background
         
         // clearButton
+        let clearButton = UIButton(frame: .zero)
+        clearButton.setImage(UIImage(named: "clear"), for: .normal)
+        clearButton.addTarget(self, action: #selector(clearButtonTapped(_:)), for: .touchUpInside)
+        clearButton.backgroundColor = .white
+        clearButton.translatesAutoresizingMaskIntoConstraints = false
+        
         view.addSubview(clearButton)
         NSLayoutConstraint.activate([
             clearButton.widthAnchor.constraint(equalToConstant: 44),
@@ -95,6 +87,12 @@ class AnnotationController: UIViewController {
         ])
         
         // undoButton
+        let undoButton = UIButton(frame: .zero)
+        undoButton.setImage(UIImage(named: "undo"), for: .normal)
+        undoButton.addTarget(self, action: #selector(undoButtonTapped(_:)), for: .touchUpInside)
+        undoButton.backgroundColor = .white
+        undoButton.translatesAutoresizingMaskIntoConstraints = false
+        
         view.addSubview(undoButton)
         NSLayoutConstraint.activate([
             undoButton.widthAnchor.constraint(equalToConstant: 44),
@@ -183,6 +181,22 @@ class AnnotationController: UIViewController {
         super.viewDidLoad()
         
         loadPdfDocument()
+        
+//        let canvasContainerView = CanvasContainerView(canvasSize: cgView.frame.size)
+//        canvasContainerView.documentView = cgView
+//        self.canvasContainerView = canvasContainerView
+//        scrollView.contentSize = canvasContainerView.frame.size
+//        scrollView.contentOffset = CGPoint(x: (canvasContainerView.frame.width - scrollView.bounds.width) / 2.0,
+//                                           y: (canvasContainerView.frame.height - scrollView.bounds.height) / 2.0)
+//        scrollView.addSubview(canvasContainerView)
+//        scrollView.backgroundColor = canvasContainerView.backgroundColor
+//        scrollView.maximumZoomScale = 3.0
+//        scrollView.minimumZoomScale = 0.5
+//        scrollView.panGestureRecognizer.allowedTouchTypes = [UITouch.TouchType.direct.rawValue as NSNumber]
+//        scrollView.pinchGestureRecognizer?.allowedTouchTypes = [UITouch.TouchType.direct.rawValue as NSNumber]
+//        // We put our UI elements on top of the scroll view, so we don't want any of the
+//        // delay or cancel machinery in place.
+        scrollView.delaysContentTouches = false
         
         /*
         guard let page = pdfView.currentPage else {return}
@@ -334,12 +348,6 @@ class AnnotationController: UIViewController {
 
                             if let pdfDocument = PDFDocument(url: docURL) {
                                 pdfView.document = pdfDocument
-                                if let firstPage = pdfDocument.page(at: 0) {
-                                    let firstPageBounds = firstPage.bounds(for: pdfView.displayBox)
-                                    DispatchQueue.main.async {
-                                        self.pdfView.go(to: CGRect(x: 0, y: firstPageBounds.height, width: 0, height: 0), on: firstPage)
-                                    }
-                                }
                             } else {
                                 print("Error no document")
                             }
