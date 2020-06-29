@@ -15,6 +15,9 @@ class AnnotationController: UIViewController {
     
     var document: Document?
     
+    var penController: PenController?
+    var markerController:  MarkerController?
+    
     // MARK: Prpperties
     
     fileprivate let scrollView: UIScrollView = {
@@ -207,6 +210,7 @@ class AnnotationController: UIViewController {
         } else {
             print("Error no document")
         }
+        
         /*
         guard let page = pdfView.currentPage else {return}
         // Create a rectangular path
@@ -216,6 +220,7 @@ class AnnotationController: UIViewController {
         inkAnnotation.add(path)
         page.addAnnotation(inkAnnotation)
         */
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -231,13 +236,21 @@ class AnnotationController: UIViewController {
     
     @objc fileprivate func undoButtonTapped(_ sender: UIButton) {
         canvasView.undo()
+        
+        removeChildController()
+        
     }
     
     @objc func clearButtonTapped(_ sender: UIButton) {
         canvasView.clear()
+        
+        removeChildController()
+        
     }
     
     @objc fileprivate func penButtonTapped(_ sender: UIButton) {
+        
+        removeChildController()
         
         // Add the bottom colors view
         setUpPenController()
@@ -246,6 +259,8 @@ class AnnotationController: UIViewController {
     
     @objc fileprivate func markerButtonTapped(_ sender: UIButton) {
         
+        removeChildController()
+        
         // Add the bottom colors view
         setUpMarkerController()
         
@@ -253,35 +268,65 @@ class AnnotationController: UIViewController {
     
     // MARK: Helper
     
+    func removeChildController() {
+        if self.children.count > 0{
+            for viewContoller in children {
+                if viewContoller === penController {
+                    viewContoller.willMove(toParent: nil)
+                    viewContoller.view.removeFromSuperview()
+                    viewContoller.removeFromParent()
+                    penController = nil
+                } else if viewContoller === markerController {
+                    viewContoller.willMove(toParent: nil)
+                    viewContoller.view.removeFromSuperview()
+                    viewContoller.removeFromParent()
+                    markerController = nil
+                }
+            }
+        }
+    }
+    
     func setUpPenController() {
         
-        // Init colorsController
-        let penController = PenController()
+        if penController == nil {
+            // Init
+            penController = PenController()
+            if let penController = penController {
+                penController.delegate = self
 
-        // Add bottomSheetVC as a child view
-        addChild(penController)
-        view.addSubview(penController.view)
-        penController.didMove(toParent: self)
+                // Add as a child view
+                addChild(penController)
+                view.addSubview(penController.view)
+                penController.didMove(toParent: self)
 
-        // Adjust colorsController frame and initial position
-        let height = view.frame.height
-        let width  = view.frame.width
-        penController.view.frame = CGRect(x: 0, y: view.frame.maxY, width: width, height: height)
+                // Adjust frame and initial position
+                let height = view.frame.height
+                let width  = view.frame.width
+                penController.view.frame = CGRect(x: 0, y: view.frame.maxY, width: width, height: height)
+            }
+        }
         
     }
     
     func setUpMarkerController() {
         
-        let markerController =  MarkerController()
-        markerController.delegate = self
-        
-        addChild(markerController)
-        view.addSubview(markerController.view)
-        markerController.didMove(toParent: self)
-
-        let height = view.frame.height
-        let width  = view.frame.width
-        markerController.view.frame = CGRect(x: 0, y: view.frame.maxY, width: width, height: height)
+        if markerController == nil {
+            // Init
+            markerController =  MarkerController()
+            if let markerController = markerController {
+                markerController.delegate = self
+                
+                // Add as a child view
+                addChild(markerController)
+                view.addSubview(markerController.view)
+                markerController.didMove(toParent: self)
+                
+                // Adjust frame and initial position
+                let height = view.frame.height
+                let width  = view.frame.width
+                markerController.view.frame = CGRect(x: 0, y: view.frame.maxY, width: width, height: height)
+            }
+        }
         
     }
     
@@ -292,6 +337,19 @@ extension AnnotationController: MarkerControllerDelegate {
     // MARK: MarkerControllerDelegate
     
     func markerParameter(color: UIColor, thinkness: CGFloat, opacity: CGFloat) {
+        
+        canvasView.setStrokeColor(color: color)
+        canvasView.setStrokeWidth(width: Float(thinkness))
+        
+    }
+    
+}
+
+extension AnnotationController: PenControllerDelegate {
+    
+    // MARK: MarkerControllerDelegate
+    
+    func markerParameter(color: UIColor, thinkness: CGFloat) {
         
         canvasView.setStrokeColor(color: color)
         canvasView.setStrokeWidth(width: Float(thinkness))
