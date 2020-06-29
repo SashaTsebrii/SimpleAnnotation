@@ -8,6 +8,7 @@
 
 import UIKit
 import PDFKit
+import CoreData
 
 class AnnotationController: UIViewController {
     
@@ -181,35 +182,7 @@ class AnnotationController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let document = document, let idString = document.idString {
-
-            let fileManager = FileManager.default
-            if let documentDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first {
-
-                let docURL = documentDirectory.appendingPathComponent(idString)
-                if fileManager.fileExists(atPath: docURL.path) {
-
-                    if let pdfDocument = PDFDocument(url: docURL) {
-                        pdfView.document = pdfDocument
-                        if let firstPage = pdfDocument.page(at: 0) {
-                            let firstPageBounds = firstPage.bounds(for: pdfView.displayBox)
-                            DispatchQueue.main.async {
-                                self.pdfView.go(to: CGRect(x: 0, y: firstPageBounds.height, width: 0, height: 0), on: firstPage)
-                            }
-                        }
-                    } else {
-                        print("Error no document")
-                    }
-
-                } else {
-                    print("Error load file from URL")
-                }
-
-            }
-
-        } else {
-            print("Error no document")
-        }
+        loadPdfDocument()
         
         /*
         guard let page = pdfView.currentPage else {return}
@@ -326,6 +299,64 @@ class AnnotationController: UIViewController {
                 let width  = view.frame.width
                 markerController.view.frame = CGRect(x: 0, y: view.frame.maxY, width: width, height: height)
             }
+        }
+        
+    }
+    
+    func loadPdfDocument() {
+        
+        // Get reference to AppDelegate
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        
+        // Create a context
+        let managedContext = appDelegate.persistentContainer.viewContext
+        
+        // Prepare the request of type NSFetchRequest for the entity
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: Constants.kDocument.entityName)
+        
+        // Get data from CoreData only with nameString equal "No name"
+        // fetchRequest.predicate = NSPredicate(format: "\(Constants.kDocument.nameString) = %@", "No name")
+        // Get data sorting by "createDateString"
+        fetchRequest.sortDescriptors = [NSSortDescriptor.init(key: Constants.kDocument.createDateString, ascending: false)]
+        
+        do {
+            let documents = try managedContext.fetch(fetchRequest) as! [Document]
+            if documents.count > 0 {
+                let document = documents.first!
+                
+                if let idString = document.idString {
+
+                    let fileManager = FileManager.default
+                    if let documentDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first {
+
+                        let docURL = documentDirectory.appendingPathComponent(idString)
+                        if fileManager.fileExists(atPath: docURL.path) {
+
+                            if let pdfDocument = PDFDocument(url: docURL) {
+                                pdfView.document = pdfDocument
+                                if let firstPage = pdfDocument.page(at: 0) {
+                                    let firstPageBounds = firstPage.bounds(for: pdfView.displayBox)
+                                    DispatchQueue.main.async {
+                                        self.pdfView.go(to: CGRect(x: 0, y: firstPageBounds.height, width: 0, height: 0), on: firstPage)
+                                    }
+                                }
+                            } else {
+                                print("Error no document")
+                            }
+
+                        } else {
+                            print("Error load file from URL")
+                        }
+
+                    }
+
+                } else {
+                    print("Error no document")
+                }
+                
+            }
+        } catch {
+            print("Failed")
         }
         
     }
