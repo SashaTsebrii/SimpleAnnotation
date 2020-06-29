@@ -17,7 +17,7 @@ class AnnotationController: UIViewController {
     var document: Document?
     
     var penController: PenController?
-    var markerController:  MarkerController?
+    var markerController: MarkerController?
     
     // MARK: Prpperties
     
