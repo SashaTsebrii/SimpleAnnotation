@@ -39,13 +39,13 @@ class MarkerController: UIViewController {
     var fullView: CGFloat {
         let navigationBarHeight = (view.window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0.0) +
         (self.navigationController?.navigationBar.frame.height ?? 0.0)
-        return UIScreen.main.bounds.height - (opacitiesStack.frame.maxY + 64 + navigationBarHeight)
+        return UIScreen.main.bounds.height - (opacitiesStack.frame.maxY + navigationBarHeight)
     }
     
     var partialView: CGFloat {
         let navigationBarHeight = (view.window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0.0) +
         (self.navigationController?.navigationBar.frame.height ?? 0.0)
-        return UIScreen.main.bounds.height - (colorsStack.frame.maxY + 32 + navigationBarHeight)
+        return UIScreen.main.bounds.height - (colorsStack.frame.maxY + navigationBarHeight)
     }
     
     // MARK: Properties
@@ -309,15 +309,6 @@ class MarkerController: UIViewController {
     
     // MARK: Actions
     
-    fileprivate func close(_ sender: AnyObject) {
-        
-        UIView.animate(withDuration: 0.3, animations: {
-            let frame = self.view.frame
-            self.view.frame = CGRect(x: 0, y: self.partialView, width: frame.width, height: frame.height)
-        })
-        
-    }
-    
     @objc fileprivate func handleColorChange(_ sender: UIButton) {
         color = sender.backgroundColor ?? .black
     }
@@ -374,6 +365,15 @@ class MarkerController: UIViewController {
         bluredView.frame = UIScreen.main.bounds
         
         view.insertSubview(bluredView, at: 0)
+        
+    }
+    
+    func close() {
+        
+        UIView.animate(withDuration: 0.3, animations: {
+            let frame = self.view.frame
+            self.view.frame = CGRect(x: 0, y: self.partialView, width: frame.width, height: frame.height)
+        })
         
     }
 

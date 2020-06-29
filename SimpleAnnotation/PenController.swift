@@ -24,7 +24,7 @@ class PenController: UIViewController {
         }
     }
     
-    var thikness: CGFloat = 20.0 {
+    var thikness: CGFloat = 3.0 {
         didSet {
             delegate?.markerParameter(color: color, thinkness: thikness)
         }
@@ -33,13 +33,13 @@ class PenController: UIViewController {
     var fullView: CGFloat {
         let navigationBarHeight = (view.window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0.0) +
         (self.navigationController?.navigationBar.frame.height ?? 0.0)
-        return UIScreen.main.bounds.height - (thicknessSlider.frame.maxY + 64 + navigationBarHeight)
+        return UIScreen.main.bounds.height - (thicknessSlider.frame.maxY + navigationBarHeight)
     }
     
     var partialView: CGFloat {
         let navigationBarHeight = (view.window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0.0) +
         (self.navigationController?.navigationBar.frame.height ?? 0.0)
-        return UIScreen.main.bounds.height - (colorsStack.frame.maxY + 32 + navigationBarHeight)
+        return UIScreen.main.bounds.height - (colorsStack.frame.maxY + navigationBarHeight)
     }
     
     // MARK: Properties
@@ -246,15 +246,6 @@ class PenController: UIViewController {
     
     // MARK: Actions
     
-    fileprivate func close(_ sender: AnyObject) {
-        
-        UIView.animate(withDuration: 0.3, animations: {
-            let frame = self.view.frame
-            self.view.frame = CGRect(x: 0, y: self.partialView, width: frame.width, height: frame.height)
-        })
-        
-    }
-    
     @objc fileprivate func handleColorChange(_ sender: UIButton) {
         color = sender.backgroundColor ?? .black
     }
@@ -308,4 +299,13 @@ class PenController: UIViewController {
         
     }
 
+    func close() {
+        
+        UIView.animate(withDuration: 0.3, animations: {
+            let frame = self.view.frame
+            self.view.frame = CGRect(x: 0, y: self.partialView, width: frame.width, height: frame.height)
+        })
+        
+    }
+    
 }
