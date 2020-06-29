@@ -21,7 +21,7 @@ class AnnotationController: UIViewController {
     
     // MARK: Prpperties
     
-    fileprivate let scrollView: UIScrollView = {
+    fileprivate let toolbarScrollView: UIScrollView = {
         let scrollView = UIScrollView(frame: .zero)
         scrollView.backgroundColor = .white
         scrollView.showsVerticalScrollIndicator = false
@@ -30,11 +30,20 @@ class AnnotationController: UIViewController {
         return scrollView
     }()
     
-    fileprivate let contentView: UIView = {
+    fileprivate let toolbarContentView: UIView = {
         let view = UIView(frame: .zero)
         view.backgroundColor = UIColor.clear
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
+    }()
+    
+    lazy var previewScrollView: UIScrollView = {
+        let scrollView = UIScrollView(frame: .zero)
+        scrollView.backgroundColor = .white
+        scrollView.showsVerticalScrollIndicator = false
+        scrollView.showsHorizontalScrollIndicator = true
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        return scrollView
     }()
     
     fileprivate let pdfView: PDFView = {
@@ -51,13 +60,10 @@ class AnnotationController: UIViewController {
     
     fileprivate let canvasView: CanvasView = {
         let canvasView = CanvasView()
+        canvasView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         canvasView.backgroundColor = .clear
         canvasView.translatesAutoresizingMaskIntoConstraints = false
         return canvasView
-    }()
-    
-    fileprivate let previewScrollView: UIScrollView = {
-        return UIScrollView()
     }()
     
     // MARK: Lifecycle
@@ -102,23 +108,23 @@ class AnnotationController: UIViewController {
         ])
         
         // scrollView
-        view.addSubview(scrollView)
+        view.addSubview(toolbarScrollView)
         NSLayoutConstraint.activate([
-            scrollView.heightAnchor.constraint(equalToConstant: 44),
-            scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            scrollView.leadingAnchor.constraint(equalTo: clearButton.trailingAnchor, constant: 1),
-            scrollView.trailingAnchor.constraint(equalTo: undoButton.leadingAnchor, constant: -1)
+            toolbarScrollView.heightAnchor.constraint(equalToConstant: 44),
+            toolbarScrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            toolbarScrollView.leadingAnchor.constraint(equalTo: clearButton.trailingAnchor, constant: 1),
+            toolbarScrollView.trailingAnchor.constraint(equalTo: undoButton.leadingAnchor, constant: -1)
         ])
         
         // Content view
-        scrollView.addSubview(contentView)
+        toolbarScrollView.addSubview(toolbarContentView)
         NSLayoutConstraint.activate([
-            contentView.widthAnchor.constraint(equalToConstant: 700),
-            contentView.centerYAnchor.constraint(equalTo: scrollView.centerYAnchor),
-            contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
-            contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
-            contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
-            contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor)
+            toolbarContentView.widthAnchor.constraint(equalToConstant: 700),
+            toolbarContentView.centerYAnchor.constraint(equalTo: toolbarScrollView.centerYAnchor),
+            toolbarContentView.topAnchor.constraint(equalTo: toolbarScrollView.topAnchor),
+            toolbarContentView.bottomAnchor.constraint(equalTo: toolbarScrollView.bottomAnchor),
+            toolbarContentView.leadingAnchor.constraint(equalTo: toolbarScrollView.leadingAnchor),
+            toolbarContentView.trailingAnchor.constraint(equalTo: toolbarScrollView.trailingAnchor)
         ])
         
         // penButton
@@ -127,12 +133,12 @@ class AnnotationController: UIViewController {
         penButton.addTarget(self, action: #selector(penButtonTapped(_:)), for: .touchUpInside)
         penButton.translatesAutoresizingMaskIntoConstraints = false
         
-        contentView.addSubview(penButton)
+        toolbarContentView.addSubview(penButton)
         NSLayoutConstraint.activate([
             penButton.widthAnchor.constraint(equalToConstant: 44),
             penButton.heightAnchor.constraint(equalTo: penButton.widthAnchor),
-            penButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 4),
-            penButton.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
+            penButton.leadingAnchor.constraint(equalTo: toolbarContentView.leadingAnchor, constant: 4),
+            penButton.centerYAnchor.constraint(equalTo: toolbarContentView.centerYAnchor)
         ])
         
         // markerButton
@@ -141,31 +147,34 @@ class AnnotationController: UIViewController {
         markerButton.addTarget(self, action: #selector(markerButtonTapped(_:)), for: .touchUpInside)
         markerButton.translatesAutoresizingMaskIntoConstraints = false
         
-        contentView.addSubview(markerButton)
+        toolbarContentView.addSubview(markerButton)
         NSLayoutConstraint.activate([
             markerButton.widthAnchor.constraint(equalToConstant: 44),
             markerButton.heightAnchor.constraint(equalTo: markerButton.widthAnchor),
             markerButton.leadingAnchor.constraint(equalTo: penButton.trailingAnchor, constant: 4),
-            markerButton.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
+            markerButton.centerYAnchor.constraint(equalTo: toolbarContentView.centerYAnchor)
         ])
         
-        // Pdf view constraints
-        view.addSubview(pdfView)
+        // previewScrollView
+        view.addSubview(previewScrollView)
         NSLayoutConstraint.activate([
-            pdfView.topAnchor.constraint(equalTo: scrollView.bottomAnchor),
-            pdfView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            pdfView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            pdfView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+            previewScrollView.topAnchor.constraint(equalTo: toolbarScrollView.bottomAnchor),
+            previewScrollView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            previewScrollView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            previewScrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
         
-        // Canvas view constraints
-        view.addSubview(canvasView)
+        previewScrollView.addSubview(pdfView)
         NSLayoutConstraint.activate([
-            canvasView.topAnchor.constraint(equalTo: pdfView.topAnchor),
-            canvasView.leadingAnchor.constraint(equalTo: pdfView.leadingAnchor),
-            canvasView.trailingAnchor.constraint(equalTo: pdfView.trailingAnchor),
-            canvasView.bottomAnchor.constraint(equalTo: pdfView.bottomAnchor)
+            pdfView.centerXAnchor.constraint(equalTo: previewScrollView.centerXAnchor),
+            pdfView.centerYAnchor.constraint(equalTo: previewScrollView.centerYAnchor),
+            pdfView.topAnchor.constraint(equalTo: previewScrollView.topAnchor),
+            pdfView.leadingAnchor.constraint(equalTo: previewScrollView.leadingAnchor),
+            pdfView.trailingAnchor.constraint(equalTo: previewScrollView.trailingAnchor),
+            pdfView.bottomAnchor.constraint(equalTo: previewScrollView.bottomAnchor)
         ])
+        
+        previewScrollView.addSubview(canvasView)
         
         // Create save bar button item
         let saveButton = UIButton(frame: .zero)
@@ -181,22 +190,6 @@ class AnnotationController: UIViewController {
         super.viewDidLoad()
         
         loadPdfDocument()
-        
-//        let canvasContainerView = CanvasContainerView(canvasSize: cgView.frame.size)
-//        canvasContainerView.documentView = cgView
-//        self.canvasContainerView = canvasContainerView
-//        scrollView.contentSize = canvasContainerView.frame.size
-//        scrollView.contentOffset = CGPoint(x: (canvasContainerView.frame.width - scrollView.bounds.width) / 2.0,
-//                                           y: (canvasContainerView.frame.height - scrollView.bounds.height) / 2.0)
-//        scrollView.addSubview(canvasContainerView)
-//        scrollView.backgroundColor = canvasContainerView.backgroundColor
-//        scrollView.maximumZoomScale = 3.0
-//        scrollView.minimumZoomScale = 0.5
-//        scrollView.panGestureRecognizer.allowedTouchTypes = [UITouch.TouchType.direct.rawValue as NSNumber]
-//        scrollView.pinchGestureRecognizer?.allowedTouchTypes = [UITouch.TouchType.direct.rawValue as NSNumber]
-//        // We put our UI elements on top of the scroll view, so we don't want any of the
-//        // delay or cancel machinery in place.
-        scrollView.delaysContentTouches = false
         
         /*
         guard let page = pdfView.currentPage else {return}
