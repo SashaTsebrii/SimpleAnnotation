@@ -19,6 +19,8 @@
 		477CE62424AA04AD0018A642 /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477CE62324AA04AD0018A642 /* Line.swift */; };
 		477CE62624AA04D40018A642 /* CanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477CE62524AA04D40018A642 /* CanvasView.swift */; };
 		477CE62824AA1A9B0018A642 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477CE62724AA1A9B0018A642 /* Extensions.swift */; };
+		477CE62B24AA484F0018A642 /* sample.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 477CE62A24AA484F0018A642 /* sample.pdf */; };
+		477CE62D24AA4AAE0018A642 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477CE62C24AA4AAE0018A642 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +38,8 @@
 		477CE62324AA04AD0018A642 /* Line.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
 		477CE62524AA04D40018A642 /* CanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasView.swift; sourceTree = "<group>"; };
 		477CE62724AA1A9B0018A642 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		477CE62A24AA484F0018A642 /* sample.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = sample.pdf; sourceTree = "<group>"; };
+		477CE62C24AA4AAE0018A642 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +75,7 @@
 				477CE60824A9FCEF0018A642 /* AppDelegate.swift */,
 				477CE60A24A9FCEF0018A642 /* SceneDelegate.swift */,
 				477CE62724AA1A9B0018A642 /* Extensions.swift */,
+				477CE62C24AA4AAE0018A642 /* Constants.swift */,
 				477CE62324AA04AD0018A642 /* Line.swift */,
 				477CE62524AA04D40018A642 /* CanvasView.swift */,
 				477CE60C24A9FCEF0018A642 /* AnnotationController.swift */,
@@ -78,6 +83,7 @@
 				477CE61F24AA045E0018A642 /* PenController.swift */,
 				477CE60E24A9FCEF0018A642 /* Main.storyboard */,
 				477CE61424A9FCF30018A642 /* Assets.xcassets */,
+				477CE62A24AA484F0018A642 /* sample.pdf */,
 				477CE61624A9FCF30018A642 /* LaunchScreen.storyboard */,
 				477CE61924A9FCF30018A642 /* Info.plist */,
 				477CE61124A9FCEF0018A642 /* SimpleAnnotation.xcdatamodeld */,
@@ -143,6 +149,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				477CE62B24AA484F0018A642 /* sample.pdf in Resources */,
 				477CE61824A9FCF30018A642 /* LaunchScreen.storyboard in Resources */,
 				477CE61524A9FCF30018A642 /* Assets.xcassets in Resources */,
 				477CE61024A9FCEF0018A642 /* Main.storyboard in Resources */,
@@ -161,6 +168,7 @@
 				477CE62224AA04830018A642 /* MarkerController.swift in Sources */,
 				477CE62624AA04D40018A642 /* CanvasView.swift in Sources */,
 				477CE60924A9FCEF0018A642 /* AppDelegate.swift in Sources */,
+				477CE62D24AA4AAE0018A642 /* Constants.swift in Sources */,
 				477CE62024AA045E0018A642 /* PenController.swift in Sources */,
 				477CE61324A9FCEF0018A642 /* SimpleAnnotation.xcdatamodeld in Sources */,
 				477CE62424AA04AD0018A642 /* Line.swift in Sources */,
