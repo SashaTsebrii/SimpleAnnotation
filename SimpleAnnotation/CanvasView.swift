@@ -12,6 +12,8 @@ class CanvasView: UIView {
     
     // MARK: Variables
     
+    var context: CGContext?
+    
     fileprivate var lines = [Line]()
     fileprivate var strokeColor = UIColor.black
     fileprivate var strokeWidth: Float = 1
@@ -41,20 +43,20 @@ class CanvasView: UIView {
     override func draw(_ rect: CGRect) {
         super.draw(rect)
         
-        guard let context = UIGraphicsGetCurrentContext() else { return }
-        
-        lines.forEach { (line) in
-            context.setStrokeColor(line.color.cgColor)
-            context.setLineWidth(CGFloat(line.strokeWidth))
-            context.setLineCap(.round)
-            for (i, p) in line.points.enumerated() {
-                if i == 0 {
-                    context.move(to: p)
-                } else {
-                    context.addLine(to: p)
+        if let context = UIGraphicsGetCurrentContext() {
+            lines.forEach { (line) in
+                context.setStrokeColor(line.color.cgColor)
+                context.setLineWidth(CGFloat(line.strokeWidth))
+                context.setLineCap(.round)
+                for (i, p) in line.points.enumerated() {
+                    if i == 0 {
+                        context.move(to: p)
+                    } else {
+                        context.addLine(to: p)
+                    }
                 }
+                context.strokePath()
             }
-            context.strokePath()
         }
         
     }
