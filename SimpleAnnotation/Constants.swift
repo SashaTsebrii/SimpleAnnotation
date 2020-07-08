@@ -21,4 +21,8 @@ struct Constants {
         
     }
     
+    struct kUserDefaults {
+        static let isFirstTime = "isFirstTime"
+    }
+    
 }
