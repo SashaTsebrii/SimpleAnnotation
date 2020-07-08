@@ -23,6 +23,22 @@
             </objects>
             <point key="canvasLocation" x="139" y="138"/>
         </scene>
+        <!--Test Controller-->
+        <scene sceneID="Idb-Nf-EWh">
+            <objects>
+                <viewController id="wHe-yp-S9C" customClass="TestController" customModule="SimpleAnnotation" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="B8i-D7-IoD">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="o1W-H1-Neb"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="cxY-z9-pgt"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ohL-Nb-GKR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="138" y="884"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="6LC-Fa-Jqc">
             <objects>
@@ -32,12 +48,12 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="6IM-4j-J8H"/>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="ucE-WA-Tnu"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gwz-7I-57R" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-777" y="138"/>
+            <point key="canvasLocation" x="-823" y="496"/>
         </scene>
     </scenes>
 </document>

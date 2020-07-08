@@ -21,6 +21,12 @@
 		477CE62824AA1A9B0018A642 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477CE62724AA1A9B0018A642 /* Extensions.swift */; };
 		477CE62B24AA484F0018A642 /* sample.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 477CE62A24AA484F0018A642 /* sample.pdf */; };
 		477CE62D24AA4AAE0018A642 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477CE62C24AA4AAE0018A642 /* Constants.swift */; };
+		477CE62F24AB618A0018A642 /* TestController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477CE62E24AB618A0018A642 /* TestController.swift */; };
+		477CE63324B34CC70018A642 /* SimpleCanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477CE63224B34CC70018A642 /* SimpleCanvasView.swift */; };
+		477CE63524B367E50018A642 /* CachedCanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477CE63424B367E50018A642 /* CachedCanvasView.swift */; };
+		477CE63724B372F60018A642 /* ImprovedCanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477CE63624B372F60018A642 /* ImprovedCanvasView.swift */; };
+		477CE63924B3789B0018A642 /* SmoothedCanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477CE63824B3789B0018A642 /* SmoothedCanvasView.swift */; };
+		477CE63B24B37B9A0018A642 /* TestCanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477CE63A24B37B9A0018A642 /* TestCanvasView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +46,12 @@
 		477CE62724AA1A9B0018A642 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		477CE62A24AA484F0018A642 /* sample.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = sample.pdf; sourceTree = "<group>"; };
 		477CE62C24AA4AAE0018A642 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		477CE62E24AB618A0018A642 /* TestController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestController.swift; sourceTree = "<group>"; };
+		477CE63224B34CC70018A642 /* SimpleCanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleCanvasView.swift; sourceTree = "<group>"; };
+		477CE63424B367E50018A642 /* CachedCanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachedCanvasView.swift; sourceTree = "<group>"; };
+		477CE63624B372F60018A642 /* ImprovedCanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImprovedCanvasView.swift; sourceTree = "<group>"; };
+		477CE63824B3789B0018A642 /* SmoothedCanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmoothedCanvasView.swift; sourceTree = "<group>"; };
+		477CE63A24B37B9A0018A642 /* TestCanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCanvasView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,9 +90,15 @@
 				477CE62C24AA4AAE0018A642 /* Constants.swift */,
 				477CE62324AA04AD0018A642 /* Line.swift */,
 				477CE62524AA04D40018A642 /* CanvasView.swift */,
+				477CE63224B34CC70018A642 /* SimpleCanvasView.swift */,
+				477CE63424B367E50018A642 /* CachedCanvasView.swift */,
+				477CE63624B372F60018A642 /* ImprovedCanvasView.swift */,
+				477CE63824B3789B0018A642 /* SmoothedCanvasView.swift */,
+				477CE63A24B37B9A0018A642 /* TestCanvasView.swift */,
 				477CE60C24A9FCEF0018A642 /* AnnotationController.swift */,
 				477CE62124AA04830018A642 /* MarkerController.swift */,
 				477CE61F24AA045E0018A642 /* PenController.swift */,
+				477CE62E24AB618A0018A642 /* TestController.swift */,
 				477CE60E24A9FCEF0018A642 /* Main.storyboard */,
 				477CE61424A9FCF30018A642 /* Assets.xcassets */,
 				477CE62A24AA484F0018A642 /* sample.pdf */,
@@ -163,13 +181,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				477CE63724B372F60018A642 /* ImprovedCanvasView.swift in Sources */,
 				477CE60D24A9FCEF0018A642 /* AnnotationController.swift in Sources */,
 				477CE62824AA1A9B0018A642 /* Extensions.swift in Sources */,
 				477CE62224AA04830018A642 /* MarkerController.swift in Sources */,
+				477CE63524B367E50018A642 /* CachedCanvasView.swift in Sources */,
+				477CE62F24AB618A0018A642 /* TestController.swift in Sources */,
+				477CE63B24B37B9A0018A642 /* TestCanvasView.swift in Sources */,
 				477CE62624AA04D40018A642 /* CanvasView.swift in Sources */,
 				477CE60924A9FCEF0018A642 /* AppDelegate.swift in Sources */,
+				477CE63324B34CC70018A642 /* SimpleCanvasView.swift in Sources */,
 				477CE62D24AA4AAE0018A642 /* Constants.swift in Sources */,
 				477CE62024AA045E0018A642 /* PenController.swift in Sources */,
+				477CE63924B3789B0018A642 /* SmoothedCanvasView.swift in Sources */,
 				477CE61324A9FCEF0018A642 /* SimpleAnnotation.xcdatamodeld in Sources */,
 				477CE62424AA04AD0018A642 /* Line.swift in Sources */,
 				477CE60B24A9FCEF0018A642 /* SceneDelegate.swift in Sources */,
