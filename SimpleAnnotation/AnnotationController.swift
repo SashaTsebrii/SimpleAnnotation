@@ -448,7 +448,17 @@ class AnnotationController: UIViewController {
                     let fileManager = FileManager.default
                     if let documentDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first {
                         
-                        let docURL = documentDirectory.appendingPathComponent(idString)//+"edited")
+                        var docURL: URL
+                        if let createDateString = document.createDateString, let editDateString = document.editDateString {
+                            if createDateString != editDateString {
+                                docURL = documentDirectory.appendingPathComponent(idString + "edited")
+                            } else {
+                                docURL = documentDirectory.appendingPathComponent(idString)
+                            }
+                        } else {
+                            docURL = documentDirectory.appendingPathComponent(idString)
+                        }
+                        
                         if fileManager.fileExists(atPath: docURL.path) {
                             
                             if let pdfDocument = PDFDocument(url: docURL) {
