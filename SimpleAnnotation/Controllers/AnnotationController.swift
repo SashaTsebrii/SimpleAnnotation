@@ -178,7 +178,7 @@ class AnnotationController: UIViewController {
         
         // Create save bar button item
         let saveButton = UIButton(frame: .zero)
-        saveButton.tintColor = .white
+        saveButton.tintColor = .black
         saveButton.setImage(UIImage(named: "save"), for: .normal)
         saveButton.addTarget(self, action: #selector(saveBarButtonTapped(_:)), for: .touchUpInside)
         let saveBarButton = UIBarButtonItem(customView: saveButton)
@@ -223,7 +223,7 @@ class AnnotationController: UIViewController {
                         
                         // Get directory
                         let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-                        let documentURL = documentDirectory.appendingPathComponent(idString+"edited")
+                        let documentURL = documentDirectory.appendingPathComponent(idString + "edited")
                         print(documentURL)
                         let urlString = documentURL.path
                         print(urlString)

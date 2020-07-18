@@ -86,19 +86,11 @@
 			children = (
 				477CE60824A9FCEF0018A642 /* AppDelegate.swift */,
 				477CE60A24A9FCEF0018A642 /* SceneDelegate.swift */,
-				477CE62724AA1A9B0018A642 /* Extensions.swift */,
-				477CE62C24AA4AAE0018A642 /* Constants.swift */,
-				477CE62324AA04AD0018A642 /* Line.swift */,
-				477CE62524AA04D40018A642 /* CanvasView.swift */,
-				477CE63224B34CC70018A642 /* SimpleCanvasView.swift */,
-				477CE63424B367E50018A642 /* CachedCanvasView.swift */,
-				477CE63624B372F60018A642 /* ImprovedCanvasView.swift */,
-				477CE63824B3789B0018A642 /* SmoothedCanvasView.swift */,
-				477CE63A24B37B9A0018A642 /* TestCanvasView.swift */,
-				477CE60C24A9FCEF0018A642 /* AnnotationController.swift */,
-				477CE62124AA04830018A642 /* MarkerController.swift */,
-				477CE61F24AA045E0018A642 /* PenController.swift */,
-				477CE62E24AB618A0018A642 /* TestController.swift */,
+				47FDFF7924C1F2C200EE6C4E /* Helper */,
+				47FDFF7B24C1F6C100EE6C4E /* Structures */,
+				47FDFF7C24C1F6F400EE6C4E /* Views */,
+				47FDFF7D24C1F6FF00EE6C4E /* Controllers */,
+				47FDFF7A24C1F6AA00EE6C4E /* Test */,
 				477CE60E24A9FCEF0018A642 /* Main.storyboard */,
 				477CE61424A9FCF30018A642 /* Assets.xcassets */,
 				477CE62A24AA484F0018A642 /* sample.pdf */,
@@ -107,6 +99,54 @@
 				477CE61124A9FCEF0018A642 /* SimpleAnnotation.xcdatamodeld */,
 			);
 			path = SimpleAnnotation;
+			sourceTree = "<group>";
+		};
+		47FDFF7924C1F2C200EE6C4E /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				477CE62724AA1A9B0018A642 /* Extensions.swift */,
+				477CE62C24AA4AAE0018A642 /* Constants.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		47FDFF7A24C1F6AA00EE6C4E /* Test */ = {
+			isa = PBXGroup;
+			children = (
+				477CE63224B34CC70018A642 /* SimpleCanvasView.swift */,
+				477CE63424B367E50018A642 /* CachedCanvasView.swift */,
+				477CE63624B372F60018A642 /* ImprovedCanvasView.swift */,
+				477CE63824B3789B0018A642 /* SmoothedCanvasView.swift */,
+				477CE63A24B37B9A0018A642 /* TestCanvasView.swift */,
+				477CE62E24AB618A0018A642 /* TestController.swift */,
+			);
+			path = Test;
+			sourceTree = "<group>";
+		};
+		47FDFF7B24C1F6C100EE6C4E /* Structures */ = {
+			isa = PBXGroup;
+			children = (
+				477CE62324AA04AD0018A642 /* Line.swift */,
+			);
+			path = Structures;
+			sourceTree = "<group>";
+		};
+		47FDFF7C24C1F6F400EE6C4E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				477CE62524AA04D40018A642 /* CanvasView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		47FDFF7D24C1F6FF00EE6C4E /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				477CE60C24A9FCEF0018A642 /* AnnotationController.swift */,
+				477CE62124AA04830018A642 /* MarkerController.swift */,
+				477CE61F24AA045E0018A642 /* PenController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

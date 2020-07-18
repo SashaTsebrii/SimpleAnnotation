@@ -322,23 +322,25 @@ extension TestController: UIGestureRecognizerDelegate {
 
 class TestController: UIViewController {
     
-    fileprivate let canvasView: SimpleCanvasView = {
-        let canvasView = SimpleCanvasView(frame: .zero)
-        canvasView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        canvasView.translatesAutoresizingMaskIntoConstraints = false
-        return canvasView
-    }()
+    var document: Document?
     
     fileprivate let pdfView: PDFView = {
         let pdfView = PDFView()
         pdfView.backgroundColor = .clear
         pdfView.autoScales = true
         pdfView.displayDirection = .vertical
-        pdfView.isUserInteractionEnabled = false
+        pdfView.isUserInteractionEnabled = true
         pdfView.displayMode = .singlePage
         pdfView.pageShadowsEnabled = false
         pdfView.translatesAutoresizingMaskIntoConstraints = false
         return pdfView
+    }()
+    
+    fileprivate let canvasView: SimpleCanvasView = {
+        let canvasView = SimpleCanvasView()
+        canvasView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        canvasView.translatesAutoresizingMaskIntoConstraints = false
+        return canvasView
     }()
     
     override func loadView() {
@@ -352,12 +354,39 @@ class TestController: UIViewController {
             pdfView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
         
-        pdfView.addSubview(canvasView)
+        view.addSubview(canvasView)
+        NSLayoutConstraint.activate([
+            canvasView.topAnchor.constraint(equalTo: pdfView.topAnchor),
+            canvasView.leadingAnchor.constraint(equalTo: pdfView.leadingAnchor),
+            canvasView.trailingAnchor.constraint(equalTo: pdfView.trailingAnchor),
+            canvasView.bottomAnchor.constraint(equalTo: pdfView.bottomAnchor)
+        ])
+        
+        // Create save bar button item
+        let saveButton = UIButton(frame: .zero)
+        saveButton.tintColor = .black
+        saveButton.setImage(UIImage(named: "save"), for: .normal)
+        saveButton.addTarget(self, action: #selector(saveBarButtonTapped(_:)), for: .touchUpInside)
+        let saveBarButton = UIBarButtonItem(customView: saveButton)
+        navigationItem.rightBarButtonItem = saveBarButton
         
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        loadPdfDocument()
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        pdfView.isUserInteractionEnabled = false
+        
+    }
+        
+    fileprivate func loadPdfDocument() {
         
         // Get reference to AppDelegate
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
@@ -378,12 +407,24 @@ class TestController: UIViewController {
             if documents.count > 0 {
                 let document = documents.first!
                 
+                self.document = document
+                                
                 if let idString = document.idString {
                     
                     let fileManager = FileManager.default
                     if let documentDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first {
                         
-                        let docURL = documentDirectory.appendingPathComponent(idString)// + "edited")
+                        var docURL: URL
+                        if let createDateString = document.createDateString, let editDateString = document.editDateString {
+                            if createDateString != editDateString {
+                                docURL = documentDirectory.appendingPathComponent(idString + "edited")
+                            } else {
+                                docURL = documentDirectory.appendingPathComponent(idString)
+                            }
+                        } else {
+                            docURL = documentDirectory.appendingPathComponent(idString)
+                        }
+                        
                         if fileManager.fileExists(atPath: docURL.path) {
                             
                             if let pdfDocument = PDFDocument(url: docURL) {
@@ -409,10 +450,133 @@ class TestController: UIViewController {
         
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    @objc fileprivate func saveBarButtonTapped(_ sender: UIButton) {
         
-        pdfView.isUserInteractionEnabled = false
+        let path = canvasView.path
+        let rect = path.bounds
+        let newAnnotation = PDFAnnotation(bounds: rect, forType: .ink, withProperties: nil)
+        newAnnotation.add(path)
+        pdfView.document?.page(at: 0)?.addAnnotation(newAnnotation)
+        
+        if let document = document {
+            if let createDateString = document.createDateString, let editDateString = document.editDateString, let idString = document.idString {
+                
+                if createDateString == editDateString {
+                    // First time edit, save to new derictory
+                    
+                    if let pdfDocument = pdfView.document {
+                        
+                        // Today date
+                        let today = Date()
+                        
+                        // Create date string
+                        let editDateFormatter = DateFormatter()
+                        editDateFormatter.dateFormat = "MMM d, yyyy HH:mm"
+                        let editDateString = editDateFormatter.string(from: today)
+                        
+                        // Get the data of PDF document
+                        let data = pdfDocument.dataRepresentation()
+                        
+                        // Get directory
+                        let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+                        let documentURL = documentDirectory.appendingPathComponent(idString + "edited")
+                        print(documentURL)
+                        let urlString = documentURL.path
+                        print(urlString)
+                        
+                        // Save document to directory
+                        do {
+                            try data?.write(to: documentURL)
+                        } catch (let error) {
+                            print("Error save data to URL: \(error.localizedDescription)")
+                        }
+                        
+                        // Get reference to AppDelegatesrefer
+                        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+                        
+                        // Create a context
+                        let managedContext = appDelegate.persistentContainer.viewContext
+                        
+                        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest.init(entityName: Constants.kDocument.entityName)
+                        fetchRequest.sortDescriptors = [NSSortDescriptor.init(key: Constants.kDocument.createDateString, ascending: false)]
+                        fetchRequest.predicate = NSPredicate(format: "\(Constants.kDocument.idString) = %@", idString)
+                        
+                        do {
+                            let documents = try managedContext.fetch(fetchRequest)
+                            
+                            let objectUpdate = documents.first! as! Document
+                            objectUpdate.setValue(editDateString, forKey: Constants.kDocument.editDateString)
+                            do {
+                                try managedContext.save()
+                            } catch {
+                                print(error)
+                            }
+                        } catch {
+                            print(error)
+                        }
+                        
+                    }
+                    
+                } else {
+                    // Not first time edit, resave file to previous derictory
+                    
+                    if let pdfDocument = pdfView.document {
+                        
+                        // Today date
+                        let today = Date()
+                        
+                        // Create date string
+                        let editDateFormatter = DateFormatter()
+                        editDateFormatter.dateFormat = "MMM d, yyyy HH:mm"
+                        let editDateString = editDateFormatter.string(from: today)
+                        
+                        // Get the data of PDF document
+                        let data = pdfDocument.dataRepresentation()
+                        
+                        // Get directory
+                        let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+                        let documentURL = documentDirectory.appendingPathComponent(idString +  "edited")
+                        print(documentURL)
+                        let urlString = documentURL.path
+                        print(urlString)
+                        
+                        // Save document to directory
+                        do {
+                            try data?.write(to: documentURL)
+                        } catch (let error) {
+                            print("Error save data to URL: \(error.localizedDescription)")
+                        }
+                        
+                        // Get reference to AppDelegatesrefer
+                        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+                        
+                        // Create a context
+                        let managedContext = appDelegate.persistentContainer.viewContext
+                        
+                        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest.init(entityName: Constants.kDocument.entityName)
+                        fetchRequest.sortDescriptors = [NSSortDescriptor.init(key: Constants.kDocument.createDateString, ascending: false)]
+                        fetchRequest.predicate = NSPredicate(format: "\(Constants.kDocument.idString) = %@", idString)
+                        
+                        do {
+                            let documents = try managedContext.fetch(fetchRequest)
+                            
+                            let objectUpdate = documents.first! as! Document
+                            objectUpdate.setValue(editDateString, forKey: Constants.kDocument.editDateString)
+                            do {
+                                try managedContext.save()
+                            } catch {
+                                print(error)
+                            }
+                        } catch {
+                            print(error)
+                        }
+                        
+                    }
+                    
+                }
+                
+            }
+        }
         
     }
     
