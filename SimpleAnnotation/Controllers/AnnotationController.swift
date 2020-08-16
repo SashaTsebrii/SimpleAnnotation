@@ -19,6 +19,7 @@ class AnnotationController: UIViewController {
     var penController: PenController?
     var markerController: MarkerController?
     var highlightController: HighlightController?
+    var shapesController: ShapesController?
     
     // MARK: Prpperties
     
@@ -168,6 +169,20 @@ class AnnotationController: UIViewController {
             highlightButton.heightAnchor.constraint(equalTo: highlightButton.widthAnchor),
             highlightButton.leadingAnchor.constraint(equalTo: markerButton.trailingAnchor, constant: 4),
             highlightButton.centerYAnchor.constraint(equalTo: toolbarContentView.centerYAnchor)
+        ])
+        
+        // shapes
+        let shapesButton = UIButton(frame: .zero)
+        shapesButton.setImage(UIImage(named: "shapes"), for: .normal)
+        shapesButton.addTarget(self, action: #selector(shapesButtonTapped(_:)), for: .touchUpInside)
+        shapesButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        toolbarContentView.addSubview(shapesButton)
+        NSLayoutConstraint.activate([
+            shapesButton.widthAnchor.constraint(equalToConstant: 44),
+            shapesButton.heightAnchor.constraint(equalTo: shapesButton.widthAnchor),
+            shapesButton.leadingAnchor.constraint(equalTo: highlightButton.trailingAnchor, constant: 4),
+            shapesButton.centerYAnchor.constraint(equalTo: toolbarContentView.centerYAnchor)
         ])
         
         // previewScrollView
@@ -380,9 +395,18 @@ class AnnotationController: UIViewController {
         
     }
     
+    @objc fileprivate func shapesButtonTapped(_ sender: UIButton) {
+        
+        removeChildController()
+        
+        // Add the bottom colors view
+        setUpShapesController()
+        
+    }
+    
     // MARK: Helper
     
-    func removeChildController() {
+    fileprivate func removeChildController() {
         
         if self.children.count > 0 {
             for viewContoller in children {
@@ -401,13 +425,18 @@ class AnnotationController: UIViewController {
                     viewContoller.view.removeFromSuperview()
                     viewContoller.removeFromParent()
                     highlightController = nil
+                } else if viewContoller === shapesController {
+                    viewContoller.willMove(toParent: nil)
+                    viewContoller.view.removeFromSuperview()
+                    viewContoller.removeFromParent()
+                    shapesController = nil
                 }
             }
         }
         
     }
     
-    func setUpPenController() {
+    fileprivate func setUpPenController() {
         
         if penController == nil {
             // Init
@@ -429,7 +458,7 @@ class AnnotationController: UIViewController {
         
     }
     
-    func setUpMarkerController() {
+    fileprivate func setUpMarkerController() {
         
         if markerController == nil {
             // Init
@@ -451,7 +480,7 @@ class AnnotationController: UIViewController {
         
     }
     
-    func setUpHighlightController() {
+    fileprivate func setUpHighlightController() {
         
         if highlightController == nil {
             // Init
@@ -473,7 +502,29 @@ class AnnotationController: UIViewController {
         
     }
     
-    func loadPdfDocument() {
+    fileprivate func setUpShapesController() {
+        
+        if shapesController == nil {
+            // Init
+            shapesController = ShapesController()
+            if let shapesController = shapesController {
+                shapesController.delegate = self
+                
+                // Add as a child view
+                addChild(shapesController)
+                view.addSubview(shapesController.view)
+                shapesController.didMove(toParent: self)
+                
+                // Adjust frame and initial position
+                let height = view.frame.height
+                let width  = view.frame.width
+                shapesController.view.frame = CGRect(x: 0, y: view.frame.maxY, width: width, height: height)
+            }
+        }
+        
+    }
+    
+    fileprivate func loadPdfDocument() {
         
         // Get reference to AppDelegate
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
