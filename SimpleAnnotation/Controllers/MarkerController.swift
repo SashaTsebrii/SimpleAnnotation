@@ -120,7 +120,7 @@ class MarkerController: UIViewController {
         let titleLabel = UILabel(frame: .zero)
         titleLabel.text = "Marker"
         titleLabel.textColor = .white
-        titleLabel.font = UIFont.systemFont(ofSize: 18)
+        titleLabel.font = UIFont.systemFont(ofSize: 20)
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         
         view.addSubview(titleLabel)

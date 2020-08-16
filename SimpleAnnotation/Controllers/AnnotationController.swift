@@ -18,6 +18,7 @@ class AnnotationController: UIViewController {
     
     var penController: PenController?
     var markerController: MarkerController?
+    var highlightController: HighlightController?
     
     // MARK: Prpperties
     
@@ -153,6 +154,20 @@ class AnnotationController: UIViewController {
             markerButton.heightAnchor.constraint(equalTo: markerButton.widthAnchor),
             markerButton.leadingAnchor.constraint(equalTo: penButton.trailingAnchor, constant: 4),
             markerButton.centerYAnchor.constraint(equalTo: toolbarContentView.centerYAnchor)
+        ])
+        
+        // highlight
+        let highlightButton = UIButton(frame: .zero)
+        highlightButton.setImage(UIImage(named: "highlight"), for: .normal)
+        highlightButton.addTarget(self, action: #selector(highlightButtonTapped(_:)), for: .touchUpInside)
+        highlightButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        toolbarContentView.addSubview(highlightButton)
+        NSLayoutConstraint.activate([
+            highlightButton.widthAnchor.constraint(equalToConstant: 44),
+            highlightButton.heightAnchor.constraint(equalTo: highlightButton.widthAnchor),
+            highlightButton.leadingAnchor.constraint(equalTo: markerButton.trailingAnchor, constant: 4),
+            highlightButton.centerYAnchor.constraint(equalTo: toolbarContentView.centerYAnchor)
         ])
         
         // previewScrollView
@@ -356,10 +371,20 @@ class AnnotationController: UIViewController {
         
     }
     
+    @objc fileprivate func highlightButtonTapped(_ sender: UIButton) {
+        
+        removeChildController()
+        
+        // Add the bottom colors view
+        setUpHighlightController()
+        
+    }
+    
     // MARK: Helper
     
     func removeChildController() {
-        if self.children.count > 0{
+        
+        if self.children.count > 0 {
             for viewContoller in children {
                 if viewContoller === penController {
                     viewContoller.willMove(toParent: nil)
@@ -371,9 +396,15 @@ class AnnotationController: UIViewController {
                     viewContoller.view.removeFromSuperview()
                     viewContoller.removeFromParent()
                     markerController = nil
+                } else if viewContoller === highlightController {
+                    viewContoller.willMove(toParent: nil)
+                    viewContoller.view.removeFromSuperview()
+                    viewContoller.removeFromParent()
+                    highlightController = nil
                 }
             }
         }
+        
     }
     
     func setUpPenController() {
@@ -415,6 +446,28 @@ class AnnotationController: UIViewController {
                 let height = view.frame.height
                 let width  = view.frame.width
                 markerController.view.frame = CGRect(x: 0, y: view.frame.maxY, width: width, height: height)
+            }
+        }
+        
+    }
+    
+    func setUpHighlightController() {
+        
+        if highlightController == nil {
+            // Init
+            highlightController =  HighlightController()
+            if let highlightController = highlightController {
+                highlightController.delegate = self
+                
+                // Add as a child view
+                addChild(highlightController)
+                view.addSubview(highlightController.view)
+                highlightController.didMove(toParent: self)
+                
+                // Adjust frame and initial position
+                let height = view.frame.height
+                let width  = view.frame.width
+                highlightController.view.frame = CGRect(x: 0, y: view.frame.maxY, width: width, height: height)
             }
         }
         
@@ -572,6 +625,16 @@ extension AnnotationController: PenControllerDelegate {
         
         canvasView.setStrokeColor(color: color)
         canvasView.setStrokeWidth(width: Float(thinkness))
+        
+    }
+    
+}
+
+extension AnnotationController: HighlightControllerDelegate {
+    
+    func highlightParameter(color: UIColor, opacity: CGFloat) {
+        
+        canvasView.setStrokeColor(color: color)
         
     }
     
