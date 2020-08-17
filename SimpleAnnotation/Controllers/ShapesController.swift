@@ -131,12 +131,19 @@ class ShapesController: UIViewController {
         ])
         
         // shapes
-        let items = ["Purple", "Green", "Blue"]
+        let items = [UIImage(named: "line_w"),
+                     UIImage(named: "arrow_w"),
+                     UIImage(named: "resize_w"),
+                     UIImage(named: "rectangle_w"),
+                     UIImage(named: "circle_w"),
+                     UIImage(named: "check_w"),
+                     UIImage(named: "none_w")]
         let shapesSegmentedControl = UISegmentedControl(items: items)
         shapesSegmentedControl.selectedSegmentIndex = 0
-        shapesSegmentedControl.layer.cornerRadius = 4.0  // Don't let background bleed
-        shapesSegmentedControl.backgroundColor = UIColor.black
-        shapesSegmentedControl.tintColor = UIColor.white
+        shapesSegmentedControl.layer.cornerRadius = 4.0
+        shapesSegmentedControl.backgroundColor = .clear
+        shapesSegmentedControl.tintColor = .white
+        shapesSegmentedControl.selectedSegmentTintColor = UIColor.white.withAlphaComponent(0.5)
         shapesSegmentedControl.addTarget(self, action: #selector(changeShspes(_:)), for: .valueChanged)
         shapesSegmentedControl.translatesAutoresizingMaskIntoConstraints = false
         
