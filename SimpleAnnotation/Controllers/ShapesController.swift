@@ -9,7 +9,7 @@
 import UIKit
 
 protocol ShapesControllerDelegate {
-    func markerParameter(color: UIColor, thinkness: CGFloat, opacity: CGFloat)
+    func shapeesParameter(color: UIColor, thinkness: CGFloat, opacity: CGFloat)
 }
 
 class ShapesController: UIViewController {

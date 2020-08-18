@@ -9,7 +9,7 @@
 import UIKit
 
 protocol PenControllerDelegate {
-    func markerParameter(color: UIColor, thinkness: CGFloat)
+    func penParameter(color: UIColor, thinkness: CGFloat)
 }
 
 class PenController: UIViewController {
@@ -20,13 +20,13 @@ class PenController: UIViewController {
     
     var color: UIColor = .clear {
         didSet {
-            delegate?.markerParameter(color: color, thinkness: thikness)
+            delegate?.penParameter(color: color, thinkness: thikness)
         }
     }
     
     var thikness: CGFloat = 3.0 {
         didSet {
-            delegate?.markerParameter(color: color, thinkness: thikness)
+            delegate?.penParameter(color: color, thinkness: thikness)
         }
     }
     

@@ -9,7 +9,7 @@
 import UIKit
 
 protocol TextControllerDelegate {
-    func markerParameter(color: UIColor, backgorundColor: UIColor, size: CGFloat)
+    func textParameter(color: UIColor, backgorundColor: UIColor, size: CGFloat)
 }
 
 class TextController: UIViewController {
@@ -20,19 +20,19 @@ class TextController: UIViewController {
     
     var color: UIColor = .black {
         didSet {
-            delegate?.markerParameter(color: color, backgorundColor: backgorundColor, size: size)
+            delegate?.textParameter(color: color, backgorundColor: backgorundColor, size: size)
         }
     }
     
     var backgorundColor: UIColor = .clear {
         didSet {
-            delegate?.markerParameter(color: color, backgorundColor: backgorundColor, size: size)
+            delegate?.textParameter(color: color, backgorundColor: backgorundColor, size: size)
         }
     }
     
     var size: CGFloat = 18.0 {
         didSet {
-            delegate?.markerParameter(color: color, backgorundColor: backgorundColor, size: size)
+            delegate?.textParameter(color: color, backgorundColor: backgorundColor, size: size)
         }
     }
     

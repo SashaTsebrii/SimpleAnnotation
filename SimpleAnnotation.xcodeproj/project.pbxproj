@@ -155,8 +155,8 @@
 				477CE62124AA04830018A642 /* MarkerController.swift */,
 				4742553924E533DC00D31DD5 /* HighlightController.swift */,
 				4742553D24EBE4E600D31DD5 /* TextController.swift */,
-				4742553F24EC67CA00D31DD5 /* NoteController.swift */,
 				4742553B24E6B03300D31DD5 /* ShapesController.swift */,
+				4742553F24EC67CA00D31DD5 /* NoteController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";

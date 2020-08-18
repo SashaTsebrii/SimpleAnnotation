@@ -21,6 +21,7 @@ class AnnotationController: UIViewController {
     var highlightController: HighlightController?
     var textController: TextController?
     var shapesController: ShapesController?
+    var noteController: NoteController?
     
     // MARK: Prpperties
     
@@ -198,6 +199,20 @@ class AnnotationController: UIViewController {
             shapesButton.heightAnchor.constraint(equalTo: shapesButton.widthAnchor),
             shapesButton.leadingAnchor.constraint(equalTo: textButton.trailingAnchor, constant: 4),
             shapesButton.centerYAnchor.constraint(equalTo: toolbarContentView.centerYAnchor)
+        ])
+        
+        // note
+        let noteButton = UIButton(frame: .zero)
+        noteButton.setImage(UIImage(named: "note"), for: .normal)
+        noteButton.addTarget(self, action: #selector(noteButtonTapped(_:)), for: .touchUpInside)
+        noteButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        toolbarContentView.addSubview(noteButton)
+        NSLayoutConstraint.activate([
+            noteButton.widthAnchor.constraint(equalToConstant: 44),
+            noteButton.heightAnchor.constraint(equalTo: noteButton.widthAnchor),
+            noteButton.leadingAnchor.constraint(equalTo: shapesButton.trailingAnchor, constant: 4),
+            noteButton.centerYAnchor.constraint(equalTo: toolbarContentView.centerYAnchor)
         ])
         
         // previewScrollView
@@ -428,6 +443,15 @@ class AnnotationController: UIViewController {
         
     }
     
+    @objc fileprivate func noteButtonTapped(_ sender: UIButton) {
+        
+        removeChildController()
+        
+        // Add the bottom colors view
+        setUpNoteController()
+        
+    }
+    
     // MARK: Helper
     
     fileprivate func removeChildController() {
@@ -459,6 +483,11 @@ class AnnotationController: UIViewController {
                     viewContoller.view.removeFromSuperview()
                     viewContoller.removeFromParent()
                     shapesController = nil
+                } else if viewContoller === noteController {
+                    viewContoller.willMove(toParent: nil)
+                    viewContoller.view.removeFromSuperview()
+                    viewContoller.removeFromParent()
+                    noteController = nil
                 }
             }
         }
@@ -571,6 +600,28 @@ class AnnotationController: UIViewController {
                 let height = view.frame.height
                 let width  = view.frame.width
                 shapesController.view.frame = CGRect(x: 0, y: view.frame.maxY, width: width, height: height)
+            }
+        }
+        
+    }
+    
+    fileprivate func setUpNoteController() {
+        
+        if noteController == nil {
+            // Init
+            noteController = NoteController()
+            if let noteController = noteController {
+                noteController.delegate = self
+                
+                // Add as a child view
+                addChild(noteController)
+                view.addSubview(noteController.view)
+                noteController.didMove(toParent: self)
+                
+                // Adjust frame and initial position
+                let height = view.frame.height
+                let width  = view.frame.width
+                noteController.view.frame = CGRect(x: 0, y: view.frame.maxY, width: width, height: height)
             }
         }
         
@@ -724,7 +775,7 @@ extension AnnotationController: PenControllerDelegate {
     
     // MARK: MarkerControllerDelegate
     
-    func markerParameter(color: UIColor, thinkness: CGFloat) {
+    func penParameter(color: UIColor, thinkness: CGFloat) {
         
         canvasView.setStrokeColor(color: color)
         canvasView.setStrokeWidth(width: Float(thinkness))
@@ -737,7 +788,7 @@ extension AnnotationController: TextControllerDelegate {
     
     // MARK: TextControllerDelegate
     
-    func markerParameter(color: UIColor, backgorundColor: UIColor, size: CGFloat) {
+    func textParameter(color: UIColor, backgorundColor: UIColor, size: CGFloat) {
         
     }
     
@@ -750,6 +801,14 @@ extension AnnotationController: HighlightControllerDelegate {
     func highlightParameter(color: UIColor, opacity: CGFloat) {
         
         canvasView.setStrokeColor(color: color)
+        
+    }
+    
+}
+
+extension AnnotationController: NoteControllerDelegate {
+    
+    func noteParameter(color: UIColor) {
         
     }
     
