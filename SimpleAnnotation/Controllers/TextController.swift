@@ -39,7 +39,7 @@ class TextController: UIViewController {
     var fullView: CGFloat {
         let navigationBarHeight = (view.window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0.0) +
         (self.navigationController?.navigationBar.frame.height ?? 0.0)
-        return UIScreen.main.bounds.height - (sizeStepper.frame.maxY + navigationBarHeight)
+        return UIScreen.main.bounds.height - (sizeStack.frame.maxY + navigationBarHeight)
     }
     
     var partialView: CGFloat {
@@ -64,19 +64,18 @@ class TextController: UIViewController {
         label.textColor = .white
         label.font = UIFont.systemFont(ofSize: 16)
         label.textAlignment = .center
-        label.text = "3.0"
+        label.text = "18.0"
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
-    let sizeStepper: UIStepper = {
-        let stepper = UIStepper(frame: .zero)
-        stepper.minimumValue = 12
-        stepper.maximumValue = 32
-        stepper.stepValue = 2
-        stepper.addTarget(self, action: #selector(handleStepperChange(_:)), for: .valueChanged)
-        stepper.translatesAutoresizingMaskIntoConstraints = false
-        return stepper
+    let sizeStack: UIStackView = {
+        let stack = UIStackView(frame: .zero)
+        stack.spacing = 16
+        stack.distribution = .equalSpacing
+        stack.alignment = .center
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        return stack
     }()
     
     // MARK: Lifecycle
@@ -157,10 +156,6 @@ class TextController: UIViewController {
             colorsStack.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16)
         ])
         
-        
-        
-        
-        
         // backgroundColorLabel
         let backgroundColorLabel = UILabel(frame: .zero)
         backgroundColorLabel.text = "BACKGROUND COLOR"
@@ -182,7 +177,7 @@ class TextController: UIViewController {
         backgroundColorsStack.alignment = .center
         backgroundColorsStack.translatesAutoresizingMaskIntoConstraints = false
         
-        let backgroundColors = [UIColor.Colors.red, UIColor.Colors.orange, UIColor.Colors.yellow, UIColor.Colors.green, UIColor.Colors.teal, UIColor.Colors.blue, UIColor.Colors.purple]
+        let backgroundColors = [UIColor.black, UIColor.white]
         
         for index in 0...(backgroundColors.count - 1) {
             
@@ -211,26 +206,37 @@ class TextController: UIViewController {
             backgroundColorsStack.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16)
         ])
         
+        // sizeLabel
+        let sizeTitleLable = UILabel(frame: .zero)
+        sizeTitleLable.text = "SIZE"
+        sizeTitleLable.textColor = .gray
+        sizeTitleLable.font = UIFont.systemFont(ofSize: 14)
+        sizeTitleLable.translatesAutoresizingMaskIntoConstraints = false
         
-        
-        
-        
-        // thicknessLabel
-        let thicknessLabel = UILabel(frame: .zero)
-        thicknessLabel.text = "SIZE"
-        thicknessLabel.textColor = .gray
-        thicknessLabel.font = UIFont.systemFont(ofSize: 14)
-        thicknessLabel.translatesAutoresizingMaskIntoConstraints = false
-        
-        view.addSubview(thicknessLabel)
+        view.addSubview(sizeTitleLable)
         NSLayoutConstraint.activate([
-            thicknessLabel.heightAnchor.constraint(equalToConstant: 16),
-            thicknessLabel.topAnchor.constraint(equalTo: backgroundColorLabel.bottomAnchor, constant: 32),
-            thicknessLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16)
+            sizeTitleLable.heightAnchor.constraint(equalToConstant: 16),
+            sizeTitleLable.topAnchor.constraint(equalTo: backgroundColorsStack.bottomAnchor, constant: 32),
+            sizeTitleLable.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16)
         ])
         
-        // size
+        // sizeStack
+        let sizeStepper = UIStepper(frame: .zero)
+        sizeStepper.minimumValue = 12
+        sizeStepper.maximumValue = 32
+        sizeStepper.value = 18
+        sizeStepper.stepValue = 2
+        sizeStepper.addTarget(self, action: #selector(handleStepperChange(_:)), for: .valueChanged)
+        sizeStepper.translatesAutoresizingMaskIntoConstraints = false
         
+        sizeStack.addArrangedSubview(sizeLabel)
+        sizeStack.addArrangedSubview(sizeStepper)
+        
+        view.addSubview(sizeStack)
+        NSLayoutConstraint.activate([
+            sizeStack.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            sizeStack.topAnchor.constraint(equalTo: sizeTitleLable.bottomAnchor, constant: 16)
+        ])
         
     }
     

@@ -10,6 +10,7 @@
 		4742553A24E533DC00D31DD5 /* HighlightController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4742553924E533DC00D31DD5 /* HighlightController.swift */; };
 		4742553C24E6B03300D31DD5 /* ShapesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4742553B24E6B03300D31DD5 /* ShapesController.swift */; };
 		4742553E24EBE4E600D31DD5 /* TextController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4742553D24EBE4E600D31DD5 /* TextController.swift */; };
+		4742554024EC67CA00D31DD5 /* NoteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4742553F24EC67CA00D31DD5 /* NoteController.swift */; };
 		477CE60924A9FCEF0018A642 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477CE60824A9FCEF0018A642 /* AppDelegate.swift */; };
 		477CE60B24A9FCEF0018A642 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477CE60A24A9FCEF0018A642 /* SceneDelegate.swift */; };
 		477CE60D24A9FCEF0018A642 /* AnnotationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477CE60C24A9FCEF0018A642 /* AnnotationController.swift */; };
@@ -36,6 +37,7 @@
 		4742553924E533DC00D31DD5 /* HighlightController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighlightController.swift; sourceTree = "<group>"; };
 		4742553B24E6B03300D31DD5 /* ShapesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapesController.swift; sourceTree = "<group>"; };
 		4742553D24EBE4E600D31DD5 /* TextController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextController.swift; sourceTree = "<group>"; };
+		4742553F24EC67CA00D31DD5 /* NoteController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteController.swift; sourceTree = "<group>"; };
 		477CE60524A9FCEF0018A642 /* SimpleAnnotation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleAnnotation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		477CE60824A9FCEF0018A642 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		477CE60A24A9FCEF0018A642 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -153,6 +155,7 @@
 				477CE62124AA04830018A642 /* MarkerController.swift */,
 				4742553924E533DC00D31DD5 /* HighlightController.swift */,
 				4742553D24EBE4E600D31DD5 /* TextController.swift */,
+				4742553F24EC67CA00D31DD5 /* NoteController.swift */,
 				4742553B24E6B03300D31DD5 /* ShapesController.swift */,
 			);
 			path = Controllers;
@@ -239,6 +242,7 @@
 				4742553E24EBE4E600D31DD5 /* TextController.swift in Sources */,
 				477CE63B24B37B9A0018A642 /* TestCanvasView.swift in Sources */,
 				4742553A24E533DC00D31DD5 /* HighlightController.swift in Sources */,
+				4742554024EC67CA00D31DD5 /* NoteController.swift in Sources */,
 				477CE62624AA04D40018A642 /* CanvasView.swift in Sources */,
 				477CE60924A9FCEF0018A642 /* AppDelegate.swift in Sources */,
 				477CE63324B34CC70018A642 /* SimpleCanvasView.swift in Sources */,
