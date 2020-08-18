@@ -19,6 +19,7 @@ class AnnotationController: UIViewController {
     var penController: PenController?
     var markerController: MarkerController?
     var highlightController: HighlightController?
+    var textController: TextController?
     var shapesController: ShapesController?
     
     // MARK: Prpperties
@@ -171,6 +172,20 @@ class AnnotationController: UIViewController {
             highlightButton.centerYAnchor.constraint(equalTo: toolbarContentView.centerYAnchor)
         ])
         
+        // text
+        let textButton = UIButton(frame: .zero)
+        textButton.setImage(UIImage(named: "text"), for: .normal)
+        textButton.addTarget(self, action: #selector(textButtonTapped(_:)), for: .touchUpInside)
+        textButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        toolbarContentView.addSubview(textButton)
+        NSLayoutConstraint.activate([
+            textButton.widthAnchor.constraint(equalToConstant: 44),
+            textButton.heightAnchor.constraint(equalTo: textButton.widthAnchor),
+            textButton.leadingAnchor.constraint(equalTo: highlightButton.trailingAnchor, constant: 4),
+            textButton.centerYAnchor.constraint(equalTo: toolbarContentView.centerYAnchor)
+        ])
+        
         // shapes
         let shapesButton = UIButton(frame: .zero)
         shapesButton.setImage(UIImage(named: "shapes"), for: .normal)
@@ -181,7 +196,7 @@ class AnnotationController: UIViewController {
         NSLayoutConstraint.activate([
             shapesButton.widthAnchor.constraint(equalToConstant: 44),
             shapesButton.heightAnchor.constraint(equalTo: shapesButton.widthAnchor),
-            shapesButton.leadingAnchor.constraint(equalTo: highlightButton.trailingAnchor, constant: 4),
+            shapesButton.leadingAnchor.constraint(equalTo: textButton.trailingAnchor, constant: 4),
             shapesButton.centerYAnchor.constraint(equalTo: toolbarContentView.centerYAnchor)
         ])
         
@@ -395,6 +410,15 @@ class AnnotationController: UIViewController {
         
     }
     
+    @objc fileprivate func textButtonTapped(_ sender: UIButton) {
+        
+        removeChildController()
+        
+        // Add the button colors view
+        setUpTextController()
+        
+    }
+    
     @objc fileprivate func shapesButtonTapped(_ sender: UIButton) {
         
         removeChildController()
@@ -425,6 +449,11 @@ class AnnotationController: UIViewController {
                     viewContoller.view.removeFromSuperview()
                     viewContoller.removeFromParent()
                     highlightController = nil
+                } else if viewContoller === textController {
+                    viewContoller.willMove(toParent: nil)
+                    viewContoller.view.removeFromSuperview()
+                    viewContoller.removeFromParent()
+                    textController = nil
                 } else if viewContoller === shapesController {
                     viewContoller.willMove(toParent: nil)
                     viewContoller.view.removeFromSuperview()
@@ -497,6 +526,29 @@ class AnnotationController: UIViewController {
                 let height = view.frame.height
                 let width  = view.frame.width
                 highlightController.view.frame = CGRect(x: 0, y: view.frame.maxY, width: width, height: height)
+            }
+        }
+        
+    }
+    
+    fileprivate func setUpTextController() {
+        
+        if textController == nil {
+            // Init
+            textController = TextController()
+            if let textController = textController {
+                textController.delegate = self
+                
+                // Add as a child view
+                addChild(textController)
+                view.addSubview(textController.view)
+                textController.didMove(toParent: self)
+                
+                // Adjust frame and initial position
+                let height = view.frame.height
+                let width = view.frame.width
+                textController.view.frame = CGRect(x: 0, y: view.frame.maxY, width: width, height: height)
+                
             }
         }
         
@@ -681,7 +733,19 @@ extension AnnotationController: PenControllerDelegate {
     
 }
 
+extension AnnotationController: TextControllerDelegate {
+    
+    // MARK: TextControllerDelegate
+    
+    func markerParameter(color: UIColor, backgorundColor: UIColor, size: CGFloat) {
+        
+    }
+    
+}
+
 extension AnnotationController: HighlightControllerDelegate {
+    
+    // MARK: HighlightControllerDelegate
     
     func highlightParameter(color: UIColor, opacity: CGFloat) {
         

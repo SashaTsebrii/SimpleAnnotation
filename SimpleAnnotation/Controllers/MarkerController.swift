@@ -125,7 +125,7 @@ class MarkerController: UIViewController {
         
         view.addSubview(titleLabel)
         NSLayoutConstraint.activate([
-            titleLabel.heightAnchor.constraint(equalToConstant: 18),
+            titleLabel.heightAnchor.constraint(equalToConstant: 22),
             titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             titleLabel.topAnchor.constraint(equalTo: holdView.bottomAnchor, constant: 16)
         ])

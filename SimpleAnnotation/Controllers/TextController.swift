@@ -1,39 +1,45 @@
 //
-//  PenController.swift
+//  TextController.swift
 //  SimpleAnnotation
 //
-//  Created by Aleksandr Tsebrii on 6/29/20.
+//  Created by Aleksandr Tsebrii on 8/18/20.
 //  Copyright © 2020 Aleksandr Tsebrii. All rights reserved.
 //
 
 import UIKit
 
-protocol PenControllerDelegate {
-    func markerParameter(color: UIColor, thinkness: CGFloat)
+protocol TextControllerDelegate {
+    func markerParameter(color: UIColor, backgorundColor: UIColor, size: CGFloat)
 }
 
-class PenController: UIViewController {
+class TextController: UIViewController {
     
     // MARK: Variables
     
-    var delegate: PenControllerDelegate?
+    var delegate: TextControllerDelegate?
     
-    var color: UIColor = .clear {
+    var color: UIColor = .black {
         didSet {
-            delegate?.markerParameter(color: color, thinkness: thikness)
+            delegate?.markerParameter(color: color, backgorundColor: backgorundColor, size: size)
         }
     }
     
-    var thikness: CGFloat = 3.0 {
+    var backgorundColor: UIColor = .clear {
         didSet {
-            delegate?.markerParameter(color: color, thinkness: thikness)
+            delegate?.markerParameter(color: color, backgorundColor: backgorundColor, size: size)
+        }
+    }
+    
+    var size: CGFloat = 18.0 {
+        didSet {
+            delegate?.markerParameter(color: color, backgorundColor: backgorundColor, size: size)
         }
     }
     
     var fullView: CGFloat {
         let navigationBarHeight = (view.window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0.0) +
         (self.navigationController?.navigationBar.frame.height ?? 0.0)
-        return UIScreen.main.bounds.height - (thicknessSlider.frame.maxY + navigationBarHeight)
+        return UIScreen.main.bounds.height - (sizeStepper.frame.maxY + navigationBarHeight)
     }
     
     var partialView: CGFloat {
@@ -53,14 +59,7 @@ class PenController: UIViewController {
         return stack
     }()
     
-    let thicknessView: UIView = {
-        let view = UIView(frame: .zero)
-        view.backgroundColor = .white
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
-    
-    let thicknessSizeLabel: UILabel = {
+    let sizeLabel: UILabel = {
         let label = UILabel(frame: .zero)
         label.textColor = .white
         label.font = UIFont.systemFont(ofSize: 16)
@@ -70,16 +69,15 @@ class PenController: UIViewController {
         return label
     }()
     
-    let thicknessSlider: UISlider = {
-        let slider = UISlider(frame: .zero)
-        slider.minimumValue = 1
-        slider.maximumValue = 10
-        slider.setValue(3, animated: false)
-        slider.addTarget(self, action: #selector(handleSliderChange(_:)), for: .valueChanged)
-        slider.translatesAutoresizingMaskIntoConstraints = false
-        return slider
+    let sizeStepper: UIStepper = {
+        let stepper = UIStepper(frame: .zero)
+        stepper.minimumValue = 12
+        stepper.maximumValue = 32
+        stepper.stepValue = 2
+        stepper.addTarget(self, action: #selector(handleStepperChange(_:)), for: .valueChanged)
+        stepper.translatesAutoresizingMaskIntoConstraints = false
+        return stepper
     }()
-    
     
     // MARK: Lifecycle
     
@@ -103,7 +101,7 @@ class PenController: UIViewController {
         
         // titleLabel
         let titleLabel = UILabel(frame: .zero)
-        titleLabel.text = "Pen"
+        titleLabel.text = "Text"
         titleLabel.textColor = .white
         titleLabel.font = UIFont.systemFont(ofSize: 20)
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -159,9 +157,67 @@ class PenController: UIViewController {
             colorsStack.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16)
         ])
         
+        
+        
+        
+        
+        // backgroundColorLabel
+        let backgroundColorLabel = UILabel(frame: .zero)
+        backgroundColorLabel.text = "BACKGROUND COLOR"
+        backgroundColorLabel.textColor = .gray
+        backgroundColorLabel.font = UIFont.systemFont(ofSize: 14)
+        backgroundColorLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        view.addSubview(backgroundColorLabel)
+        NSLayoutConstraint.activate([
+            backgroundColorLabel.heightAnchor.constraint(equalToConstant: 16),
+            backgroundColorLabel.topAnchor.constraint(equalTo: colorsStack.bottomAnchor, constant: 32),
+            backgroundColorLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16)
+        ])
+        
+        // backgroundColorsStack
+        let backgroundColorsStack = UIStackView(frame: .zero)
+        backgroundColorsStack.spacing = 0
+        backgroundColorsStack.distribution = .equalSpacing
+        backgroundColorsStack.alignment = .center
+        backgroundColorsStack.translatesAutoresizingMaskIntoConstraints = false
+        
+        let backgroundColors = [UIColor.Colors.red, UIColor.Colors.orange, UIColor.Colors.yellow, UIColor.Colors.green, UIColor.Colors.teal, UIColor.Colors.blue, UIColor.Colors.purple]
+        
+        for index in 0...(backgroundColors.count - 1) {
+            
+            let colorButton = UIButton(frame: .zero)
+            colorButton.layer.cornerRadius = 16
+            colorButton.layer.masksToBounds = true
+            colorButton.backgroundColor = colors[index]
+            colorButton.addTarget(self, action: #selector(handleBackgroundColorChange(_:)), for: .touchUpInside)
+            colorButton.translatesAutoresizingMaskIntoConstraints = false
+            
+            backgroundColorsStack.addArrangedSubview(colorButton)
+            
+        }
+        
+        for button in backgroundColorsStack.arrangedSubviews {
+            NSLayoutConstraint.activate([
+                button.widthAnchor.constraint(equalToConstant: 32),
+                button.heightAnchor.constraint(equalTo: button.widthAnchor)
+            ])
+        }
+        
+        view.addSubview(backgroundColorsStack)
+        NSLayoutConstraint.activate([
+            backgroundColorsStack.topAnchor.constraint(equalTo: backgroundColorLabel.bottomAnchor, constant: 16),
+            backgroundColorsStack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            backgroundColorsStack.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16)
+        ])
+        
+        
+        
+        
+        
         // thicknessLabel
         let thicknessLabel = UILabel(frame: .zero)
-        thicknessLabel.text = "THICKNESS"
+        thicknessLabel.text = "SIZE"
         thicknessLabel.textColor = .gray
         thicknessLabel.font = UIFont.systemFont(ofSize: 14)
         thicknessLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -169,46 +225,12 @@ class PenController: UIViewController {
         view.addSubview(thicknessLabel)
         NSLayoutConstraint.activate([
             thicknessLabel.heightAnchor.constraint(equalToConstant: 16),
-            thicknessLabel.topAnchor.constraint(equalTo: colorsStack.bottomAnchor, constant: 32),
+            thicknessLabel.topAnchor.constraint(equalTo: backgroundColorLabel.bottomAnchor, constant: 32),
             thicknessLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16)
         ])
         
-        // thicknessSlider
-        let thicknessViewBackgroundView = UIView(frame: .zero)
-        thicknessViewBackgroundView.backgroundColor = .clear
-        thicknessViewBackgroundView.translatesAutoresizingMaskIntoConstraints = false
+        // size
         
-        let thicknessSizeBackgroundView = UIView(frame: .zero)
-        thicknessSizeBackgroundView.backgroundColor = .clear
-        thicknessSizeBackgroundView.translatesAutoresizingMaskIntoConstraints = false
-        
-        view.addSubview(thicknessViewBackgroundView)
-        thicknessViewBackgroundView.addSubview(thicknessView)
-        view.addSubview(thicknessSizeBackgroundView)
-        thicknessSizeBackgroundView.addSubview(thicknessLabel)
-        view.addSubview(thicknessSlider)
-        NSLayoutConstraint.activate([
-            thicknessViewBackgroundView.widthAnchor.constraint(equalToConstant: 32),
-            thicknessViewBackgroundView.heightAnchor.constraint(equalTo: thicknessViewBackgroundView.widthAnchor),
-            
-            thicknessSizeBackgroundView.widthAnchor.constraint(equalToConstant: 32),
-            thicknessSizeBackgroundView.heightAnchor.constraint(equalTo: thicknessSizeBackgroundView.widthAnchor),
-            
-            thicknessSlider.topAnchor.constraint(equalTo: thicknessLabel.bottomAnchor, constant: 32),
-            
-            thicknessViewBackgroundView.centerYAnchor.constraint(equalTo: thicknessSlider.centerYAnchor),
-            thicknessViewBackgroundView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            thicknessView.centerXAnchor.constraint(equalTo: thicknessViewBackgroundView.centerXAnchor),
-            thicknessView.centerYAnchor.constraint(equalTo: thicknessViewBackgroundView.centerYAnchor),
-            
-            thicknessSizeBackgroundView.centerYAnchor.constraint(equalTo: thicknessSlider.centerYAnchor),
-            thicknessSizeBackgroundView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
-            thicknessLabel.centerXAnchor.constraint(equalTo: thicknessSizeBackgroundView.centerXAnchor),
-            thicknessLabel.centerYAnchor.constraint(equalTo: thicknessSizeBackgroundView.centerYAnchor),
-            
-            thicknessSlider.leadingAnchor.constraint(equalTo: thicknessViewBackgroundView.trailingAnchor, constant: 16),
-            thicknessSlider.trailingAnchor.constraint(equalTo: thicknessSizeBackgroundView.leadingAnchor, constant: -16)
-        ])
         
     }
     
@@ -250,9 +272,13 @@ class PenController: UIViewController {
         color = sender.backgroundColor ?? .black
     }
     
-    @objc fileprivate func handleSliderChange(_ sender: UISlider) {
-        thicknessSizeLabel.text = String(sender.value)
-        thikness = CGFloat(sender.value)
+    @objc fileprivate func handleBackgroundColorChange(_ sender: UIButton) {
+        backgorundColor = sender.backgroundColor ?? .clear
+    }
+    
+    @objc fileprivate func handleStepperChange(_ sender: UIStepper) {
+        sizeLabel.text = String(sender.value)
+        size = CGFloat(sender.value)
     }
     
     // MARK: Gestures

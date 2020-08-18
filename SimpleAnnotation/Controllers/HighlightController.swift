@@ -86,12 +86,12 @@ class HighlightController: UIViewController {
         let titleLabel = UILabel(frame: .zero)
         titleLabel.text = "Highlight"
         titleLabel.textColor = .white
-        titleLabel.font = UIFont.systemFont(ofSize: 18)
+        titleLabel.font = UIFont.systemFont(ofSize: 20)
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         
         view.addSubview(titleLabel)
         NSLayoutConstraint.activate([
-            titleLabel.heightAnchor.constraint(equalToConstant: 20),
+            titleLabel.heightAnchor.constraint(equalToConstant: 22),
             titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             titleLabel.topAnchor.constraint(equalTo: holdView.bottomAnchor, constant: 16)
         ])

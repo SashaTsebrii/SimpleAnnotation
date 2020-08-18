@@ -125,7 +125,7 @@ class ShapesController: UIViewController {
         
         view.addSubview(titleLabel)
         NSLayoutConstraint.activate([
-            titleLabel.heightAnchor.constraint(equalToConstant: 18),
+            titleLabel.heightAnchor.constraint(equalToConstant: 22),
             titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             titleLabel.topAnchor.constraint(equalTo: holdView.bottomAnchor, constant: 16)
         ])
@@ -138,6 +138,7 @@ class ShapesController: UIViewController {
                      UIImage(named: "circle_w"),
                      UIImage(named: "check_w"),
                      UIImage(named: "none_w")]
+        
         let shapesSegmentedControl = UISegmentedControl(items: items)
         shapesSegmentedControl.selectedSegmentIndex = 0
         shapesSegmentedControl.layer.cornerRadius = 4.0
