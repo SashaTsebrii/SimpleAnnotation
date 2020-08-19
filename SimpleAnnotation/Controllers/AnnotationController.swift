@@ -23,6 +23,7 @@ class AnnotationController: UIViewController {
     var shapesController: ShapesController?
     var noteController: NoteController?
     var stickersController: StickersController?
+    var signatureController: SignatureController?
     
     // MARK: Prpperties
     
@@ -160,7 +161,7 @@ class AnnotationController: UIViewController {
             markerButton.centerYAnchor.constraint(equalTo: toolbarContentView.centerYAnchor)
         ])
         
-        // highlight
+        // highlightButton
         let highlightButton = UIButton(frame: .zero)
         highlightButton.setImage(UIImage(named: "highlight"), for: .normal)
         highlightButton.addTarget(self, action: #selector(highlightButtonTapped(_:)), for: .touchUpInside)
@@ -174,7 +175,7 @@ class AnnotationController: UIViewController {
             highlightButton.centerYAnchor.constraint(equalTo: toolbarContentView.centerYAnchor)
         ])
         
-        // text
+        // textButton
         let textButton = UIButton(frame: .zero)
         textButton.setImage(UIImage(named: "text"), for: .normal)
         textButton.addTarget(self, action: #selector(textButtonTapped(_:)), for: .touchUpInside)
@@ -188,7 +189,7 @@ class AnnotationController: UIViewController {
             textButton.centerYAnchor.constraint(equalTo: toolbarContentView.centerYAnchor)
         ])
         
-        // shapes
+        // shapesButton
         let shapesButton = UIButton(frame: .zero)
         shapesButton.setImage(UIImage(named: "shapes"), for: .normal)
         shapesButton.addTarget(self, action: #selector(shapesButtonTapped(_:)), for: .touchUpInside)
@@ -202,7 +203,7 @@ class AnnotationController: UIViewController {
             shapesButton.centerYAnchor.constraint(equalTo: toolbarContentView.centerYAnchor)
         ])
         
-        // note
+        // noteButton
         let noteButton = UIButton(frame: .zero)
         noteButton.setImage(UIImage(named: "note"), for: .normal)
         noteButton.addTarget(self, action: #selector(noteButtonTapped(_:)), for: .touchUpInside)
@@ -216,7 +217,7 @@ class AnnotationController: UIViewController {
             noteButton.centerYAnchor.constraint(equalTo: toolbarContentView.centerYAnchor)
         ])
         
-        // stickers
+        // stickersButton
         let stickersButton = UIButton(frame: .zero)
         stickersButton.setImage(UIImage(named: "stickers"), for: .normal)
         stickersButton.addTarget(self, action: #selector(stickersButtonTapped(_:)), for: .touchUpInside)
@@ -228,6 +229,20 @@ class AnnotationController: UIViewController {
             stickersButton.heightAnchor.constraint(equalTo: stickersButton.widthAnchor),
             stickersButton.leadingAnchor.constraint(equalTo: noteButton.trailingAnchor, constant: 4),
             stickersButton.centerYAnchor.constraint(equalTo: toolbarContentView.centerYAnchor)
+        ])
+        
+        // signatureButton
+        let signatureButton = UIButton(frame: .zero)
+        signatureButton.setImage(UIImage(named: "signature"), for: .normal)
+        signatureButton.addTarget(self, action: #selector(signatureButtonTapped(_:)), for: .touchUpInside)
+        signatureButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        toolbarContentView.addSubview(signatureButton)
+        NSLayoutConstraint.activate([
+            signatureButton.widthAnchor.constraint(equalToConstant: 44),
+            signatureButton.heightAnchor.constraint(equalTo: signatureButton.widthAnchor),
+            signatureButton.leadingAnchor.constraint(equalTo: stickersButton.trailingAnchor, constant: 4),
+            signatureButton.centerYAnchor.constraint(equalTo: toolbarContentView.centerYAnchor)
         ])
         
         // previewScrollView
@@ -476,6 +491,15 @@ class AnnotationController: UIViewController {
         
     }
     
+    @objc fileprivate func signatureButtonTapped(_ sender: UIButton) {
+        
+        removeChildController()
+        
+        // Add the bottom colors view
+        setUpSignatureController()
+        
+    }
+    
     // MARK: Helper
     
     fileprivate func removeChildController() {
@@ -517,6 +541,11 @@ class AnnotationController: UIViewController {
                     viewContoller.view.removeFromSuperview()
                     viewContoller.removeFromParent()
                     stickersController = nil
+                } else if viewContoller === signatureController {
+                    viewContoller.willMove(toParent: nil)
+                    viewContoller.view.removeFromSuperview()
+                    viewContoller.removeFromParent()
+                    signatureController = nil
                 }
             }
         }
@@ -673,6 +702,28 @@ class AnnotationController: UIViewController {
                 let height = view.frame.height
                 let width  = view.frame.width
                 stickersController.view.frame = CGRect(x: 0, y: view.frame.maxY, width: width, height: height)
+            }
+        }
+        
+    }
+    
+    fileprivate func setUpSignatureController() {
+        
+        if signatureController == nil {
+            // Init
+            signatureController = SignatureController()
+            if let signatureController = signatureController {
+                signatureController.delegate = self
+                
+                // Add as a child view
+                addChild(signatureController)
+                view.addSubview(signatureController.view)
+                signatureController.didMove(toParent: self)
+                
+                // Adjust frame and initial position
+                let height = view.frame.height
+                let width  = view.frame.width
+                signatureController.view.frame = CGRect(x: 0, y: view.frame.maxY, width: width, height: height)
             }
         }
         
@@ -872,6 +923,16 @@ extension AnnotationController: StickersControllerDelegate {
     // MARK: StickersControllerDelegate
     
     func stickersParameter(image: UIImage) {
+        
+    }
+    
+}
+
+extension AnnotationController: SignatureControllerDelegate {
+    
+    // MARK: SignatureController
+    
+    func signatureParameter(signatureImage: UIImage?) {
         
     }
     
