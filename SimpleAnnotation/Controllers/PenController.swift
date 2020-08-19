@@ -18,7 +18,7 @@ class PenController: UIViewController {
     
     var delegate: PenControllerDelegate?
     
-    var color: UIColor = .clear {
+    var color: UIColor = .black {
         didSet {
             delegate?.penParameter(color: color, thinkness: thikness)
         }
@@ -224,9 +224,7 @@ class PenController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        color = .black
-        
+                
     }
     
     override func viewDidAppear(_ animated: Bool) {

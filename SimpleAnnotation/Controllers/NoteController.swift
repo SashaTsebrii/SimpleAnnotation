@@ -18,7 +18,7 @@ class NoteController: UIViewController {
     
     var delegate: NoteControllerDelegate?
     
-    var color: UIColor = .clear {
+    var color: UIColor = .yellow {
         didSet {
             delegate?.noteParameter(color: color)
         }
@@ -139,9 +139,7 @@ class NoteController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        color = .yellow
-        
+                
     }
     
     override func viewDidAppear(_ animated: Bool) {

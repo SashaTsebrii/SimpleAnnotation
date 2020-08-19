@@ -18,7 +18,7 @@ class HighlightController: UIViewController {
     
     var delegate: HighlightControllerDelegate?
     
-    var color: UIColor = .clear {
+    var color: UIColor = .yellow {
         didSet {
             delegate?.highlightParameter(color: color, opacity: opacity)
         }
@@ -201,9 +201,7 @@ class HighlightController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        color = .yellow
-        
+                
     }
     
     override func viewDidAppear(_ animated: Bool) {

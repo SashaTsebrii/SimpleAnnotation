@@ -252,9 +252,7 @@ class TextController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        color = .black
-        
+                
     }
     
     override func viewDidAppear(_ animated: Bool) {

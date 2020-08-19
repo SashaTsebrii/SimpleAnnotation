@@ -73,6 +73,7 @@
 		474255B924EC73D900D31DD5 /* keycap-digit-five_35-fe0f-20e3.png in Resources */ = {isa = PBXBuildFile; fileRef = 4742557D24EC73D800D31DD5 /* keycap-digit-five_35-fe0f-20e3.png */; };
 		474255BB24EC946600D31DD5 /* StickesrController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 474255BA24EC946600D31DD5 /* StickesrController.swift */; };
 		474255BD24ECBAEA00D31DD5 /* StickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 474255BC24ECBAEA00D31DD5 /* StickerCell.swift */; };
+		477026F924ED7430004593BC /* SignatureController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477026F824ED7430004593BC /* SignatureController.swift */; };
 		477CE60924A9FCEF0018A642 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477CE60824A9FCEF0018A642 /* AppDelegate.swift */; };
 		477CE60B24A9FCEF0018A642 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477CE60A24A9FCEF0018A642 /* SceneDelegate.swift */; };
 		477CE60D24A9FCEF0018A642 /* AnnotationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477CE60C24A9FCEF0018A642 /* AnnotationController.swift */; };
@@ -162,6 +163,7 @@
 		4742557D24EC73D800D31DD5 /* keycap-digit-five_35-fe0f-20e3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "keycap-digit-five_35-fe0f-20e3.png"; sourceTree = "<group>"; };
 		474255BA24EC946600D31DD5 /* StickesrController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickesrController.swift; sourceTree = "<group>"; };
 		474255BC24ECBAEA00D31DD5 /* StickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickerCell.swift; sourceTree = "<group>"; };
+		477026F824ED7430004593BC /* SignatureController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignatureController.swift; sourceTree = "<group>"; };
 		477CE60524A9FCEF0018A642 /* SimpleAnnotation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleAnnotation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		477CE60824A9FCEF0018A642 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		477CE60A24A9FCEF0018A642 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -351,6 +353,7 @@
 				4742553F24EC67CA00D31DD5 /* NoteController.swift */,
 				474255BA24EC946600D31DD5 /* StickesrController.swift */,
 				474255BC24ECBAEA00D31DD5 /* StickerCell.swift */,
+				477026F824ED7430004593BC /* SignatureController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -493,6 +496,7 @@
 				477CE62224AA04830018A642 /* MarkerController.swift in Sources */,
 				477CE63524B367E50018A642 /* CachedCanvasView.swift in Sources */,
 				477CE62F24AB618A0018A642 /* TestController.swift in Sources */,
+				477026F924ED7430004593BC /* SignatureController.swift in Sources */,
 				4742553E24EBE4E600D31DD5 /* TextController.swift in Sources */,
 				477CE63B24B37B9A0018A642 /* TestCanvasView.swift in Sources */,
 				4742553A24E533DC00D31DD5 /* HighlightController.swift in Sources */,

@@ -18,7 +18,7 @@ class ShapesController: UIViewController {
     
     var delegate: MarkerControllerDelegate?
     
-    var color: UIColor = .clear {
+    var color: UIColor = .black {
         didSet {
             delegate?.markerParameter(color: color, thinkness: thikness, opacity: opacity)
         }
@@ -30,7 +30,7 @@ class ShapesController: UIViewController {
         }
     }
     
-    var opacity: CGFloat = 0.6 {
+    var opacity: CGFloat = 1.0 {
         didSet {
             delegate?.markerParameter(color: color, thinkness: thikness, opacity: opacity)
         }
@@ -312,9 +312,7 @@ class ShapesController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        color = .yellow
-        
+                
     }
     
     override func viewDidAppear(_ animated: Bool) {
