@@ -125,7 +125,7 @@ class AnnotationController: UIViewController {
         // Content view
         toolbarScrollView.addSubview(toolbarContentView)
         NSLayoutConstraint.activate([
-            toolbarContentView.widthAnchor.constraint(equalToConstant: 700),
+            toolbarContentView.widthAnchor.constraint(equalToConstant: (44 * 8) + (4 * 8)),
             toolbarContentView.centerYAnchor.constraint(equalTo: toolbarScrollView.centerYAnchor),
             toolbarContentView.topAnchor.constraint(equalTo: toolbarScrollView.topAnchor),
             toolbarContentView.bottomAnchor.constraint(equalTo: toolbarScrollView.bottomAnchor),
