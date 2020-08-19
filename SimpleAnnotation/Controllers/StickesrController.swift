@@ -168,10 +168,8 @@ class StickersController: UIViewController {
     
     fileprivate func createStickers() {
         let paths = Bundle.main.paths(forResourcesOfType: "png", inDirectory: nil)
-        print(paths)
         for path in paths {
             if let image = UIImage(contentsOfFile: path) {
-                print(image)
                 stickers.append(image)
             }
         }
@@ -239,10 +237,10 @@ extension StickersController: UICollectionViewDataSource, UICollectionViewDelega
         
         if UIDevice.current.userInterfaceIdiom == .phone {
             // iPhone
-            optimalWidth = (view.bounds.width - 8 - 16) / 2
+            optimalWidth = (view.bounds.width - (8 * 4) - 16) / 5
         } else if UIDevice.current.userInterfaceIdiom == .pad {
             // iPad
-            optimalWidth = (view.bounds.width - 16 - 32) / 2
+            optimalWidth = (view.bounds.width - (16 * 4) - 32) / 5
         }
         
         let itemSize = CGSize(width: optimalWidth, height: optimalWidth)
