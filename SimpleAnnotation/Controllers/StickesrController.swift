@@ -17,7 +17,7 @@ class StickersController: UIViewController {
     // MARK: Variables
     
     var delegate: StickersControllerDelegate?
-    var stickers: [UIImage]?
+    var stickers = [UIImage]()
     
     var fullView: CGFloat {
         let navigationBarHeight = (view.window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0.0) +
@@ -97,7 +97,7 @@ class StickersController: UIViewController {
         
         prepareBackgroundView()
         
-        getStickers()
+        createStickers()
                 
     }
     
@@ -166,27 +166,16 @@ class StickersController: UIViewController {
         
     }
     
-    func getStickers() {
-        if let path = Bundle.main.resourcePath {
-
-            let imagePath = path + "/stickers"
-            let url = NSURL(fileURLWithPath: imagePath)
-            let fileManager = FileManager.default
-
-            let properties = [URLResourceKey.localizedNameKey,
-                              URLResourceKey.creationDateKey, URLResourceKey.localizedTypeDescriptionKey]
-
-            do {
-                let imageURLs = try fileManager.contentsOfDirectory(at: url as URL, includingPropertiesForKeys: properties, options:FileManager.DirectoryEnumerationOptions.skipsHiddenFiles)
-
-                print("image URLs: \(imageURLs)")
-                // Create image from URL
-                var myImage =  UIImage(data: NSData(contentsOf: imageURLs[0])! as Data)
-
-            } catch let error as NSError {
-                print(error.description)
+    fileprivate func createStickers() {
+        let paths = Bundle.main.paths(forResourcesOfType: "png", inDirectory: nil)
+        print(paths)
+        for path in paths {
+            if let image = UIImage(contentsOfFile: path) {
+                print(image)
+                stickers.append(image)
             }
         }
+        collectionView.reloadData()
     }
     
     func close() {
@@ -209,11 +198,9 @@ extension StickersController: UICollectionViewDataSource, UICollectionViewDelega
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if let stickers = stickers {
-            return stickers.count
-        } else {
-            return 0
-        }
+        
+        return stickers.count
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -222,7 +209,7 @@ extension StickersController: UICollectionViewDataSource, UICollectionViewDelega
             fatalError("Unexpected cell instead of ListCell")
         }
         
-        if let stickers = stickers {
+        if stickers.count > 0 {
             let sticker = stickers[indexPath.row]
             cell.sticker = sticker
         }
@@ -235,7 +222,7 @@ extension StickersController: UICollectionViewDataSource, UICollectionViewDelega
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        if let stickers = stickers {
+        if stickers.count > 0 {
             let sticker = stickers[indexPath.row]
             delegate?.stickersParameter(image: sticker)
         }

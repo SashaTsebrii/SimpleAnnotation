@@ -40,7 +40,7 @@ class StickerCell: UICollectionViewCell {
             stickerImageView.topAnchor.constraint(equalTo: contentView.topAnchor),
             stickerImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             stickerImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            stickerImageView.bottomAnchor.constraint(equalTo: contentView.topAnchor)
+            stickerImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
         ])
         
     }
