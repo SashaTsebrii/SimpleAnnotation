@@ -22,6 +22,7 @@ class AnnotationController: UIViewController {
     var textController: TextController?
     var shapesController: ShapesController?
     var noteController: NoteController?
+    var stickersController: StickersController?
     
     // MARK: Prpperties
     
@@ -213,6 +214,20 @@ class AnnotationController: UIViewController {
             noteButton.heightAnchor.constraint(equalTo: noteButton.widthAnchor),
             noteButton.leadingAnchor.constraint(equalTo: shapesButton.trailingAnchor, constant: 4),
             noteButton.centerYAnchor.constraint(equalTo: toolbarContentView.centerYAnchor)
+        ])
+        
+        // stickers
+        let stickersButton = UIButton(frame: .zero)
+        stickersButton.setImage(UIImage(named: "stickers"), for: .normal)
+        stickersButton.addTarget(self, action: #selector(stickersButtonTapped(_:)), for: .touchUpInside)
+        stickersButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        toolbarContentView.addSubview(stickersButton)
+        NSLayoutConstraint.activate([
+            stickersButton.widthAnchor.constraint(equalToConstant: 44),
+            stickersButton.heightAnchor.constraint(equalTo: stickersButton.widthAnchor),
+            stickersButton.leadingAnchor.constraint(equalTo: noteButton.trailingAnchor, constant: 4),
+            stickersButton.centerYAnchor.constraint(equalTo: toolbarContentView.centerYAnchor)
         ])
         
         // previewScrollView
@@ -452,6 +467,15 @@ class AnnotationController: UIViewController {
         
     }
     
+    @objc fileprivate func stickersButtonTapped(_ sender: UIButton) {
+        
+        removeChildController()
+        
+        // Add the bottom colors view
+        setUpStickersController()
+        
+    }
+    
     // MARK: Helper
     
     fileprivate func removeChildController() {
@@ -488,6 +512,11 @@ class AnnotationController: UIViewController {
                     viewContoller.view.removeFromSuperview()
                     viewContoller.removeFromParent()
                     noteController = nil
+                } else if viewContoller === stickersController {
+                    viewContoller.willMove(toParent: nil)
+                    viewContoller.view.removeFromSuperview()
+                    viewContoller.removeFromParent()
+                    stickersController = nil
                 }
             }
         }
@@ -622,6 +651,28 @@ class AnnotationController: UIViewController {
                 let height = view.frame.height
                 let width  = view.frame.width
                 noteController.view.frame = CGRect(x: 0, y: view.frame.maxY, width: width, height: height)
+            }
+        }
+        
+    }
+    
+    fileprivate func setUpStickersController() {
+        
+        if stickersController == nil {
+            // Init
+            stickersController = StickersController()
+            if let stickersController = stickersController {
+                stickersController.delegate = self
+                
+                // Add as a child view
+                addChild(stickersController)
+                view.addSubview(stickersController.view)
+                stickersController.didMove(toParent: self)
+                
+                // Adjust frame and initial position
+                let height = view.frame.height
+                let width  = view.frame.width
+                stickersController.view.frame = CGRect(x: 0, y: view.frame.maxY, width: width, height: height)
             }
         }
         
@@ -808,7 +859,19 @@ extension AnnotationController: HighlightControllerDelegate {
 
 extension AnnotationController: NoteControllerDelegate {
     
+    // MARK: NoteControllerDelegate
+    
     func noteParameter(color: UIColor) {
+        
+    }
+    
+}
+
+extension AnnotationController: StickersControllerDelegate {
+    
+    // MARK: StickersControllerDelegate
+    
+    func stickersParameter(image: UIImage) {
         
     }
     

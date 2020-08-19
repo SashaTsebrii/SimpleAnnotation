@@ -11,6 +11,68 @@
 		4742553C24E6B03300D31DD5 /* ShapesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4742553B24E6B03300D31DD5 /* ShapesController.swift */; };
 		4742553E24EBE4E600D31DD5 /* TextController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4742553D24EBE4E600D31DD5 /* TextController.swift */; };
 		4742554024EC67CA00D31DD5 /* NoteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4742553F24EC67CA00D31DD5 /* NoteController.swift */; };
+		4742557E24EC73D900D31DD5 /* clock-face-eight-oclock_1f557.png in Resources */ = {isa = PBXBuildFile; fileRef = 4742554224EC73D800D31DD5 /* clock-face-eight-oclock_1f557.png */; };
+		4742557F24EC73D900D31DD5 /* keycap-digit-six_36-fe0f-20e3.png in Resources */ = {isa = PBXBuildFile; fileRef = 4742554324EC73D800D31DD5 /* keycap-digit-six_36-fe0f-20e3.png */; };
+		4742558024EC73D900D31DD5 /* downwards-black-arrow_2b07.png in Resources */ = {isa = PBXBuildFile; fileRef = 4742554424EC73D800D31DD5 /* downwards-black-arrow_2b07.png */; };
+		4742558124EC73D900D31DD5 /* keycap-digit-three_33-fe0f-20e3.png in Resources */ = {isa = PBXBuildFile; fileRef = 4742554524EC73D800D31DD5 /* keycap-digit-three_33-fe0f-20e3.png */; };
+		4742558224EC73D900D31DD5 /* clock-face-ten-thirty_1f565.png in Resources */ = {isa = PBXBuildFile; fileRef = 4742554624EC73D800D31DD5 /* clock-face-ten-thirty_1f565.png */; };
+		4742558324EC73D900D31DD5 /* south-east-arrow_2198.png in Resources */ = {isa = PBXBuildFile; fileRef = 4742554724EC73D800D31DD5 /* south-east-arrow_2198.png */; };
+		4742558424EC73D900D31DD5 /* black-rightwards-arrow_27a1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4742554824EC73D800D31DD5 /* black-rightwards-arrow_27a1.png */; };
+		4742558524EC73D900D31DD5 /* keycap-ten_1f51f.png in Resources */ = {isa = PBXBuildFile; fileRef = 4742554924EC73D800D31DD5 /* keycap-ten_1f51f.png */; };
+		4742558624EC73D900D31DD5 /* white-heavy-check-mark_2705.png in Resources */ = {isa = PBXBuildFile; fileRef = 4742554A24EC73D800D31DD5 /* white-heavy-check-mark_2705.png */; };
+		4742558724EC73D900D31DD5 /* clock-face-seven-oclock_1f556.png in Resources */ = {isa = PBXBuildFile; fileRef = 4742554B24EC73D800D31DD5 /* clock-face-seven-oclock_1f556.png */; };
+		4742558824EC73D900D31DD5 /* clock-face-twelve-thirty_1f567.png in Resources */ = {isa = PBXBuildFile; fileRef = 4742554C24EC73D800D31DD5 /* clock-face-twelve-thirty_1f567.png */; };
+		4742558924EC73D900D31DD5 /* clock-face-one-oclock_1f550.png in Resources */ = {isa = PBXBuildFile; fileRef = 4742554D24EC73D800D31DD5 /* clock-face-one-oclock_1f550.png */; };
+		4742558A24EC73D900D31DD5 /* upwards-black-arrow_2b06.png in Resources */ = {isa = PBXBuildFile; fileRef = 4742554E24EC73D800D31DD5 /* upwards-black-arrow_2b06.png */; };
+		4742558B24EC73D900D31DD5 /* double-exclamation-mark_203c.png in Resources */ = {isa = PBXBuildFile; fileRef = 4742554F24EC73D800D31DD5 /* double-exclamation-mark_203c.png */; };
+		4742558C24EC73D900D31DD5 /* keycap-digit-two_32-fe0f-20e3.png in Resources */ = {isa = PBXBuildFile; fileRef = 4742555024EC73D800D31DD5 /* keycap-digit-two_32-fe0f-20e3.png */; };
+		4742558D24EC73D900D31DD5 /* thumbs-down-sign_1f44e.png in Resources */ = {isa = PBXBuildFile; fileRef = 4742555124EC73D800D31DD5 /* thumbs-down-sign_1f44e.png */; };
+		4742558E24EC73D900D31DD5 /* clock-face-four-oclock_1f553.png in Resources */ = {isa = PBXBuildFile; fileRef = 4742555224EC73D800D31DD5 /* clock-face-four-oclock_1f553.png */; };
+		4742558F24EC73D900D31DD5 /* clock-face-seven-thirty_1f562.png in Resources */ = {isa = PBXBuildFile; fileRef = 4742555324EC73D800D31DD5 /* clock-face-seven-thirty_1f562.png */; };
+		4742559024EC73D900D31DD5 /* clock-face-nine-oclock_1f558.png in Resources */ = {isa = PBXBuildFile; fileRef = 4742555424EC73D800D31DD5 /* clock-face-nine-oclock_1f558.png */; };
+		4742559124EC73D900D31DD5 /* exclamation-question-mark_2049.png in Resources */ = {isa = PBXBuildFile; fileRef = 4742555524EC73D800D31DD5 /* exclamation-question-mark_2049.png */; };
+		4742559224EC73D900D31DD5 /* keycap-digit-seven_37-fe0f-20e3.png in Resources */ = {isa = PBXBuildFile; fileRef = 4742555624EC73D800D31DD5 /* keycap-digit-seven_37-fe0f-20e3.png */; };
+		4742559324EC73D900D31DD5 /* north-east-arrow_2197.png in Resources */ = {isa = PBXBuildFile; fileRef = 4742555724EC73D800D31DD5 /* north-east-arrow_2197.png */; };
+		4742559424EC73D900D31DD5 /* thumbs-up-sign_1f44d.png in Resources */ = {isa = PBXBuildFile; fileRef = 4742555824EC73D800D31DD5 /* thumbs-up-sign_1f44d.png */; };
+		4742559524EC73D900D31DD5 /* earth-globe-asia-australia_1f30f.png in Resources */ = {isa = PBXBuildFile; fileRef = 4742555924EC73D800D31DD5 /* earth-globe-asia-australia_1f30f.png */; };
+		4742559624EC73D900D31DD5 /* keycap-digit-nine_39-fe0f-20e3.png in Resources */ = {isa = PBXBuildFile; fileRef = 4742555A24EC73D800D31DD5 /* keycap-digit-nine_39-fe0f-20e3.png */; };
+		4742559724EC73D900D31DD5 /* clock-face-eight-thirty_1f563.png in Resources */ = {isa = PBXBuildFile; fileRef = 4742555B24EC73D800D31DD5 /* clock-face-eight-thirty_1f563.png */; };
+		4742559824EC73D900D31DD5 /* clock-face-twelve-oclock_1f55b.png in Resources */ = {isa = PBXBuildFile; fileRef = 4742555C24EC73D800D31DD5 /* clock-face-twelve-oclock_1f55b.png */; };
+		4742559924EC73D900D31DD5 /* black-question-mark-ornament_2753.png in Resources */ = {isa = PBXBuildFile; fileRef = 4742555D24EC73D800D31DD5 /* black-question-mark-ornament_2753.png */; };
+		4742559A24EC73D900D31DD5 /* earth-globe-europe-africa_1f30d.png in Resources */ = {isa = PBXBuildFile; fileRef = 4742555E24EC73D800D31DD5 /* earth-globe-europe-africa_1f30d.png */; };
+		4742559B24EC73D900D31DD5 /* clock-face-three-oclock_1f552.png in Resources */ = {isa = PBXBuildFile; fileRef = 4742555F24EC73D800D31DD5 /* clock-face-three-oclock_1f552.png */; };
+		4742559C24EC73D900D31DD5 /* clock-face-two-thirty_1f55d.png in Resources */ = {isa = PBXBuildFile; fileRef = 4742556024EC73D800D31DD5 /* clock-face-two-thirty_1f55d.png */; };
+		4742559D24EC73D900D31DD5 /* clock-face-eleven-oclock_1f55a.png in Resources */ = {isa = PBXBuildFile; fileRef = 4742556124EC73D800D31DD5 /* clock-face-eleven-oclock_1f55a.png */; };
+		4742559E24EC73D900D31DD5 /* heavy-exclamation-mark-symbol_2757.png in Resources */ = {isa = PBXBuildFile; fileRef = 4742556224EC73D800D31DD5 /* heavy-exclamation-mark-symbol_2757.png */; };
+		4742559F24EC73D900D31DD5 /* cross-mark_274c.png in Resources */ = {isa = PBXBuildFile; fileRef = 4742556324EC73D800D31DD5 /* cross-mark_274c.png */; };
+		474255A024EC73D900D31DD5 /* keycap-digit-one_31-fe0f-20e3.png in Resources */ = {isa = PBXBuildFile; fileRef = 4742556424EC73D800D31DD5 /* keycap-digit-one_31-fe0f-20e3.png */; };
+		474255A124EC73D900D31DD5 /* no-entry_26d4.png in Resources */ = {isa = PBXBuildFile; fileRef = 4742556524EC73D800D31DD5 /* no-entry_26d4.png */; };
+		474255A224EC73D900D31DD5 /* black-heart-suit_2665.png in Resources */ = {isa = PBXBuildFile; fileRef = 4742556624EC73D800D31DD5 /* black-heart-suit_2665.png */; };
+		474255A324EC73D900D31DD5 /* clock-face-six-oclock_1f555.png in Resources */ = {isa = PBXBuildFile; fileRef = 4742556724EC73D800D31DD5 /* clock-face-six-oclock_1f555.png */; };
+		474255A424EC73D900D31DD5 /* clock-face-five-oclock_1f554.png in Resources */ = {isa = PBXBuildFile; fileRef = 4742556824EC73D800D31DD5 /* clock-face-five-oclock_1f554.png */; };
+		474255A524EC73D900D31DD5 /* north-west-arrow_2196.png in Resources */ = {isa = PBXBuildFile; fileRef = 4742556924EC73D800D31DD5 /* north-west-arrow_2196.png */; };
+		474255A624EC73D900D31DD5 /* clock-face-one-thirty_1f55c.png in Resources */ = {isa = PBXBuildFile; fileRef = 4742556A24EC73D800D31DD5 /* clock-face-one-thirty_1f55c.png */; };
+		474255A724EC73D900D31DD5 /* clock-face-ten-oclock_1f559.png in Resources */ = {isa = PBXBuildFile; fileRef = 4742556B24EC73D800D31DD5 /* clock-face-ten-oclock_1f559.png */; };
+		474255A824EC73D900D31DD5 /* clock-face-eleven-thirty_1f566.png in Resources */ = {isa = PBXBuildFile; fileRef = 4742556C24EC73D800D31DD5 /* clock-face-eleven-thirty_1f566.png */; };
+		474255A924EC73D900D31DD5 /* pencil_270f.png in Resources */ = {isa = PBXBuildFile; fileRef = 4742556D24EC73D800D31DD5 /* pencil_270f.png */; };
+		474255AA24EC73D900D31DD5 /* clock-face-five-thirty_1f560.png in Resources */ = {isa = PBXBuildFile; fileRef = 4742556E24EC73D800D31DD5 /* clock-face-five-thirty_1f560.png */; };
+		474255AB24EC73D900D31DD5 /* earth-globe-americas_1f30e.png in Resources */ = {isa = PBXBuildFile; fileRef = 4742556F24EC73D800D31DD5 /* earth-globe-americas_1f30e.png */; };
+		474255AC24EC73D900D31DD5 /* clock-face-three-thirty_1f55e.png in Resources */ = {isa = PBXBuildFile; fileRef = 4742557024EC73D800D31DD5 /* clock-face-three-thirty_1f55e.png */; };
+		474255AD24EC73D900D31DD5 /* lower-left-ballpoint-pen_1f58a.png in Resources */ = {isa = PBXBuildFile; fileRef = 4742557124EC73D800D31DD5 /* lower-left-ballpoint-pen_1f58a.png */; };
+		474255AE24EC73D900D31DD5 /* clock-face-two-oclock_1f551.png in Resources */ = {isa = PBXBuildFile; fileRef = 4742557224EC73D800D31DD5 /* clock-face-two-oclock_1f551.png */; };
+		474255AF24EC73D900D31DD5 /* keycap-digit-four_34-fe0f-20e3.png in Resources */ = {isa = PBXBuildFile; fileRef = 4742557324EC73D800D31DD5 /* keycap-digit-four_34-fe0f-20e3.png */; };
+		474255B024EC73D900D31DD5 /* lower-left-crayon_1f58d.png in Resources */ = {isa = PBXBuildFile; fileRef = 4742557424EC73D800D31DD5 /* lower-left-crayon_1f58d.png */; };
+		474255B124EC73D900D31DD5 /* clock-face-six-thirty_1f561.png in Resources */ = {isa = PBXBuildFile; fileRef = 4742557524EC73D800D31DD5 /* clock-face-six-thirty_1f561.png */; };
+		474255B224EC73D900D31DD5 /* keycap-digit-eight_38-fe0f-20e3.png in Resources */ = {isa = PBXBuildFile; fileRef = 4742557624EC73D800D31DD5 /* keycap-digit-eight_38-fe0f-20e3.png */; };
+		474255B324EC73D900D31DD5 /* south-west-arrow_2199.png in Resources */ = {isa = PBXBuildFile; fileRef = 4742557724EC73D800D31DD5 /* south-west-arrow_2199.png */; };
+		474255B424EC73D900D31DD5 /* clock-face-nine-thirty_1f564.png in Resources */ = {isa = PBXBuildFile; fileRef = 4742557824EC73D800D31DD5 /* clock-face-nine-thirty_1f564.png */; };
+		474255B524EC73D900D31DD5 /* warning-sign_26a0.png in Resources */ = {isa = PBXBuildFile; fileRef = 4742557924EC73D800D31DD5 /* warning-sign_26a0.png */; };
+		474255B624EC73D900D31DD5 /* keycap-digit-zero_30-fe0f-20e3.png in Resources */ = {isa = PBXBuildFile; fileRef = 4742557A24EC73D800D31DD5 /* keycap-digit-zero_30-fe0f-20e3.png */; };
+		474255B724EC73D900D31DD5 /* leftwards-black-arrow_2b05.png in Resources */ = {isa = PBXBuildFile; fileRef = 4742557B24EC73D800D31DD5 /* leftwards-black-arrow_2b05.png */; };
+		474255B824EC73D900D31DD5 /* clock-face-four-thirty_1f55f.png in Resources */ = {isa = PBXBuildFile; fileRef = 4742557C24EC73D800D31DD5 /* clock-face-four-thirty_1f55f.png */; };
+		474255B924EC73D900D31DD5 /* keycap-digit-five_35-fe0f-20e3.png in Resources */ = {isa = PBXBuildFile; fileRef = 4742557D24EC73D800D31DD5 /* keycap-digit-five_35-fe0f-20e3.png */; };
+		474255BB24EC946600D31DD5 /* StickesrController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 474255BA24EC946600D31DD5 /* StickesrController.swift */; };
+		474255BD24ECBAEA00D31DD5 /* StickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 474255BC24ECBAEA00D31DD5 /* StickerCell.swift */; };
 		477CE60924A9FCEF0018A642 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477CE60824A9FCEF0018A642 /* AppDelegate.swift */; };
 		477CE60B24A9FCEF0018A642 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477CE60A24A9FCEF0018A642 /* SceneDelegate.swift */; };
 		477CE60D24A9FCEF0018A642 /* AnnotationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477CE60C24A9FCEF0018A642 /* AnnotationController.swift */; };
@@ -38,6 +100,68 @@
 		4742553B24E6B03300D31DD5 /* ShapesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapesController.swift; sourceTree = "<group>"; };
 		4742553D24EBE4E600D31DD5 /* TextController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextController.swift; sourceTree = "<group>"; };
 		4742553F24EC67CA00D31DD5 /* NoteController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteController.swift; sourceTree = "<group>"; };
+		4742554224EC73D800D31DD5 /* clock-face-eight-oclock_1f557.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clock-face-eight-oclock_1f557.png"; sourceTree = "<group>"; };
+		4742554324EC73D800D31DD5 /* keycap-digit-six_36-fe0f-20e3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "keycap-digit-six_36-fe0f-20e3.png"; sourceTree = "<group>"; };
+		4742554424EC73D800D31DD5 /* downwards-black-arrow_2b07.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "downwards-black-arrow_2b07.png"; sourceTree = "<group>"; };
+		4742554524EC73D800D31DD5 /* keycap-digit-three_33-fe0f-20e3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "keycap-digit-three_33-fe0f-20e3.png"; sourceTree = "<group>"; };
+		4742554624EC73D800D31DD5 /* clock-face-ten-thirty_1f565.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clock-face-ten-thirty_1f565.png"; sourceTree = "<group>"; };
+		4742554724EC73D800D31DD5 /* south-east-arrow_2198.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "south-east-arrow_2198.png"; sourceTree = "<group>"; };
+		4742554824EC73D800D31DD5 /* black-rightwards-arrow_27a1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "black-rightwards-arrow_27a1.png"; sourceTree = "<group>"; };
+		4742554924EC73D800D31DD5 /* keycap-ten_1f51f.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "keycap-ten_1f51f.png"; sourceTree = "<group>"; };
+		4742554A24EC73D800D31DD5 /* white-heavy-check-mark_2705.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "white-heavy-check-mark_2705.png"; sourceTree = "<group>"; };
+		4742554B24EC73D800D31DD5 /* clock-face-seven-oclock_1f556.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clock-face-seven-oclock_1f556.png"; sourceTree = "<group>"; };
+		4742554C24EC73D800D31DD5 /* clock-face-twelve-thirty_1f567.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clock-face-twelve-thirty_1f567.png"; sourceTree = "<group>"; };
+		4742554D24EC73D800D31DD5 /* clock-face-one-oclock_1f550.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clock-face-one-oclock_1f550.png"; sourceTree = "<group>"; };
+		4742554E24EC73D800D31DD5 /* upwards-black-arrow_2b06.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "upwards-black-arrow_2b06.png"; sourceTree = "<group>"; };
+		4742554F24EC73D800D31DD5 /* double-exclamation-mark_203c.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "double-exclamation-mark_203c.png"; sourceTree = "<group>"; };
+		4742555024EC73D800D31DD5 /* keycap-digit-two_32-fe0f-20e3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "keycap-digit-two_32-fe0f-20e3.png"; sourceTree = "<group>"; };
+		4742555124EC73D800D31DD5 /* thumbs-down-sign_1f44e.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thumbs-down-sign_1f44e.png"; sourceTree = "<group>"; };
+		4742555224EC73D800D31DD5 /* clock-face-four-oclock_1f553.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clock-face-four-oclock_1f553.png"; sourceTree = "<group>"; };
+		4742555324EC73D800D31DD5 /* clock-face-seven-thirty_1f562.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clock-face-seven-thirty_1f562.png"; sourceTree = "<group>"; };
+		4742555424EC73D800D31DD5 /* clock-face-nine-oclock_1f558.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clock-face-nine-oclock_1f558.png"; sourceTree = "<group>"; };
+		4742555524EC73D800D31DD5 /* exclamation-question-mark_2049.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "exclamation-question-mark_2049.png"; sourceTree = "<group>"; };
+		4742555624EC73D800D31DD5 /* keycap-digit-seven_37-fe0f-20e3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "keycap-digit-seven_37-fe0f-20e3.png"; sourceTree = "<group>"; };
+		4742555724EC73D800D31DD5 /* north-east-arrow_2197.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "north-east-arrow_2197.png"; sourceTree = "<group>"; };
+		4742555824EC73D800D31DD5 /* thumbs-up-sign_1f44d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thumbs-up-sign_1f44d.png"; sourceTree = "<group>"; };
+		4742555924EC73D800D31DD5 /* earth-globe-asia-australia_1f30f.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "earth-globe-asia-australia_1f30f.png"; sourceTree = "<group>"; };
+		4742555A24EC73D800D31DD5 /* keycap-digit-nine_39-fe0f-20e3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "keycap-digit-nine_39-fe0f-20e3.png"; sourceTree = "<group>"; };
+		4742555B24EC73D800D31DD5 /* clock-face-eight-thirty_1f563.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clock-face-eight-thirty_1f563.png"; sourceTree = "<group>"; };
+		4742555C24EC73D800D31DD5 /* clock-face-twelve-oclock_1f55b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clock-face-twelve-oclock_1f55b.png"; sourceTree = "<group>"; };
+		4742555D24EC73D800D31DD5 /* black-question-mark-ornament_2753.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "black-question-mark-ornament_2753.png"; sourceTree = "<group>"; };
+		4742555E24EC73D800D31DD5 /* earth-globe-europe-africa_1f30d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "earth-globe-europe-africa_1f30d.png"; sourceTree = "<group>"; };
+		4742555F24EC73D800D31DD5 /* clock-face-three-oclock_1f552.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clock-face-three-oclock_1f552.png"; sourceTree = "<group>"; };
+		4742556024EC73D800D31DD5 /* clock-face-two-thirty_1f55d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clock-face-two-thirty_1f55d.png"; sourceTree = "<group>"; };
+		4742556124EC73D800D31DD5 /* clock-face-eleven-oclock_1f55a.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clock-face-eleven-oclock_1f55a.png"; sourceTree = "<group>"; };
+		4742556224EC73D800D31DD5 /* heavy-exclamation-mark-symbol_2757.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "heavy-exclamation-mark-symbol_2757.png"; sourceTree = "<group>"; };
+		4742556324EC73D800D31DD5 /* cross-mark_274c.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cross-mark_274c.png"; sourceTree = "<group>"; };
+		4742556424EC73D800D31DD5 /* keycap-digit-one_31-fe0f-20e3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "keycap-digit-one_31-fe0f-20e3.png"; sourceTree = "<group>"; };
+		4742556524EC73D800D31DD5 /* no-entry_26d4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "no-entry_26d4.png"; sourceTree = "<group>"; };
+		4742556624EC73D800D31DD5 /* black-heart-suit_2665.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "black-heart-suit_2665.png"; sourceTree = "<group>"; };
+		4742556724EC73D800D31DD5 /* clock-face-six-oclock_1f555.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clock-face-six-oclock_1f555.png"; sourceTree = "<group>"; };
+		4742556824EC73D800D31DD5 /* clock-face-five-oclock_1f554.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clock-face-five-oclock_1f554.png"; sourceTree = "<group>"; };
+		4742556924EC73D800D31DD5 /* north-west-arrow_2196.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "north-west-arrow_2196.png"; sourceTree = "<group>"; };
+		4742556A24EC73D800D31DD5 /* clock-face-one-thirty_1f55c.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clock-face-one-thirty_1f55c.png"; sourceTree = "<group>"; };
+		4742556B24EC73D800D31DD5 /* clock-face-ten-oclock_1f559.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clock-face-ten-oclock_1f559.png"; sourceTree = "<group>"; };
+		4742556C24EC73D800D31DD5 /* clock-face-eleven-thirty_1f566.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clock-face-eleven-thirty_1f566.png"; sourceTree = "<group>"; };
+		4742556D24EC73D800D31DD5 /* pencil_270f.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pencil_270f.png; sourceTree = "<group>"; };
+		4742556E24EC73D800D31DD5 /* clock-face-five-thirty_1f560.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clock-face-five-thirty_1f560.png"; sourceTree = "<group>"; };
+		4742556F24EC73D800D31DD5 /* earth-globe-americas_1f30e.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "earth-globe-americas_1f30e.png"; sourceTree = "<group>"; };
+		4742557024EC73D800D31DD5 /* clock-face-three-thirty_1f55e.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clock-face-three-thirty_1f55e.png"; sourceTree = "<group>"; };
+		4742557124EC73D800D31DD5 /* lower-left-ballpoint-pen_1f58a.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lower-left-ballpoint-pen_1f58a.png"; sourceTree = "<group>"; };
+		4742557224EC73D800D31DD5 /* clock-face-two-oclock_1f551.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clock-face-two-oclock_1f551.png"; sourceTree = "<group>"; };
+		4742557324EC73D800D31DD5 /* keycap-digit-four_34-fe0f-20e3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "keycap-digit-four_34-fe0f-20e3.png"; sourceTree = "<group>"; };
+		4742557424EC73D800D31DD5 /* lower-left-crayon_1f58d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lower-left-crayon_1f58d.png"; sourceTree = "<group>"; };
+		4742557524EC73D800D31DD5 /* clock-face-six-thirty_1f561.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clock-face-six-thirty_1f561.png"; sourceTree = "<group>"; };
+		4742557624EC73D800D31DD5 /* keycap-digit-eight_38-fe0f-20e3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "keycap-digit-eight_38-fe0f-20e3.png"; sourceTree = "<group>"; };
+		4742557724EC73D800D31DD5 /* south-west-arrow_2199.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "south-west-arrow_2199.png"; sourceTree = "<group>"; };
+		4742557824EC73D800D31DD5 /* clock-face-nine-thirty_1f564.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clock-face-nine-thirty_1f564.png"; sourceTree = "<group>"; };
+		4742557924EC73D800D31DD5 /* warning-sign_26a0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "warning-sign_26a0.png"; sourceTree = "<group>"; };
+		4742557A24EC73D800D31DD5 /* keycap-digit-zero_30-fe0f-20e3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "keycap-digit-zero_30-fe0f-20e3.png"; sourceTree = "<group>"; };
+		4742557B24EC73D800D31DD5 /* leftwards-black-arrow_2b05.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "leftwards-black-arrow_2b05.png"; sourceTree = "<group>"; };
+		4742557C24EC73D800D31DD5 /* clock-face-four-thirty_1f55f.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clock-face-four-thirty_1f55f.png"; sourceTree = "<group>"; };
+		4742557D24EC73D800D31DD5 /* keycap-digit-five_35-fe0f-20e3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "keycap-digit-five_35-fe0f-20e3.png"; sourceTree = "<group>"; };
+		474255BA24EC946600D31DD5 /* StickesrController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickesrController.swift; sourceTree = "<group>"; };
+		474255BC24ECBAEA00D31DD5 /* StickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickerCell.swift; sourceTree = "<group>"; };
 		477CE60524A9FCEF0018A642 /* SimpleAnnotation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleAnnotation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		477CE60824A9FCEF0018A642 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		477CE60A24A9FCEF0018A642 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -73,6 +197,73 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4742554124EC73D800D31DD5 /* Stickers */ = {
+			isa = PBXGroup;
+			children = (
+				4742554224EC73D800D31DD5 /* clock-face-eight-oclock_1f557.png */,
+				4742554324EC73D800D31DD5 /* keycap-digit-six_36-fe0f-20e3.png */,
+				4742554424EC73D800D31DD5 /* downwards-black-arrow_2b07.png */,
+				4742554524EC73D800D31DD5 /* keycap-digit-three_33-fe0f-20e3.png */,
+				4742554624EC73D800D31DD5 /* clock-face-ten-thirty_1f565.png */,
+				4742554724EC73D800D31DD5 /* south-east-arrow_2198.png */,
+				4742554824EC73D800D31DD5 /* black-rightwards-arrow_27a1.png */,
+				4742554924EC73D800D31DD5 /* keycap-ten_1f51f.png */,
+				4742554A24EC73D800D31DD5 /* white-heavy-check-mark_2705.png */,
+				4742554B24EC73D800D31DD5 /* clock-face-seven-oclock_1f556.png */,
+				4742554C24EC73D800D31DD5 /* clock-face-twelve-thirty_1f567.png */,
+				4742554D24EC73D800D31DD5 /* clock-face-one-oclock_1f550.png */,
+				4742554E24EC73D800D31DD5 /* upwards-black-arrow_2b06.png */,
+				4742554F24EC73D800D31DD5 /* double-exclamation-mark_203c.png */,
+				4742555024EC73D800D31DD5 /* keycap-digit-two_32-fe0f-20e3.png */,
+				4742555124EC73D800D31DD5 /* thumbs-down-sign_1f44e.png */,
+				4742555224EC73D800D31DD5 /* clock-face-four-oclock_1f553.png */,
+				4742555324EC73D800D31DD5 /* clock-face-seven-thirty_1f562.png */,
+				4742555424EC73D800D31DD5 /* clock-face-nine-oclock_1f558.png */,
+				4742555524EC73D800D31DD5 /* exclamation-question-mark_2049.png */,
+				4742555624EC73D800D31DD5 /* keycap-digit-seven_37-fe0f-20e3.png */,
+				4742555724EC73D800D31DD5 /* north-east-arrow_2197.png */,
+				4742555824EC73D800D31DD5 /* thumbs-up-sign_1f44d.png */,
+				4742555924EC73D800D31DD5 /* earth-globe-asia-australia_1f30f.png */,
+				4742555A24EC73D800D31DD5 /* keycap-digit-nine_39-fe0f-20e3.png */,
+				4742555B24EC73D800D31DD5 /* clock-face-eight-thirty_1f563.png */,
+				4742555C24EC73D800D31DD5 /* clock-face-twelve-oclock_1f55b.png */,
+				4742555D24EC73D800D31DD5 /* black-question-mark-ornament_2753.png */,
+				4742555E24EC73D800D31DD5 /* earth-globe-europe-africa_1f30d.png */,
+				4742555F24EC73D800D31DD5 /* clock-face-three-oclock_1f552.png */,
+				4742556024EC73D800D31DD5 /* clock-face-two-thirty_1f55d.png */,
+				4742556124EC73D800D31DD5 /* clock-face-eleven-oclock_1f55a.png */,
+				4742556224EC73D800D31DD5 /* heavy-exclamation-mark-symbol_2757.png */,
+				4742556324EC73D800D31DD5 /* cross-mark_274c.png */,
+				4742556424EC73D800D31DD5 /* keycap-digit-one_31-fe0f-20e3.png */,
+				4742556524EC73D800D31DD5 /* no-entry_26d4.png */,
+				4742556624EC73D800D31DD5 /* black-heart-suit_2665.png */,
+				4742556724EC73D800D31DD5 /* clock-face-six-oclock_1f555.png */,
+				4742556824EC73D800D31DD5 /* clock-face-five-oclock_1f554.png */,
+				4742556924EC73D800D31DD5 /* north-west-arrow_2196.png */,
+				4742556A24EC73D800D31DD5 /* clock-face-one-thirty_1f55c.png */,
+				4742556B24EC73D800D31DD5 /* clock-face-ten-oclock_1f559.png */,
+				4742556C24EC73D800D31DD5 /* clock-face-eleven-thirty_1f566.png */,
+				4742556D24EC73D800D31DD5 /* pencil_270f.png */,
+				4742556E24EC73D800D31DD5 /* clock-face-five-thirty_1f560.png */,
+				4742556F24EC73D800D31DD5 /* earth-globe-americas_1f30e.png */,
+				4742557024EC73D800D31DD5 /* clock-face-three-thirty_1f55e.png */,
+				4742557124EC73D800D31DD5 /* lower-left-ballpoint-pen_1f58a.png */,
+				4742557224EC73D800D31DD5 /* clock-face-two-oclock_1f551.png */,
+				4742557324EC73D800D31DD5 /* keycap-digit-four_34-fe0f-20e3.png */,
+				4742557424EC73D800D31DD5 /* lower-left-crayon_1f58d.png */,
+				4742557524EC73D800D31DD5 /* clock-face-six-thirty_1f561.png */,
+				4742557624EC73D800D31DD5 /* keycap-digit-eight_38-fe0f-20e3.png */,
+				4742557724EC73D800D31DD5 /* south-west-arrow_2199.png */,
+				4742557824EC73D800D31DD5 /* clock-face-nine-thirty_1f564.png */,
+				4742557924EC73D800D31DD5 /* warning-sign_26a0.png */,
+				4742557A24EC73D800D31DD5 /* keycap-digit-zero_30-fe0f-20e3.png */,
+				4742557B24EC73D800D31DD5 /* leftwards-black-arrow_2b05.png */,
+				4742557C24EC73D800D31DD5 /* clock-face-four-thirty_1f55f.png */,
+				4742557D24EC73D800D31DD5 /* keycap-digit-five_35-fe0f-20e3.png */,
+			);
+			path = Stickers;
+			sourceTree = "<group>";
+		};
 		477CE5FC24A9FCEF0018A642 = {
 			isa = PBXGroup;
 			children = (
@@ -105,6 +296,7 @@
 				477CE61624A9FCF30018A642 /* LaunchScreen.storyboard */,
 				477CE61924A9FCF30018A642 /* Info.plist */,
 				477CE61124A9FCEF0018A642 /* SimpleAnnotation.xcdatamodeld */,
+				4742554124EC73D800D31DD5 /* Stickers */,
 			);
 			path = SimpleAnnotation;
 			sourceTree = "<group>";
@@ -157,6 +349,8 @@
 				4742553D24EBE4E600D31DD5 /* TextController.swift */,
 				4742553B24E6B03300D31DD5 /* ShapesController.swift */,
 				4742553F24EC67CA00D31DD5 /* NoteController.swift */,
+				474255BA24EC946600D31DD5 /* StickesrController.swift */,
+				474255BC24ECBAEA00D31DD5 /* StickerCell.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -219,10 +413,70 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				474255A624EC73D900D31DD5 /* clock-face-one-thirty_1f55c.png in Resources */,
+				474255A524EC73D900D31DD5 /* north-west-arrow_2196.png in Resources */,
+				4742558324EC73D900D31DD5 /* south-east-arrow_2198.png in Resources */,
+				474255B624EC73D900D31DD5 /* keycap-digit-zero_30-fe0f-20e3.png in Resources */,
+				4742559324EC73D900D31DD5 /* north-east-arrow_2197.png in Resources */,
+				474255A024EC73D900D31DD5 /* keycap-digit-one_31-fe0f-20e3.png in Resources */,
+				474255AB24EC73D900D31DD5 /* earth-globe-americas_1f30e.png in Resources */,
+				474255B124EC73D900D31DD5 /* clock-face-six-thirty_1f561.png in Resources */,
+				4742559824EC73D900D31DD5 /* clock-face-twelve-oclock_1f55b.png in Resources */,
+				474255B524EC73D900D31DD5 /* warning-sign_26a0.png in Resources */,
+				4742559524EC73D900D31DD5 /* earth-globe-asia-australia_1f30f.png in Resources */,
+				474255B224EC73D900D31DD5 /* keycap-digit-eight_38-fe0f-20e3.png in Resources */,
+				4742559C24EC73D900D31DD5 /* clock-face-two-thirty_1f55d.png in Resources */,
+				4742559424EC73D900D31DD5 /* thumbs-up-sign_1f44d.png in Resources */,
+				474255A824EC73D900D31DD5 /* clock-face-eleven-thirty_1f566.png in Resources */,
+				474255A124EC73D900D31DD5 /* no-entry_26d4.png in Resources */,
+				4742559D24EC73D900D31DD5 /* clock-face-eleven-oclock_1f55a.png in Resources */,
+				4742559124EC73D900D31DD5 /* exclamation-question-mark_2049.png in Resources */,
+				4742558924EC73D900D31DD5 /* clock-face-one-oclock_1f550.png in Resources */,
+				4742558124EC73D900D31DD5 /* keycap-digit-three_33-fe0f-20e3.png in Resources */,
+				4742559724EC73D900D31DD5 /* clock-face-eight-thirty_1f563.png in Resources */,
+				4742559B24EC73D900D31DD5 /* clock-face-three-oclock_1f552.png in Resources */,
+				474255AF24EC73D900D31DD5 /* keycap-digit-four_34-fe0f-20e3.png in Resources */,
+				4742557E24EC73D900D31DD5 /* clock-face-eight-oclock_1f557.png in Resources */,
+				474255A724EC73D900D31DD5 /* clock-face-ten-oclock_1f559.png in Resources */,
+				474255AE24EC73D900D31DD5 /* clock-face-two-oclock_1f551.png in Resources */,
+				4742558224EC73D900D31DD5 /* clock-face-ten-thirty_1f565.png in Resources */,
+				4742558724EC73D900D31DD5 /* clock-face-seven-oclock_1f556.png in Resources */,
+				4742559F24EC73D900D31DD5 /* cross-mark_274c.png in Resources */,
+				474255A224EC73D900D31DD5 /* black-heart-suit_2665.png in Resources */,
+				4742558E24EC73D900D31DD5 /* clock-face-four-oclock_1f553.png in Resources */,
+				4742559A24EC73D900D31DD5 /* earth-globe-europe-africa_1f30d.png in Resources */,
+				4742557F24EC73D900D31DD5 /* keycap-digit-six_36-fe0f-20e3.png in Resources */,
+				474255A424EC73D900D31DD5 /* clock-face-five-oclock_1f554.png in Resources */,
+				474255AA24EC73D900D31DD5 /* clock-face-five-thirty_1f560.png in Resources */,
+				4742558424EC73D900D31DD5 /* black-rightwards-arrow_27a1.png in Resources */,
+				4742558B24EC73D900D31DD5 /* double-exclamation-mark_203c.png in Resources */,
+				4742558024EC73D900D31DD5 /* downwards-black-arrow_2b07.png in Resources */,
+				4742558A24EC73D900D31DD5 /* upwards-black-arrow_2b06.png in Resources */,
+				474255A324EC73D900D31DD5 /* clock-face-six-oclock_1f555.png in Resources */,
+				4742558F24EC73D900D31DD5 /* clock-face-seven-thirty_1f562.png in Resources */,
+				4742559924EC73D900D31DD5 /* black-question-mark-ornament_2753.png in Resources */,
+				4742559E24EC73D900D31DD5 /* heavy-exclamation-mark-symbol_2757.png in Resources */,
+				474255B724EC73D900D31DD5 /* leftwards-black-arrow_2b05.png in Resources */,
+				474255AC24EC73D900D31DD5 /* clock-face-three-thirty_1f55e.png in Resources */,
+				474255B024EC73D900D31DD5 /* lower-left-crayon_1f58d.png in Resources */,
+				474255B424EC73D900D31DD5 /* clock-face-nine-thirty_1f564.png in Resources */,
+				474255B924EC73D900D31DD5 /* keycap-digit-five_35-fe0f-20e3.png in Resources */,
+				4742558824EC73D900D31DD5 /* clock-face-twelve-thirty_1f567.png in Resources */,
 				477CE62B24AA484F0018A642 /* sample.pdf in Resources */,
+				474255AD24EC73D900D31DD5 /* lower-left-ballpoint-pen_1f58a.png in Resources */,
+				4742559624EC73D900D31DD5 /* keycap-digit-nine_39-fe0f-20e3.png in Resources */,
 				477CE61824A9FCF30018A642 /* LaunchScreen.storyboard in Resources */,
+				4742558C24EC73D900D31DD5 /* keycap-digit-two_32-fe0f-20e3.png in Resources */,
+				474255B824EC73D900D31DD5 /* clock-face-four-thirty_1f55f.png in Resources */,
+				4742559224EC73D900D31DD5 /* keycap-digit-seven_37-fe0f-20e3.png in Resources */,
 				477CE61524A9FCF30018A642 /* Assets.xcassets in Resources */,
+				4742558524EC73D900D31DD5 /* keycap-ten_1f51f.png in Resources */,
+				474255A924EC73D900D31DD5 /* pencil_270f.png in Resources */,
 				477CE61024A9FCEF0018A642 /* Main.storyboard in Resources */,
+				4742559024EC73D900D31DD5 /* clock-face-nine-oclock_1f558.png in Resources */,
+				4742558D24EC73D900D31DD5 /* thumbs-down-sign_1f44e.png in Resources */,
+				4742558624EC73D900D31DD5 /* white-heavy-check-mark_2705.png in Resources */,
+				474255B324EC73D900D31DD5 /* south-west-arrow_2199.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -251,8 +505,10 @@
 				477CE63924B3789B0018A642 /* SmoothedCanvasView.swift in Sources */,
 				477CE61324A9FCEF0018A642 /* SimpleAnnotation.xcdatamodeld in Sources */,
 				4742553C24E6B03300D31DD5 /* ShapesController.swift in Sources */,
+				474255BB24EC946600D31DD5 /* StickesrController.swift in Sources */,
 				477CE62424AA04AD0018A642 /* Line.swift in Sources */,
 				477CE60B24A9FCEF0018A642 /* SceneDelegate.swift in Sources */,
+				474255BD24ECBAEA00D31DD5 /* StickerCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
