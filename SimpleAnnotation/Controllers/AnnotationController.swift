@@ -25,6 +25,24 @@ class AnnotationController: UIViewController {
     var stickersController: StickersController?
     var signatureController: SignatureController?
     
+    let moveGestureRecognizer: UIPanGestureRecognizer = {
+        let panGestureRecognizer = UIPanGestureRecognizer()
+        panGestureRecognizer.addTarget(self, action: #selector(handleMoveGestureRecognizer(_:)))
+        return panGestureRecognizer
+    }()
+    
+    let zoomGestureRecognizer: UIPinchGestureRecognizer = {
+        let pinchGestureRecognizer = UIPinchGestureRecognizer()
+        pinchGestureRecognizer.addTarget(self, action: #selector(handleZoomGestureRecognizer(_:)))
+        return pinchGestureRecognizer
+    }()
+    
+    let rotateGestureRecognizer: UIRotationGestureRecognizer = {
+        let rotationGestureRecognizer = UIRotationGestureRecognizer()
+        rotationGestureRecognizer.addTarget(self, action: #selector(handleRotateGestureRecognizer(_:)))
+        return rotationGestureRecognizer
+    }()
+    
     // MARK: Prpperties
     
     fileprivate let toolbarScrollView: UIScrollView = {
@@ -462,6 +480,22 @@ class AnnotationController: UIViewController {
         // Add the button colors view
         setUpTextController()
         
+        let textField = UITextField(frame: .zero)
+        textField.textColor = .black
+        textField.backgroundColor = .clear
+        textField.contentMode = .center
+        textField.delegate = self
+        textField.font = UIFont.boldSystemFont(ofSize: 18)
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        
+        textField.center = canvasView.center
+        canvasView.addSubview(textField)
+        
+        textField.addGestureRecognizer(moveGestureRecognizer)
+        textField.addGestureRecognizer(rotateGestureRecognizer)
+        
+        textField.becomeFirstResponder()
+        
     }
     
     @objc fileprivate func shapesButtonTapped(_ sender: UIButton) {
@@ -497,6 +531,46 @@ class AnnotationController: UIViewController {
         
         // Add the bottom colors view
         setUpSignatureController()
+        
+    }
+    
+    // MARK: Gesture
+    
+    @objc func handleMoveGestureRecognizer(_ gesture: UIPanGestureRecognizer) {
+        print("👋 PAN GESTURE")
+        
+        let translation = gesture.translation(in: view)
+        
+        guard let gestureView = gesture.view else {
+            return
+        }
+        
+        gestureView.center = CGPoint(x: gestureView.center.x + translation.x, y: gestureView.center.y + translation.y)
+        gesture.setTranslation(.zero, in: view)
+        
+    }
+    
+    @objc func handleZoomGestureRecognizer(_ gesture: UIPinchGestureRecognizer) {
+        print("👋 PINCH GESTURE")
+        
+        guard let gestureView = gesture.view else {
+            return
+        }
+        
+        gestureView.transform = gestureView.transform.scaledBy(x: gesture.scale, y: gesture.scale)
+        gesture.scale = 1
+        
+    }
+    
+    @objc func handleRotateGestureRecognizer(_ gesture: UIRotationGestureRecognizer) {
+        print("👋 ROTATE GESTURE")
+        
+        guard let gestureView = gesture.view else {
+            return
+        }
+        
+        gestureView.transform = gestureView.transform.rotated(by: gesture.rotation)
+        gesture.rotation = 0
         
     }
     
@@ -924,6 +998,17 @@ extension AnnotationController: StickersControllerDelegate {
     
     func stickersParameter(image: UIImage) {
         
+        let stickerImageView = StickerImageView(image: image)
+        stickerImageView.addGestureRecognizer(moveGestureRecognizer)
+        stickerImageView.addGestureRecognizer(zoomGestureRecognizer)
+        stickerImageView.addGestureRecognizer(rotateGestureRecognizer)
+        
+        canvasView.addSubview(stickerImageView)
+        
+        stickerImageView.center = canvasView.center
+        
+        removeChildController()
+        
     }
     
 }
@@ -933,6 +1018,22 @@ extension AnnotationController: SignatureControllerDelegate {
     // MARK: SignatureController
     
     func signatureParameter(signatureImage: UIImage?) {
+        
+    }
+    
+}
+
+extension AnnotationController: UITextFieldDelegate {
+    
+    // MARK: AnnotationController
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        if textField.isFirstResponder {
+            textField.resignFirstResponder()
+        }
+        
+        return true
         
     }
     
