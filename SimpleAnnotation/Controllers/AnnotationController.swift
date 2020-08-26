@@ -19,6 +19,7 @@ class AnnotationController: UIViewController {
     var penController: PenController?
     var markerController: MarkerController?
     var highlightController: HighlightController?
+    
     var textController: TextController?
     var shapesController: ShapesController?
     var noteController: NoteController?
@@ -88,6 +89,14 @@ class AnnotationController: UIViewController {
         canvasView.backgroundColor = .clear
         canvasView.translatesAutoresizingMaskIntoConstraints = false
         return canvasView
+    }()
+    
+    fileprivate let annotationView: UIView = {
+        let view = UIView()
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.backgroundColor = .clear
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
     }()
     
     // MARK: Lifecycle
@@ -283,6 +292,7 @@ class AnnotationController: UIViewController {
         ])
         
         previewScrollView.addSubview(canvasView)
+        previewScrollView.addSubview(annotationView)
         
         // Create save bar button item
         let saveButton = UIButton(frame: .zero)
