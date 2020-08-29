@@ -87,17 +87,19 @@ class AnnotationController: UIViewController {
         let canvasView = CanvasView()
         canvasView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         canvasView.backgroundColor = .clear
+        canvasView.isUserInteractionEnabled = true
         canvasView.translatesAutoresizingMaskIntoConstraints = false
         return canvasView
     }()
     
-    fileprivate let annotationView: UIView = {
-        let view = UIView()
-        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        view.backgroundColor = .clear
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
+//    fileprivate let annotationView: UIView = {
+//        let view = UIView()
+//        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+//        view.backgroundColor = .clear
+//        view.isUserInteractionEnabled = true
+//        view.translatesAutoresizingMaskIntoConstraints = false
+//        return view
+//    }()
     
     // MARK: Lifecycle
     
@@ -109,6 +111,14 @@ class AnnotationController: UIViewController {
         
         // Set background color
         view.backgroundColor = UIColor.Design.background
+        
+        // Create save bar button item
+        let saveButton = UIButton(frame: .zero)
+        saveButton.tintColor = .black
+        saveButton.setImage(UIImage(named: "save"), for: .normal)
+        saveButton.addTarget(self, action: #selector(saveBarButtonTapped(_:)), for: .touchUpInside)
+        let saveBarButton = UIBarButtonItem(customView: saveButton)
+        navigationItem.rightBarButtonItem = saveBarButton
         
         // clearButton
         let clearButton = UIButton(frame: .zero)
@@ -292,15 +302,7 @@ class AnnotationController: UIViewController {
         ])
         
         previewScrollView.addSubview(canvasView)
-        previewScrollView.addSubview(annotationView)
-        
-        // Create save bar button item
-        let saveButton = UIButton(frame: .zero)
-        saveButton.tintColor = .black
-        saveButton.setImage(UIImage(named: "save"), for: .normal)
-        saveButton.addTarget(self, action: #selector(saveBarButtonTapped(_:)), for: .touchUpInside)
-        let saveBarButton = UIBarButtonItem(customView: saveButton)
-        navigationItem.rightBarButtonItem = saveBarButton
+//        previewScrollView.addSubview(annotationView)
         
     }
     
