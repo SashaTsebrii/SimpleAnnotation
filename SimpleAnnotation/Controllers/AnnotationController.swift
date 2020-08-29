@@ -92,14 +92,14 @@ class AnnotationController: UIViewController {
         return canvasView
     }()
     
-//    fileprivate let annotationView: UIView = {
-//        let view = UIView()
-//        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-//        view.backgroundColor = .clear
-//        view.isUserInteractionEnabled = true
-//        view.translatesAutoresizingMaskIntoConstraints = false
-//        return view
-//    }()
+    fileprivate let annotationView: UIView = {
+        let view = UIView()
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.backgroundColor = .clear
+        view.isUserInteractionEnabled = true
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
     
     // MARK: Lifecycle
     
@@ -302,7 +302,7 @@ class AnnotationController: UIViewController {
         ])
         
         previewScrollView.addSubview(canvasView)
-//        previewScrollView.addSubview(annotationView)
+        previewScrollView.addSubview(annotationView)
         
     }
     
@@ -445,15 +445,15 @@ class AnnotationController: UIViewController {
     }
     
     @objc fileprivate func undoButtonTapped(_ sender: UIButton) {
-        canvasView.undo()
         
+        canvasView.undo()
         removeChildController()
         
     }
     
     @objc func clearButtonTapped(_ sender: UIButton) {
-        canvasView.clear()
         
+        canvasView.clear()
         removeChildController()
         
     }
@@ -461,8 +461,6 @@ class AnnotationController: UIViewController {
     @objc fileprivate func penButtonTapped(_ sender: UIButton) {
         
         removeChildController()
-        
-        // Add the bottom colors view
         setUpPenController()
         
     }
@@ -470,8 +468,6 @@ class AnnotationController: UIViewController {
     @objc fileprivate func markerButtonTapped(_ sender: UIButton) {
         
         removeChildController()
-        
-        // Add the bottom colors view
         setUpMarkerController()
         
     }
@@ -479,8 +475,6 @@ class AnnotationController: UIViewController {
     @objc fileprivate func highlightButtonTapped(_ sender: UIButton) {
         
         removeChildController()
-        
-        // Add the bottom colors view
         setUpHighlightController()
         
     }
@@ -488,8 +482,6 @@ class AnnotationController: UIViewController {
     @objc fileprivate func textButtonTapped(_ sender: UIButton) {
         
         removeChildController()
-        
-        // Add the button colors view
         setUpTextController()
         
         let textField = UITextField(frame: .zero)
@@ -500,8 +492,7 @@ class AnnotationController: UIViewController {
         textField.font = UIFont.boldSystemFont(ofSize: 18)
         textField.translatesAutoresizingMaskIntoConstraints = false
         
-        textField.center = canvasView.center
-        canvasView.addSubview(textField)
+        annotationView.addSubview(textField)
         
         textField.addGestureRecognizer(moveGestureRecognizer)
         textField.addGestureRecognizer(rotateGestureRecognizer)
@@ -513,8 +504,6 @@ class AnnotationController: UIViewController {
     @objc fileprivate func shapesButtonTapped(_ sender: UIButton) {
         
         removeChildController()
-        
-        // Add the bottom colors view
         setUpShapesController()
         
     }
@@ -522,8 +511,6 @@ class AnnotationController: UIViewController {
     @objc fileprivate func noteButtonTapped(_ sender: UIButton) {
         
         removeChildController()
-        
-        // Add the bottom colors view
         setUpNoteController()
         
     }
@@ -531,8 +518,6 @@ class AnnotationController: UIViewController {
     @objc fileprivate func stickersButtonTapped(_ sender: UIButton) {
         
         removeChildController()
-        
-        // Add the bottom colors view
         setUpStickersController()
         
     }
@@ -540,8 +525,6 @@ class AnnotationController: UIViewController {
     @objc fileprivate func signatureButtonTapped(_ sender: UIButton) {
         
         removeChildController()
-        
-        // Add the bottom colors view
         setUpSignatureController()
         
     }
@@ -1015,10 +998,8 @@ extension AnnotationController: StickersControllerDelegate {
         stickerImageView.addGestureRecognizer(zoomGestureRecognizer)
         stickerImageView.addGestureRecognizer(rotateGestureRecognizer)
         
-        canvasView.addSubview(stickerImageView)
-        
-        stickerImageView.center = canvasView.center
-        
+        annotationView.addSubview(stickerImageView)
+                
         removeChildController()
         
     }
