@@ -999,7 +999,7 @@ extension AnnotationController: StickersControllerDelegate {
         stickerImageView.addGestureRecognizer(rotateGestureRecognizer)
         
         annotationView.addSubview(stickerImageView)
-                
+        
         removeChildController()
         
     }

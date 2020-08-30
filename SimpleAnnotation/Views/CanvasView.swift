@@ -19,7 +19,7 @@ class CanvasView: UIView {
     fileprivate var strokeWidth: Float = 1
     
     // MARK: Public function
-        
+    
     func setStrokeWidth(width: Float) {
         strokeWidth = width
     }

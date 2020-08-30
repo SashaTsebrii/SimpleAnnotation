@@ -21,13 +21,13 @@ class StickersController: UIViewController {
     
     var fullView: CGFloat {
         let navigationBarHeight = (view.window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0.0) +
-        (self.navigationController?.navigationBar.frame.height ?? 0.0)
+            (self.navigationController?.navigationBar.frame.height ?? 0.0)
         return UIScreen.main.bounds.height - (collectionView.frame.maxY + navigationBarHeight)
     }
     
     var partialView: CGFloat {
         let navigationBarHeight = (view.window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0.0) +
-        (self.navigationController?.navigationBar.frame.height ?? 0.0)
+            (self.navigationController?.navigationBar.frame.height ?? 0.0)
         return UIScreen.main.bounds.height - (collectionView.frame.maxY - 400 + navigationBarHeight)
     }
     
@@ -98,7 +98,7 @@ class StickersController: UIViewController {
         prepareBackgroundView()
         
         createStickers()
-                
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -146,7 +146,7 @@ class StickersController: UIViewController {
                     self.view.frame = CGRect(x: 0, y: self.fullView, width: self.view.frame.width, height: self.view.frame.height)
                 }
                 
-                }, completion: nil)
+            }, completion: nil)
         }
     }
     
@@ -184,7 +184,7 @@ class StickersController: UIViewController {
         })
         
     }
-
+    
 }
 
 extension StickersController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {

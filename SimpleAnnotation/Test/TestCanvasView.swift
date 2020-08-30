@@ -9,7 +9,7 @@
 import UIKit
 
 class TestCanvasView: UIView {
-
+    
     var bezierPath = UIBezierPath()
     var prevPoint: CGPoint?
     var isFirst = true
@@ -39,7 +39,7 @@ class TestCanvasView: UIView {
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         let location = touches.first!.location(in: self)
-
+        
         if let prevPoint = prevPoint {
             let midPoint = CGPoint(x: (location.x + prevPoint.x) / 2,
                                    y: (location.y + prevPoint.y) / 2)
@@ -57,5 +57,5 @@ class TestCanvasView: UIView {
         let location = touches.first!.location(in: self)
         bezierPath.addLine(to: location)
     }
-
+    
 }

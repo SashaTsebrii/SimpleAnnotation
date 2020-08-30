@@ -32,13 +32,13 @@ class PenController: UIViewController {
     
     var fullView: CGFloat {
         let navigationBarHeight = (view.window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0.0) +
-        (self.navigationController?.navigationBar.frame.height ?? 0.0)
+            (self.navigationController?.navigationBar.frame.height ?? 0.0)
         return UIScreen.main.bounds.height - (thicknessSlider.frame.maxY + navigationBarHeight)
     }
     
     var partialView: CGFloat {
         let navigationBarHeight = (view.window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0.0) +
-        (self.navigationController?.navigationBar.frame.height ?? 0.0)
+            (self.navigationController?.navigationBar.frame.height ?? 0.0)
         return UIScreen.main.bounds.height - (colorsStack.frame.maxY + navigationBarHeight)
     }
     
@@ -224,7 +224,7 @@ class PenController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-                
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -277,7 +277,7 @@ class PenController: UIViewController {
                     self.view.frame = CGRect(x: 0, y: self.fullView, width: self.view.frame.width, height: self.view.frame.height)
                 }
                 
-                }, completion: nil)
+            }, completion: nil)
         }
     }
     
@@ -296,7 +296,7 @@ class PenController: UIViewController {
         view.insertSubview(bluredView, at: 0)
         
     }
-
+    
     func close() {
         
         UIView.animate(withDuration: 0.3, animations: {

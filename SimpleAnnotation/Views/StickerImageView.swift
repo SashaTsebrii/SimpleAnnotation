@@ -14,7 +14,7 @@ class StickerImageView: UIImageView {
     
     var isEditing: Bool = false
     private let closeButtonWidth: CGFloat = 16
-
+    
     // MARK: - Initialization
     
     override init(image: UIImage?) {
@@ -23,21 +23,21 @@ class StickerImageView: UIImageView {
         initialization(withFrame: frame)
         
     }
-
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         initialization(withFrame: frame)
         
     }
-
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-
+    
     override func layoutSubviews() {
         super.layoutSubviews()
-
+        
     }
     
     // MARK: - Helper
@@ -80,5 +80,5 @@ class StickerImageView: UIImageView {
         removeFromSuperview()
         
     }
-
+    
 }
