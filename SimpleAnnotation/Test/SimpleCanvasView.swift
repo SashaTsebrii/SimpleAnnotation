@@ -6,6 +6,8 @@
 //  Copyright © 2020 Aleksandr Tsebrii. All rights reserved.
 //
 
+import UIKit
+
 /*
  @implementation LinearInterpView
  {
@@ -56,8 +58,6 @@
  }
  @end
  */
-
-import UIKit
 
 class SimpleCanvasView: UIView {
     
