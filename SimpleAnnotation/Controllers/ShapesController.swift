@@ -139,7 +139,7 @@ class ShapesController: UIViewController {
                      UIImage(named: "check_w"),
                      UIImage(named: "none_w")]
         
-        let shapesSegmentedControl = UISegmentedControl(items: items)
+        let shapesSegmentedControl = UISegmentedControl(items: items as [Any])
         shapesSegmentedControl.selectedSegmentIndex = 0
         shapesSegmentedControl.layer.cornerRadius = 4.0
         shapesSegmentedControl.backgroundColor = .clear
