@@ -73,6 +73,7 @@
 		474255B924EC73D900D31DD5 /* keycap-digit-five_35-fe0f-20e3.png in Resources */ = {isa = PBXBuildFile; fileRef = 4742557D24EC73D800D31DD5 /* keycap-digit-five_35-fe0f-20e3.png */; };
 		474255BB24EC946600D31DD5 /* StickesrController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 474255BA24EC946600D31DD5 /* StickesrController.swift */; };
 		474255BD24ECBAEA00D31DD5 /* StickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 474255BC24ECBAEA00D31DD5 /* StickerCell.swift */; };
+		476BB45225010C1800EA2FC5 /* AnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476BB45125010C1800EA2FC5 /* AnnotationView.swift */; };
 		477026F924ED7430004593BC /* SignatureController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477026F824ED7430004593BC /* SignatureController.swift */; };
 		477026FB24EDA02B004593BC /* StickerImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477026FA24EDA02B004593BC /* StickerImageView.swift */; };
 		477CE60924A9FCEF0018A642 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477CE60824A9FCEF0018A642 /* AppDelegate.swift */; };
@@ -164,6 +165,7 @@
 		4742557D24EC73D800D31DD5 /* keycap-digit-five_35-fe0f-20e3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "keycap-digit-five_35-fe0f-20e3.png"; sourceTree = "<group>"; };
 		474255BA24EC946600D31DD5 /* StickesrController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickesrController.swift; sourceTree = "<group>"; };
 		474255BC24ECBAEA00D31DD5 /* StickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickerCell.swift; sourceTree = "<group>"; };
+		476BB45125010C1800EA2FC5 /* AnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotationView.swift; sourceTree = "<group>"; };
 		477026F824ED7430004593BC /* SignatureController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignatureController.swift; sourceTree = "<group>"; };
 		477026FA24EDA02B004593BC /* StickerImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickerImageView.swift; sourceTree = "<group>"; };
 		477CE60524A9FCEF0018A642 /* SimpleAnnotation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleAnnotation.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -339,6 +341,7 @@
 			isa = PBXGroup;
 			children = (
 				477CE62524AA04D40018A642 /* CanvasView.swift */,
+				476BB45125010C1800EA2FC5 /* AnnotationView.swift */,
 				477026FA24EDA02B004593BC /* StickerImageView.swift */,
 			);
 			path = Views;
@@ -510,6 +513,7 @@
 				477CE62D24AA4AAE0018A642 /* Constants.swift in Sources */,
 				477CE62024AA045E0018A642 /* PenController.swift in Sources */,
 				477CE63924B3789B0018A642 /* SmoothedCanvasView.swift in Sources */,
+				476BB45225010C1800EA2FC5 /* AnnotationView.swift in Sources */,
 				477CE61324A9FCEF0018A642 /* SimpleAnnotation.xcdatamodeld in Sources */,
 				4742553C24E6B03300D31DD5 /* ShapesController.swift in Sources */,
 				474255BB24EC946600D31DD5 /* StickesrController.swift in Sources */,
