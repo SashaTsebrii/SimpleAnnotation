@@ -46,6 +46,22 @@ class AnnotationController: UIViewController {
     
     // MARK: Prpperties
     
+    fileprivate let titleLabel: UILabel = {
+        let label = UILabel(frame: .zero)
+        label.textAlignment = .center
+        label.text = "SimpleAnnotation"
+        label.font = UIFont.boldSystemFont(ofSize: 18)
+        return label
+    }()
+    
+    let subtitleLabel: UILabel = {
+        let label = UILabel(frame: .zero)
+        label.textAlignment = .center
+        label.text = "Annotation"
+        label.font = UIFont.systemFont(ofSize: 12)
+        return label
+    }()
+    
     fileprivate let toolbarScrollView: UIScrollView = {
         let scrollView = UIScrollView(frame: .zero)
         scrollView.backgroundColor = .white
@@ -92,8 +108,8 @@ class AnnotationController: UIViewController {
         return canvasView
     }()
     
-    fileprivate let annotationView: UIView = {
-        let view = UIView()
+    fileprivate let annotationView: AnnotationView = {
+        let view = AnnotationView()
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.backgroundColor = .clear
         view.isUserInteractionEnabled = true
@@ -107,7 +123,9 @@ class AnnotationController: UIViewController {
         super.loadView()
         
         // Set title
-        title = NSLocalizedString("Annotation", comment: "")
+        let titleStack = UIStackView(arrangedSubviews: [titleLabel, subtitleLabel])
+        titleStack.axis = .vertical
+        navigationItem.titleView = titleStack
         
         // Set background color
         view.backgroundColor = UIColor.Design.background
@@ -448,6 +466,8 @@ class AnnotationController: UIViewController {
         
         canvasView.undo()
         removeChildController()
+        view.bringSubviewToFront(canvasView)
+        subtitleLabel.text = "Canvas"
         
     }
     
@@ -455,6 +475,8 @@ class AnnotationController: UIViewController {
         
         canvasView.clear()
         removeChildController()
+        view.bringSubviewToFront(canvasView)
+        subtitleLabel.text = "Canvas"
         
     }
     
@@ -462,6 +484,8 @@ class AnnotationController: UIViewController {
         
         removeChildController()
         setUpPenController()
+        view.bringSubviewToFront(canvasView)
+        subtitleLabel.text = "Canvas"
         
     }
     
@@ -469,6 +493,8 @@ class AnnotationController: UIViewController {
         
         removeChildController()
         setUpMarkerController()
+        view.bringSubviewToFront(canvasView)
+        subtitleLabel.text = "Canvas"
         
     }
     
@@ -476,6 +502,8 @@ class AnnotationController: UIViewController {
         
         removeChildController()
         setUpHighlightController()
+        view.bringSubviewToFront(canvasView)
+        subtitleLabel.text = "Canvas"
         
     }
     
@@ -483,6 +511,8 @@ class AnnotationController: UIViewController {
         
         removeChildController()
         setUpTextController()
+        view.bringSubviewToFront(annotationView)
+        subtitleLabel.text = "Annoatation"
         
         let textField = UITextField(frame: .zero)
         textField.textColor = .black
@@ -505,6 +535,8 @@ class AnnotationController: UIViewController {
         
         removeChildController()
         setUpShapesController()
+        view.bringSubviewToFront(annotationView)
+        subtitleLabel.text = "Annoatation"
         
     }
     
@@ -512,6 +544,8 @@ class AnnotationController: UIViewController {
         
         removeChildController()
         setUpNoteController()
+        view.bringSubviewToFront(annotationView)
+        subtitleLabel.text = "Annoatation"
         
     }
     
@@ -519,6 +553,8 @@ class AnnotationController: UIViewController {
         
         removeChildController()
         setUpStickersController()
+        view.bringSubviewToFront(annotationView)
+        subtitleLabel.text = "Annoatation"
         
     }
     
@@ -526,6 +562,8 @@ class AnnotationController: UIViewController {
         
         removeChildController()
         setUpSignatureController()
+        view.bringSubviewToFront(annotationView)
+        subtitleLabel.text = "Annoatation"
         
     }
     
