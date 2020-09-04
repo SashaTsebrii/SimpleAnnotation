@@ -141,12 +141,14 @@ class PenController: UIViewController {
             colorButton.layer.masksToBounds = true
             colorButton.backgroundColor = colors[index]
             colorButton.addTarget(self, action: #selector(handleColorChange(_:)), for: .touchUpInside)
+            colorButton.translatesAutoresizingMaskIntoConstraints = false
+            
+            // FIXME: Save previous parameter to user defaults and load it if it was saved at it session
             if index == 0 {
                 colorButton.isSelected = true
             } else {
                 colorButton.isSelected = false
             }
-            colorButton.translatesAutoresizingMaskIntoConstraints = false
             
             colorButtons.append(colorButton)
             colorsStack.addArrangedSubview(colorButton)

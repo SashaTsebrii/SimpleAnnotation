@@ -48,6 +48,9 @@ class TextController: UIViewController {
         return UIScreen.main.bounds.height - (colorsStack.frame.maxY + navigationBarHeight)
     }
     
+    var colorButtons: [ColorButton] = []
+    var backgroundColorButtons: [ColorButton] = []
+    
     // MARK: Properties
     
     let colorsStack: UIStackView = {
@@ -131,13 +134,20 @@ class TextController: UIViewController {
         
         for index in 0...(colors.count - 1) {
             
-            let colorButton = UIButton(frame: .zero)
+            let colorButton = ColorButton(frame: .zero)
             colorButton.layer.cornerRadius = 16
             colorButton.layer.masksToBounds = true
             colorButton.backgroundColor = colors[index]
             colorButton.addTarget(self, action: #selector(handleColorChange(_:)), for: .touchUpInside)
             colorButton.translatesAutoresizingMaskIntoConstraints = false
             
+            if index == 0 {
+                colorButton.isSelected = true
+            } else {
+                colorButton.isSelected = false
+            }
+            
+            colorButtons.append(colorButton)
             colorsStack.addArrangedSubview(colorButton)
             
         }
@@ -181,13 +191,20 @@ class TextController: UIViewController {
         
         for index in 0...(backgroundColors.count - 1) {
             
-            let colorButton = UIButton(frame: .zero)
+            let colorButton = ColorButton(frame: .zero)
             colorButton.layer.cornerRadius = 16
             colorButton.layer.masksToBounds = true
             colorButton.backgroundColor = colors[index]
             colorButton.addTarget(self, action: #selector(handleBackgroundColorChange(_:)), for: .touchUpInside)
             colorButton.translatesAutoresizingMaskIntoConstraints = false
             
+            if index == 0 {
+                colorButton.isSelected = true
+            } else {
+                colorButton.isSelected = false
+            }
+            
+            backgroundColorButtons.append(colorButton)
             backgroundColorsStack.addArrangedSubview(colorButton)
             
         }
@@ -273,11 +290,33 @@ class TextController: UIViewController {
     // MARK: Actions
     
     @objc fileprivate func handleColorChange(_ sender: UIButton) {
+        
+        if sender.isSelected == false {
+            
+            for button in colorButtons {
+                button.isSelected = false
+            }
+            sender.isSelected = true
+            
+        }
+        
         color = sender.backgroundColor ?? .black
+        
     }
     
     @objc fileprivate func handleBackgroundColorChange(_ sender: UIButton) {
+        
+        if sender.isSelected == false {
+            
+            for button in backgroundColorButtons {
+                button.isSelected = false
+            }
+            sender.isSelected = true
+            
+        }
+        
         backgorundColor = sender.backgroundColor ?? .clear
+        
     }
     
     @objc fileprivate func handleStepperChange(_ sender: UIStepper) {

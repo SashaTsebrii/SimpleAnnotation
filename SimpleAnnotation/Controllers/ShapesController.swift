@@ -48,6 +48,8 @@ class ShapesController: UIViewController {
         return UIScreen.main.bounds.height - (colorsStack.frame.maxY + navigationBarHeight)
     }
     
+    var colorButtons: [ColorButton] = []
+    
     // MARK: Properties
     
     let colorsStack: UIStackView = {
@@ -175,13 +177,20 @@ class ShapesController: UIViewController {
         
         for index in 0...(colors.count - 1) {
             
-            let colorButton = UIButton(frame: .zero)
+            let colorButton = ColorButton(frame: .zero)
             colorButton.layer.cornerRadius = 16
             colorButton.layer.masksToBounds = true
             colorButton.backgroundColor = colors[index]
             colorButton.addTarget(self, action: #selector(handleColorChange(_:)), for: .touchUpInside)
             colorButton.translatesAutoresizingMaskIntoConstraints = false
             
+            if index == 0 {
+                colorButton.isSelected = true
+            } else {
+                colorButton.isSelected = false
+            }
+            
+            colorButtons.append(colorButton)
             colorsStack.addArrangedSubview(colorButton)
             
         }
@@ -334,7 +343,18 @@ class ShapesController: UIViewController {
     // MARK: Actions
     
     @objc fileprivate func handleColorChange(_ sender: UIButton) {
+        
+        if sender.isSelected == false {
+            
+            for button in colorButtons {
+                button.isSelected = false
+            }
+            sender.isSelected = true
+            
+        }
+        
         color = sender.backgroundColor ?? .black
+        
     }
     
     @objc fileprivate func handleSliderChange(_ sender: UISlider) {
