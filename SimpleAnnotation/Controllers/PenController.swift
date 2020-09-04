@@ -42,6 +42,8 @@ class PenController: UIViewController {
         return UIScreen.main.bounds.height - (colorsStack.frame.maxY + navigationBarHeight)
     }
     
+    var colorButtons: [ColorButton] = []
+    
     // MARK: Properties
     
     let colorsStack: UIStackView = {
@@ -130,17 +132,23 @@ class PenController: UIViewController {
         ])
         
         // colorsStack
-        let colors = [UIColor.Colors.red, UIColor.Colors.orange, UIColor.Colors.yellow, UIColor.Colors.green, UIColor.Colors.teal, UIColor.Colors.blue, UIColor.Colors.purple]
+        let colors = [UIColor.black, UIColor.white, UIColor.Colors.red, UIColor.Colors.orange, UIColor.Colors.yellow, UIColor.Colors.green, UIColor.Colors.teal, UIColor.Colors.blue, UIColor.Colors.purple]
         
         for index in 0...(colors.count - 1) {
             
-            let colorButton = UIButton(frame: .zero)
+            let colorButton = ColorButton(frame: .zero)
             colorButton.layer.cornerRadius = 16
             colorButton.layer.masksToBounds = true
             colorButton.backgroundColor = colors[index]
             colorButton.addTarget(self, action: #selector(handleColorChange(_:)), for: .touchUpInside)
+            if index == 0 {
+                colorButton.isSelected = true
+            } else {
+                colorButton.isSelected = false
+            }
             colorButton.translatesAutoresizingMaskIntoConstraints = false
             
+            colorButtons.append(colorButton)
             colorsStack.addArrangedSubview(colorButton)
             
         }
@@ -245,7 +253,18 @@ class PenController: UIViewController {
     // MARK: Actions
     
     @objc fileprivate func handleColorChange(_ sender: UIButton) {
+        
+        if sender.isSelected == false {
+            
+            for button in colorButtons {
+                button.isSelected = false
+            }
+            sender.isSelected = true
+            
+        }
+        
         color = sender.backgroundColor ?? .black
+        
     }
     
     @objc fileprivate func handleSliderChange(_ sender: UISlider) {

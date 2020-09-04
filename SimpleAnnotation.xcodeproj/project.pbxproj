@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		473741D425025FB300D42A5A /* ColorButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473741D325025FB300D42A5A /* ColorButton.swift */; };
 		4742553A24E533DC00D31DD5 /* HighlightController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4742553924E533DC00D31DD5 /* HighlightController.swift */; };
 		4742553C24E6B03300D31DD5 /* ShapesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4742553B24E6B03300D31DD5 /* ShapesController.swift */; };
 		4742553E24EBE4E600D31DD5 /* TextController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4742553D24EBE4E600D31DD5 /* TextController.swift */; };
@@ -99,6 +100,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		473741D325025FB300D42A5A /* ColorButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorButton.swift; sourceTree = "<group>"; };
 		4742553924E533DC00D31DD5 /* HighlightController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighlightController.swift; sourceTree = "<group>"; };
 		4742553B24E6B03300D31DD5 /* ShapesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapesController.swift; sourceTree = "<group>"; };
 		4742553D24EBE4E600D31DD5 /* TextController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextController.swift; sourceTree = "<group>"; };
@@ -343,6 +345,7 @@
 				477CE62524AA04D40018A642 /* CanvasView.swift */,
 				476BB45125010C1800EA2FC5 /* AnnotationView.swift */,
 				477026FA24EDA02B004593BC /* StickerImageView.swift */,
+				473741D325025FB300D42A5A /* ColorButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -517,6 +520,7 @@
 				477CE61324A9FCEF0018A642 /* SimpleAnnotation.xcdatamodeld in Sources */,
 				4742553C24E6B03300D31DD5 /* ShapesController.swift in Sources */,
 				474255BB24EC946600D31DD5 /* StickesrController.swift in Sources */,
+				473741D425025FB300D42A5A /* ColorButton.swift in Sources */,
 				477026FB24EDA02B004593BC /* StickerImageView.swift in Sources */,
 				477CE62424AA04AD0018A642 /* Line.swift in Sources */,
 				477CE60B24A9FCEF0018A642 /* SceneDelegate.swift in Sources */,
