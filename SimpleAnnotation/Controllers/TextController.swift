@@ -187,14 +187,14 @@ class TextController: UIViewController {
         backgroundColorsStack.alignment = .center
         backgroundColorsStack.translatesAutoresizingMaskIntoConstraints = false
         
-        let backgroundColors = [UIColor.black, UIColor.white]
+        let backgroundColors = [UIColor.black, UIColor.white, UIColor.Colors.red]
         
         for index in 0...(backgroundColors.count - 1) {
             
             let colorButton = ColorButton(frame: .zero)
             colorButton.layer.cornerRadius = 16
             colorButton.layer.masksToBounds = true
-            colorButton.backgroundColor = colors[index]
+            colorButton.backgroundColor = backgroundColors[index]
             colorButton.addTarget(self, action: #selector(handleBackgroundColorChange(_:)), for: .touchUpInside)
             colorButton.translatesAutoresizingMaskIntoConstraints = false
             
