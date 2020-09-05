@@ -49,6 +49,7 @@ class MarkerController: UIViewController {
     }
     
     var colorButtons: [ColorButton] = []
+    var opacityButtons: [OpacityButton] = []
     
     // MARK: Properties
     
@@ -254,7 +255,7 @@ class MarkerController: UIViewController {
         
         for index in 0...(opacities.count - 1) {
             
-            let opacityButton = UIButton(frame: .zero)
+            let opacityButton = OpacityButton(frame: .zero)
             opacityButton.setImage(UIImage(named: "circle"), for: .normal)
             opacityButton.tintColor = UIColor.yellow.withAlphaComponent(opacities[index] / 100)
             opacityButton.setTitle("\(opacities[index])%", for: .normal)
@@ -270,6 +271,13 @@ class MarkerController: UIViewController {
             
             // FIXME: put title bellow and add image with needed color and opacity instat of background color
             
+            if index == 0 {
+                opacityButton.isSelected = true
+            } else {
+                opacityButton.isSelected = false
+            }
+            
+            opacityButtons.append(opacityButton)
             opacitiesStack.addArrangedSubview(opacityButton)
             
         }
@@ -338,9 +346,20 @@ class MarkerController: UIViewController {
     }
     
     @objc fileprivate func handleOpactityChange(_ sender: UIButton) {
+        
+        if sender.isSelected == false {
+            
+            for button in opacityButtons {
+                button.isSelected = false
+            }
+            sender.isSelected = true
+            
+        }
+        
         if let number = NumberFormatter().number(from: String(sender.titleLabel!.text!.dropLast())) {
             opacity = CGFloat(truncating: number) / 100
         }
+        
     }
     
     // MARK: Gestures
