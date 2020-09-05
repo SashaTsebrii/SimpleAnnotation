@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		473741D425025FB300D42A5A /* ColorButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473741D325025FB300D42A5A /* ColorButton.swift */; };
+		473741D62503AB3700D42A5A /* OpacityButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473741D52503AB3700D42A5A /* OpacityButton.swift */; };
 		4742553A24E533DC00D31DD5 /* HighlightController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4742553924E533DC00D31DD5 /* HighlightController.swift */; };
 		4742553C24E6B03300D31DD5 /* ShapesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4742553B24E6B03300D31DD5 /* ShapesController.swift */; };
 		4742553E24EBE4E600D31DD5 /* TextController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4742553D24EBE4E600D31DD5 /* TextController.swift */; };
@@ -101,6 +102,7 @@
 
 /* Begin PBXFileReference section */
 		473741D325025FB300D42A5A /* ColorButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorButton.swift; sourceTree = "<group>"; };
+		473741D52503AB3700D42A5A /* OpacityButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpacityButton.swift; sourceTree = "<group>"; };
 		4742553924E533DC00D31DD5 /* HighlightController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighlightController.swift; sourceTree = "<group>"; };
 		4742553B24E6B03300D31DD5 /* ShapesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapesController.swift; sourceTree = "<group>"; };
 		4742553D24EBE4E600D31DD5 /* TextController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextController.swift; sourceTree = "<group>"; };
@@ -346,6 +348,7 @@
 				476BB45125010C1800EA2FC5 /* AnnotationView.swift */,
 				477026FA24EDA02B004593BC /* StickerImageView.swift */,
 				473741D325025FB300D42A5A /* ColorButton.swift */,
+				473741D52503AB3700D42A5A /* OpacityButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -513,6 +516,7 @@
 				477CE62624AA04D40018A642 /* CanvasView.swift in Sources */,
 				477CE60924A9FCEF0018A642 /* AppDelegate.swift in Sources */,
 				477CE63324B34CC70018A642 /* SimpleCanvasView.swift in Sources */,
+				473741D62503AB3700D42A5A /* OpacityButton.swift in Sources */,
 				477CE62D24AA4AAE0018A642 /* Constants.swift in Sources */,
 				477CE62024AA045E0018A642 /* PenController.swift in Sources */,
 				477CE63924B3789B0018A642 /* SmoothedCanvasView.swift in Sources */,
