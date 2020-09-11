@@ -975,6 +975,7 @@ extension AnnotationController: MarkerControllerDelegate {
         
         canvasView.setStrokeColor(color: color)
         canvasView.setStrokeWidth(width: Float(thinkness))
+        canvasView.setAlphaValue(opacity: Float(opacity))
         
     }
     
@@ -988,6 +989,7 @@ extension AnnotationController: PenControllerDelegate {
         
         canvasView.setStrokeColor(color: color)
         canvasView.setStrokeWidth(width: Float(thinkness))
+        canvasView.setAlphaValue(opacity: 1)
         
     }
     
@@ -1010,6 +1012,7 @@ extension AnnotationController: HighlightControllerDelegate {
     func highlightParameter(color: UIColor, opacity: CGFloat) {
         
         canvasView.setStrokeColor(color: color)
+        canvasView.setAlphaValue(opacity: Float(opacity))
         
     }
     
