@@ -17,8 +17,13 @@ class CanvasView: UIView {
     fileprivate var lines = [Line]()
     fileprivate var strokeColor = UIColor.black
     fileprivate var strokeWidth: Float = 1
+    fileprivate var alphaValue: Float = 1
     
     // MARK: Public function
+    
+    func setAlphaValue(opacity: Float) {
+        alphaValue = opacity
+    }
     
     func setStrokeWidth(width: Float) {
         strokeWidth = width
@@ -47,6 +52,7 @@ class CanvasView: UIView {
             lines.forEach { (line) in
                 context.setStrokeColor(line.color.cgColor)
                 context.setLineWidth(CGFloat(line.strokeWidth))
+                context.setAlpha(CGFloat(line.alpha))
                 context.setLineCap(.round)
                 for (i, p) in line.points.enumerated() {
                     if i == 0 {
@@ -65,7 +71,7 @@ class CanvasView: UIView {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
-        lines.append(Line.init(strokeWidth: strokeWidth, color: strokeColor, points: []))
+        lines.append(Line.init(strokeWidth: strokeWidth, color: strokeColor, alpha: alphaValue, points: []))
         
     }
     
