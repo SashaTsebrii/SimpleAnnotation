@@ -100,16 +100,16 @@ class AnnotationController: UIViewController {
     }()
     
     fileprivate let canvasView: CanvasView = {
-        let canvasView = CanvasView()
-        canvasView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        canvasView.backgroundColor = .clear
-        canvasView.isUserInteractionEnabled = true
-        canvasView.translatesAutoresizingMaskIntoConstraints = false
-        return canvasView
+        let view = CanvasView(frame: .zero)
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.backgroundColor = .clear
+        view.isUserInteractionEnabled = true
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
     }()
     
     fileprivate let annotationView: AnnotationView = {
-        let view = AnnotationView()
+        let view = AnnotationView(frame: .zero)
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.backgroundColor = .clear
         view.isUserInteractionEnabled = true
@@ -466,7 +466,7 @@ class AnnotationController: UIViewController {
         
         canvasView.undo()
         removeChildController()
-        view.bringSubviewToFront(canvasView)
+        canvasView.superview?.bringSubviewToFront(canvasView)
         subtitleLabel.text = "Canvas"
         
     }
@@ -475,7 +475,7 @@ class AnnotationController: UIViewController {
         
         canvasView.clear()
         removeChildController()
-        view.bringSubviewToFront(canvasView)
+        canvasView.superview?.bringSubviewToFront(canvasView)
         subtitleLabel.text = "Canvas"
         
     }
@@ -484,7 +484,7 @@ class AnnotationController: UIViewController {
         
         removeChildController()
         setUpPenController()
-        view.bringSubviewToFront(canvasView)
+        canvasView.superview?.bringSubviewToFront(canvasView)
         subtitleLabel.text = "Canvas"
         
     }
@@ -493,7 +493,7 @@ class AnnotationController: UIViewController {
         
         removeChildController()
         setUpMarkerController()
-        view.bringSubviewToFront(canvasView)
+        canvasView.superview?.bringSubviewToFront(canvasView)
         subtitleLabel.text = "Canvas"
         
     }
@@ -502,7 +502,7 @@ class AnnotationController: UIViewController {
         
         removeChildController()
         setUpHighlightController()
-        view.bringSubviewToFront(canvasView)
+        canvasView.superview?.bringSubviewToFront(canvasView)
         subtitleLabel.text = "Canvas"
         
     }
@@ -511,7 +511,7 @@ class AnnotationController: UIViewController {
         
         removeChildController()
         setUpTextController()
-        view.bringSubviewToFront(annotationView)
+        annotationView.superview?.bringSubviewToFront(annotationView)
         subtitleLabel.text = "Annoatation"
         
         let textField = UITextField(frame: .zero)
@@ -535,7 +535,7 @@ class AnnotationController: UIViewController {
         
         removeChildController()
         setUpShapesController()
-        view.bringSubviewToFront(annotationView)
+        annotationView.superview?.bringSubviewToFront(annotationView)
         subtitleLabel.text = "Annoatation"
         
     }
@@ -544,7 +544,7 @@ class AnnotationController: UIViewController {
         
         removeChildController()
         setUpNoteController()
-        view.bringSubviewToFront(annotationView)
+        annotationView.superview?.bringSubviewToFront(annotationView)
         subtitleLabel.text = "Annoatation"
         
     }
@@ -553,7 +553,7 @@ class AnnotationController: UIViewController {
         
         removeChildController()
         setUpStickersController()
-        view.bringSubviewToFront(annotationView)
+        annotationView.superview?.bringSubviewToFront(annotationView)
         subtitleLabel.text = "Annoatation"
         
     }
@@ -562,7 +562,7 @@ class AnnotationController: UIViewController {
         
         removeChildController()
         setUpSignatureController()
-        view.bringSubviewToFront(annotationView)
+        annotationView.superview?.bringSubviewToFront(annotationView)
         subtitleLabel.text = "Annoatation"
         
     }
