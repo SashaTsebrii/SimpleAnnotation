@@ -89,11 +89,12 @@ class SignatureController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let panGestureRecognizer = UIPanGestureRecognizer.init(target: self, action: #selector(handelPanGestureRecognizer(_:)))
-        view.addGestureRecognizer(panGestureRecognizer)
+        let panGesture = UIPanGestureRecognizer.init(target: self, action: #selector(handlePanGesture(_:)))
+        panGesture.delegate = self
+        view.addGestureRecognizer(panGesture)
         
-        let tapGestureRecognizer = UITapGestureRecognizer.init(target: self, action: #selector(handelTapGestureRecognizer(_:)))
-        signatureImageView.addGestureRecognizer(tapGestureRecognizer)
+        let tapGesture = UITapGestureRecognizer.init(target: self, action: #selector(handleTapGesture(_:)))
+        signatureImageView.addGestureRecognizer(tapGesture)
         
         prepareBackgroundView()
         
@@ -122,7 +123,7 @@ class SignatureController: UIViewController {
     
     // MARK: Gestures
     
-    @objc func handelPanGestureRecognizer(_ sender: UIPanGestureRecognizer) {
+    @objc func handlePanGesture(_ sender: UIPanGestureRecognizer) {
         
         let translation = sender.translation(in: self.view)
         let velocity = sender.velocity(in: self.view)
@@ -148,7 +149,7 @@ class SignatureController: UIViewController {
         }
     }
     
-    @objc fileprivate func handelTapGestureRecognizer(_ sender: UITapGestureRecognizer) {
+    @objc fileprivate func handleTapGesture(_ sender: UITapGestureRecognizer) {
         
         if let signatureImage = signatureImageView.image  {
             delegate?.signatureParameter(signatureImage: signatureImage)
@@ -179,6 +180,21 @@ class SignatureController: UIViewController {
             self.view.frame = CGRect(x: 0, y: self.partialView, width: frame.width, height: frame.height)
         })
         
+    }
+    
+}
+
+extension SignatureController: UIGestureRecognizerDelegate {
+    
+    // MARK: UIGestureRecognizerDelegate
+    
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+
+        if let touchedView = touch.view, touchedView.isKind(of: UISlider.self) {
+            return false
+        }
+
+        return true
     }
     
 }
