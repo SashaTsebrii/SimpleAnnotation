@@ -82,7 +82,6 @@ class PenController: UIViewController {
         return slider
     }()
     
-    
     // MARK: Lifecycle
     
     override func loadView() {
@@ -225,8 +224,9 @@ class PenController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let gesture = UIPanGestureRecognizer.init(target: self, action: #selector(panGesture))
-        view.addGestureRecognizer(gesture)
+        let panGesture = UIPanGestureRecognizer.init(target: self, action: #selector(handlePanGesture(_:)))
+        panGesture.delegate = self
+        view.addGestureRecognizer(panGesture)
         
         prepareBackgroundView()
         
@@ -276,7 +276,7 @@ class PenController: UIViewController {
     
     // MARK: Gestures
     
-    @objc func panGesture(_ recognizer: UIPanGestureRecognizer) {
+    @objc func handlePanGesture(_ recognizer: UIPanGestureRecognizer) {
         
         let translation = recognizer.translation(in: self.view)
         let velocity = recognizer.velocity(in: self.view)
@@ -325,6 +325,21 @@ class PenController: UIViewController {
             self.view.frame = CGRect(x: 0, y: self.partialView, width: frame.width, height: frame.height)
         })
         
+    }
+    
+}
+
+extension PenController: UIGestureRecognizerDelegate {
+    
+    // MARK: UIGestureRecognizerDelegate
+    
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+
+        if let touchedView = touch.view, touchedView.isKind(of: UISlider.self) {
+            return false
+        }
+
+        return true
     }
     
 }
