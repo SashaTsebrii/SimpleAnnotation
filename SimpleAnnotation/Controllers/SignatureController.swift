@@ -10,6 +10,7 @@ import UIKit
 
 protocol SignatureControllerDelegate {
     func signatureParameter(signatureImage: UIImage?)
+    func cancel()
 }
 
 class SignatureController: UIViewController {
@@ -17,9 +18,7 @@ class SignatureController: UIViewController {
     // MARK: Variables
     
     var delegate: SignatureControllerDelegate?
-    
-    var signatureImage: UIImage?
-    
+        
     var fullView: CGFloat {
         let navigationBarHeight = (view.window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0.0) +
             (self.navigationController?.navigationBar.frame.height ?? 0.0)
@@ -39,6 +38,16 @@ class SignatureController: UIViewController {
         imageView.backgroundColor = .white
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
+    }()
+    
+    let signatureView: SignatureView = {
+        let signatureView = SignatureView(frame: .zero)
+        signatureView.backgroundColor = .white
+        signatureView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        signatureView.isUserInteractionEnabled = true
+        signatureView.translatesAutoresizingMaskIntoConstraints = false
+        signatureView.isHidden = true
+        return signatureView
     }()
     
     // MARK: Lifecycle
@@ -84,6 +93,85 @@ class SignatureController: UIViewController {
             signatureImageView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 32)
         ])
         
+        // createButton
+        let createButton = UIButton(frame: .zero)
+        createButton.setTitle("CREATE", for: .normal)
+        createButton.setTitleColor(.black, for: .normal)
+        createButton.addTarget(self, action: #selector(createButtonTapped(_:)), for: .touchUpInside)
+        createButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        view.addSubview(createButton)
+        NSLayoutConstraint.activate([
+            createButton.heightAnchor.constraint(equalToConstant: 44),
+            createButton.bottomAnchor.constraint(equalTo: signatureImageView.bottomAnchor),
+            createButton.leadingAnchor.constraint(equalTo: signatureImageView.leadingAnchor)
+        ])
+        
+        // useButton
+        let useButton = UIButton(frame: .zero)
+        useButton.setTitle("USE", for: .normal)
+        useButton.setTitleColor(.black, for: .normal)
+        useButton.addTarget(self, action: #selector(useButtonTapped(_:)), for: .touchUpInside)
+        useButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        view.addSubview(useButton)
+        NSLayoutConstraint.activate([
+            useButton.heightAnchor.constraint(equalToConstant: 44),
+            useButton.bottomAnchor.constraint(equalTo: signatureImageView.bottomAnchor),
+            useButton.centerXAnchor.constraint(equalTo: signatureImageView.centerXAnchor)
+        ])
+        
+        // cancelButton
+        let cancelButton = UIButton(frame: .zero)
+        cancelButton.setTitle("CANCEL", for: .normal)
+        cancelButton.setTitleColor(.black, for: .normal)
+        cancelButton.addTarget(self, action: #selector(cancelButtonTapped(_:)), for: .touchUpInside)
+        cancelButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        view.addSubview(cancelButton)
+        NSLayoutConstraint.activate([
+            cancelButton.heightAnchor.constraint(equalToConstant: 44),
+            cancelButton.bottomAnchor.constraint(equalTo: signatureImageView.bottomAnchor),
+            cancelButton.trailingAnchor.constraint(equalTo: signatureImageView.trailingAnchor)
+        ])
+                
+        // signatureView
+        view.addSubview(signatureView)
+        NSLayoutConstraint.activate([
+            signatureView.widthAnchor.constraint(equalTo: view.widthAnchor),
+            signatureView.heightAnchor.constraint(equalTo: signatureImageView.widthAnchor),
+            signatureView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            signatureView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 32)
+        ])
+        
+        // closeButto
+        let closeButton = UIButton(frame: .zero)
+        closeButton.setTitle("CLOSE", for: .normal)
+        closeButton.setTitleColor(.black, for: .normal)
+        closeButton.addTarget(self, action: #selector(closeButtonTapped(_:)), for: .touchUpInside)
+        closeButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        signatureView.addSubview(closeButton)
+        NSLayoutConstraint.activate([
+            closeButton.heightAnchor.constraint(equalToConstant: 44),
+            closeButton.bottomAnchor.constraint(equalTo: signatureView.bottomAnchor),
+            closeButton.leadingAnchor.constraint(equalTo: signatureView.leadingAnchor)
+        ])
+        
+        // doneButton
+        let doneButton = UIButton(frame: .zero)
+        doneButton.setTitle("DONE", for: .normal)
+        doneButton.setTitleColor(.black, for: .normal)
+        doneButton.addTarget(self, action: #selector(doneButtonTapped(_:)), for: .touchUpInside)
+        doneButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        signatureView.addSubview(doneButton)
+        NSLayoutConstraint.activate([
+            doneButton.heightAnchor.constraint(equalToConstant: 44),
+            doneButton.bottomAnchor.constraint(equalTo: signatureView.bottomAnchor),
+            doneButton.trailingAnchor.constraint(equalTo: signatureView.trailingAnchor)
+        ])
+        
     }
     
     override func viewDidLoad() {
@@ -93,15 +181,7 @@ class SignatureController: UIViewController {
         panGesture.delegate = self
         view.addGestureRecognizer(panGesture)
         
-        let tapGesture = UITapGestureRecognizer.init(target: self, action: #selector(handleTapGesture(_:)))
-        signatureImageView.addGestureRecognizer(tapGesture)
-        
         prepareBackgroundView()
-        
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         
     }
     
@@ -149,11 +229,46 @@ class SignatureController: UIViewController {
         }
     }
     
-    @objc fileprivate func handleTapGesture(_ sender: UITapGestureRecognizer) {
+    @objc fileprivate func createButtonTapped(_ sender: UIButton) {
+        print("👆 CREATE BUTTON")
         
-        if let signatureImage = signatureImageView.image  {
-            delegate?.signatureParameter(signatureImage: signatureImage)
+        if signatureImageView.image != nil {
+            signatureImageView.image = nil
         }
+        
+        signatureView.isHidden = false
+        
+    }
+    
+    @objc fileprivate func useButtonTapped(_ sender: UIButton) {
+        print("👆 USE BUTTON")
+        
+        if signatureImageView.image != nil {
+            delegate?.signatureParameter(signatureImage: signatureImageView.image)
+        }
+        
+    }
+    
+    @objc fileprivate func cancelButtonTapped(_ sender: UIButton) {
+        print("👆 CANCEL BUTTON")
+        
+        delegate?.cancel()
+        
+    }
+    
+    @objc fileprivate func closeButtonTapped(_ sender: UIButton) {
+        print("👆 CLOSE BUTTON")
+        
+        signatureView.resetDrawing()
+        signatureView.isHidden = true
+        
+    }
+    
+    @objc fileprivate func doneButtonTapped(_ sender: UIButton) {
+        print("👆 DONE BUTTON")
+        
+        signatureImageView.image = signatureView.exportDrawing()
+        signatureView.isHidden = true
         
     }
     
@@ -170,15 +285,6 @@ class SignatureController: UIViewController {
         bluredView.frame = UIScreen.main.bounds
         
         view.insertSubview(bluredView, at: 0)
-        
-    }
-    
-    func close() {
-        
-        UIView.animate(withDuration: 0.3, animations: {
-            let frame = self.view.frame
-            self.view.frame = CGRect(x: 0, y: self.partialView, width: frame.width, height: frame.height)
-        })
         
     }
     

@@ -1050,6 +1050,39 @@ extension AnnotationController: SignatureControllerDelegate {
     
     func signatureParameter(signatureImage: UIImage?) {
         
+        if let signatureImage = signatureImage {
+            
+            let panGesture = UIPanGestureRecognizer()
+            
+            panGesture.addTarget(self, action: #selector(handlePanGesture(_:)))
+            let pinchGesture = UIPinchGestureRecognizer()
+            
+            pinchGesture.addTarget(self, action: #selector(handlePinchGesture(_:)))
+            
+            let rotationGesture = UIRotationGestureRecognizer()
+            rotationGesture.addTarget(self, action: #selector(handleRotateGesture(_:)))
+            
+            let signatureImageView = UIImageView(frame: .zero)
+            signatureImageView.image = signatureImage
+            signatureImageView.backgroundColor = .clear
+            signatureImageView.translatesAutoresizingMaskIntoConstraints = false
+            
+            signatureImageView.addGestureRecognizer(panGesture)
+            signatureImageView.addGestureRecognizer(pinchGesture)
+            signatureImageView.addGestureRecognizer(rotationGesture)
+            
+            annotationView.addSubview(signatureImageView)
+            
+            removeChildController()
+            
+        }
+        
+    }
+    
+    func cancel() {
+        
+        removeChildController()
+        
     }
     
 }
