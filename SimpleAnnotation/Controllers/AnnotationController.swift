@@ -1054,6 +1054,33 @@ extension AnnotationController: SignatureControllerDelegate {
     
 }
 
+extension AnnotationController: ShapesControllerDelegate {
+    
+    func shapeesParameter(shape: Shapes, color: UIColor, thinkness: CGFloat, opacity: CGFloat) {
+        
+        switch shape {
+        case .line:
+            return
+        case .arrow:
+            return
+        case .size:
+            return
+        case .rectangle:
+            return
+        case .circle:
+            return
+        case .check:
+            return
+        case .cross:
+            return
+        }
+        
+        removeChildController()
+        
+    }
+    
+}
+
 extension AnnotationController: UITextFieldDelegate {
     
     // MARK: AnnotationController

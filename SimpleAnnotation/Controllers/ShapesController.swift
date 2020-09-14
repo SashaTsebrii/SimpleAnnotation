@@ -8,31 +8,47 @@
 
 import UIKit
 
+enum Shapes {
+    case line
+    case arrow
+    case size
+    case rectangle
+    case circle
+    case check
+    case cross
+}
+
 protocol ShapesControllerDelegate {
-    func shapeesParameter(color: UIColor, thinkness: CGFloat, opacity: CGFloat)
+    func shapeesParameter(shape: Shapes, color: UIColor, thinkness: CGFloat, opacity: CGFloat)
 }
 
 class ShapesController: UIViewController {
     
     // MARK: Variables
     
-    var delegate: MarkerControllerDelegate?
+    var delegate: ShapesControllerDelegate?
     
-    var color: UIColor = .black {
+    var shape: Shapes = .line {
         didSet {
-            delegate?.markerParameter(color: color, thinkness: thikness, opacity: opacity)
+            delegate?.shapeesParameter(shape: shape, color: color, thinkness: thikness, opacity: opacity)
         }
     }
     
-    var thikness: CGFloat = 20.0 {
+    var color: UIColor = .black {
         didSet {
-            delegate?.markerParameter(color: color, thinkness: thikness, opacity: opacity)
+            delegate?.shapeesParameter(shape: shape, color: color, thinkness: thikness, opacity: opacity)
+        }
+    }
+    
+    var thikness: CGFloat = 5.0 {
+        didSet {
+            delegate?.shapeesParameter(shape: shape, color: color, thinkness: thikness, opacity: opacity)
         }
     }
     
     var opacity: CGFloat = 1.0 {
         didSet {
-            delegate?.markerParameter(color: color, thinkness: thikness, opacity: opacity)
+            delegate?.shapeesParameter(shape: shape, color: color, thinkness: thikness, opacity: opacity)
         }
     }
     
@@ -390,15 +406,22 @@ class ShapesController: UIViewController {
     
     @objc fileprivate func changeShspes(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
+        case 0:
+            delegate?.shapeesParameter(shape: Shapes.line, color: color, thinkness: thikness, opacity: opacity)
         case 1:
-            self.view.backgroundColor = UIColor.green
-            print("Green")
+            delegate?.shapeesParameter(shape: Shapes.arrow, color: color, thinkness: thikness, opacity: opacity)
         case 2:
-            self.view.backgroundColor = UIColor.blue
-            print("Blue")
+            delegate?.shapeesParameter(shape: Shapes.size, color: color, thinkness: thikness, opacity: opacity)
+        case 3:
+            delegate?.shapeesParameter(shape: Shapes.rectangle, color: color, thinkness: thikness, opacity: opacity)
+        case 4:
+            delegate?.shapeesParameter(shape: Shapes.circle, color: color, thinkness: thikness, opacity: opacity)
+        case 5:
+            delegate?.shapeesParameter(shape: Shapes.check, color: color, thinkness: thikness, opacity: opacity)
+        case 6:
+            delegate?.shapeesParameter(shape: Shapes.cross, color: color, thinkness: thikness, opacity: opacity)
         default:
-            self.view.backgroundColor = UIColor.purple
-            print("Purple")
+            return
         }
     }
     
