@@ -1062,7 +1062,18 @@ extension AnnotationController: ShapesControllerDelegate {
         case .line:
             return
         case .arrow:
-            return
+            let arrow = UIBezierPath()
+            arrow.addArrow(start: CGPoint(x: 200, y: 200), end: CGPoint(x: 50, y: 50), pointerLineLength: 30, arrowAngle: CGFloat(Double.pi / 4))
+            
+            let arrowLayer = CAShapeLayer()
+            arrowLayer.strokeColor = UIColor.black.cgColor
+            arrowLayer.lineWidth = 3
+            arrowLayer.path = arrow.cgPath
+            arrowLayer.fillColor = UIColor.clear.cgColor
+            arrowLayer.lineJoin = CAShapeLayerLineJoin.round
+            arrowLayer.lineCap = CAShapeLayerLineCap.round
+            
+            annotationView.layer.addSublayer(arrowLayer)
         case .size:
             return
         case .rectangle:
