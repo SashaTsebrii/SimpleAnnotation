@@ -76,6 +76,7 @@ class PenController: UIViewController {
         let slider = UISlider(frame: .zero)
         slider.minimumValue = 1
         slider.maximumValue = 10
+        slider.isContinuous = true
         slider.setValue(3, animated: false)
         slider.addTarget(self, action: #selector(handleSliderChange(_:)), for: .valueChanged)
         slider.translatesAutoresizingMaskIntoConstraints = false
@@ -219,8 +220,23 @@ class PenController: UIViewController {
             thicknessSlider.trailingAnchor.constraint(equalTo: thicknessSizeBackgroundView.leadingAnchor, constant: -16)
         ])
         
+        thicknessViewBackgroundView.addSubview(thicknessView)
+        NSLayoutConstraint.activate([
+            thicknessView.centerXAnchor.constraint(equalTo: thicknessViewBackgroundView.centerXAnchor),
+            thicknessView.centerYAnchor.constraint(equalTo: thicknessViewBackgroundView.centerYAnchor),
+            
+            thicknessView.widthAnchor.constraint(equalToConstant: 3),
+            thicknessView.heightAnchor.constraint(equalTo: thicknessView.widthAnchor)
+        ])
+        
+        thicknessSizeBackgroundView.addSubview(thicknessSizeLabel)
+        NSLayoutConstraint.activate([
+            thicknessSizeLabel.centerXAnchor.constraint(equalTo: thicknessSizeBackgroundView.centerXAnchor),
+            thicknessSizeLabel.centerYAnchor.constraint(equalTo: thicknessSizeBackgroundView.centerYAnchor)
+        ])
+        
     }
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -270,6 +286,7 @@ class PenController: UIViewController {
     }
     
     @objc fileprivate func handleSliderChange(_ sender: UISlider) {
+        print(sender.value)
         thicknessSizeLabel.text = String(sender.value)
         thikness = CGFloat(sender.value)
     }
