@@ -26,24 +26,6 @@ class AnnotationController: UIViewController {
     var stickersController: StickersController?
     var signatureController: SignatureController?
     
-    let moveGestureRecognizer: UIPanGestureRecognizer = {
-        let panGestureRecognizer = UIPanGestureRecognizer()
-        panGestureRecognizer.addTarget(self, action: #selector(handleMoveGestureRecognizer(_:)))
-        return panGestureRecognizer
-    }()
-    
-    let zoomGestureRecognizer: UIPinchGestureRecognizer = {
-        let pinchGestureRecognizer = UIPinchGestureRecognizer()
-        pinchGestureRecognizer.addTarget(self, action: #selector(handleZoomGestureRecognizer(_:)))
-        return pinchGestureRecognizer
-    }()
-    
-    let rotateGestureRecognizer: UIRotationGestureRecognizer = {
-        let rotationGestureRecognizer = UIRotationGestureRecognizer()
-        rotationGestureRecognizer.addTarget(self, action: #selector(handleRotateGestureRecognizer(_:)))
-        return rotationGestureRecognizer
-    }()
-    
     // MARK: Prpperties
     
     fileprivate let titleLabel: UILabel = {
@@ -524,8 +506,14 @@ class AnnotationController: UIViewController {
         
         annotationView.addSubview(textField)
         
-        textField.addGestureRecognizer(moveGestureRecognizer)
-        textField.addGestureRecognizer(rotateGestureRecognizer)
+        let panGesture = UIPanGestureRecognizer()
+        panGesture.addTarget(self, action: #selector(handlePanGesture(_:)))
+        
+        let rotationGesture = UIRotationGestureRecognizer()
+        rotationGesture.addTarget(self, action: #selector(handleRotateGesture(_:)))
+        
+        textField.addGestureRecognizer(panGesture)
+        textField.addGestureRecognizer(rotationGesture)
         
         textField.becomeFirstResponder()
         
@@ -569,7 +557,7 @@ class AnnotationController: UIViewController {
     
     // MARK: Gesture
     
-    @objc func handleMoveGestureRecognizer(_ gesture: UIPanGestureRecognizer) {
+    @objc func handlePanGesture(_ gesture: UIPanGestureRecognizer) {
         print("👋 PAN GESTURE")
         
         let translation = gesture.translation(in: view)
@@ -583,7 +571,7 @@ class AnnotationController: UIViewController {
         
     }
     
-    @objc func handleZoomGestureRecognizer(_ gesture: UIPinchGestureRecognizer) {
+    @objc func handlePinchGesture(_ gesture: UIPinchGestureRecognizer) {
         print("👋 PINCH GESTURE")
         
         guard let gestureView = gesture.view else {
@@ -595,7 +583,7 @@ class AnnotationController: UIViewController {
         
     }
     
-    @objc func handleRotateGestureRecognizer(_ gesture: UIRotationGestureRecognizer) {
+    @objc func handleRotateGesture(_ gesture: UIRotationGestureRecognizer) {
         print("👋 ROTATE GESTURE")
         
         guard let gestureView = gesture.view else {
@@ -1034,10 +1022,19 @@ extension AnnotationController: StickersControllerDelegate {
     
     func stickersParameter(image: UIImage) {
         
+        let panGesture = UIPanGestureRecognizer()
+        panGesture.addTarget(self, action: #selector(handlePanGesture(_:)))
+        
+        let pinchGesture = UIPinchGestureRecognizer()
+        pinchGesture.addTarget(self, action: #selector(handlePinchGesture(_:)))
+        
+        let rotationGesture = UIRotationGestureRecognizer()
+        rotationGesture.addTarget(self, action: #selector(handleRotateGesture(_:)))
+        
         let stickerImageView = StickerImageView(image: image)
-        stickerImageView.addGestureRecognizer(moveGestureRecognizer)
-        stickerImageView.addGestureRecognizer(zoomGestureRecognizer)
-        stickerImageView.addGestureRecognizer(rotateGestureRecognizer)
+        stickerImageView.addGestureRecognizer(panGesture)
+        stickerImageView.addGestureRecognizer(pinchGesture)
+        stickerImageView.addGestureRecognizer(rotationGesture)
         
         annotationView.addSubview(stickerImageView)
         
