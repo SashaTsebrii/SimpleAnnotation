@@ -1058,10 +1058,26 @@ extension AnnotationController: ShapesControllerDelegate {
     
     func shapeesParameter(shape: Shapes, color: UIColor, width: CGFloat, opacity: CGFloat) {
         
+        let panGesture = UIPanGestureRecognizer()
+        panGesture.addTarget(self, action: #selector(handlePanGesture(_:)))
+        
+        let pinchGesture = UIPinchGestureRecognizer()
+        pinchGesture.addTarget(self, action: #selector(handlePinchGesture(_:)))
+        
+        let rotationGesture = UIRotationGestureRecognizer()
+        rotationGesture.addTarget(self, action: #selector(handleRotateGesture(_:)))
+        
         switch shape {
         case .line:
             return
         case .arrow:
+            let arrowView = UIView(frame: .zero)
+            arrowView.backgroundColor = .clear
+            arrowView.translatesAutoresizingMaskIntoConstraints = false
+            arrowView.addGestureRecognizer(panGesture)
+            arrowView.addGestureRecognizer(pinchGesture)
+            arrowView.addGestureRecognizer(rotationGesture)
+            
             let arrow = UIBezierPath()
             arrow.addArrow(start: CGPoint(x: 200, y: 200), end: CGPoint(x: 50, y: 50), pointerLineLength: 30, arrowAngle: CGFloat(Double.pi / 4))
             
@@ -1073,7 +1089,12 @@ extension AnnotationController: ShapesControllerDelegate {
             arrowLayer.lineJoin = CAShapeLayerLineJoin.round
             arrowLayer.lineCap = CAShapeLayerLineCap.round
             
-            annotationView.layer.addSublayer(arrowLayer)
+            arrowView.layer.addSublayer(arrowLayer)
+            annotationView.addSubview(arrowView)
+            NSLayoutConstraint.activate([
+                arrowView.widthAnchor.constraint(equalToConstant: 200),
+                arrowView.heightAnchor.constraint(equalToConstant: 200)
+            ])
         case .size:
             return
         case .rectangle:
