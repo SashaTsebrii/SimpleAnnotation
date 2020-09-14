@@ -19,7 +19,7 @@ enum Shapes {
 }
 
 protocol ShapesControllerDelegate {
-    func shapeesParameter(shape: Shapes, color: UIColor, thinkness: CGFloat, opacity: CGFloat)
+    func shapeesParameter(shape: Shapes, color: UIColor, width: CGFloat, opacity: CGFloat)
 }
 
 class ShapesController: UIViewController {
@@ -30,25 +30,25 @@ class ShapesController: UIViewController {
     
     var shape: Shapes = .line {
         didSet {
-            delegate?.shapeesParameter(shape: shape, color: color, thinkness: thikness, opacity: opacity)
+            delegate?.shapeesParameter(shape: shape, color: color, width: thikness, opacity: opacity)
         }
     }
     
     var color: UIColor = .black {
         didSet {
-            delegate?.shapeesParameter(shape: shape, color: color, thinkness: thikness, opacity: opacity)
+            delegate?.shapeesParameter(shape: shape, color: color, width: thikness, opacity: opacity)
         }
     }
     
     var thikness: CGFloat = 5.0 {
         didSet {
-            delegate?.shapeesParameter(shape: shape, color: color, thinkness: thikness, opacity: opacity)
+            delegate?.shapeesParameter(shape: shape, color: color, width: thikness, opacity: opacity)
         }
     }
     
     var opacity: CGFloat = 1.0 {
         didSet {
-            delegate?.shapeesParameter(shape: shape, color: color, thinkness: thikness, opacity: opacity)
+            delegate?.shapeesParameter(shape: shape, color: color, width: thikness, opacity: opacity)
         }
     }
     
@@ -407,19 +407,19 @@ class ShapesController: UIViewController {
     @objc fileprivate func changeShspes(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 0:
-            delegate?.shapeesParameter(shape: Shapes.line, color: color, thinkness: thikness, opacity: opacity)
+            delegate?.shapeesParameter(shape: Shapes.line, color: color, width: thikness, opacity: opacity)
         case 1:
-            delegate?.shapeesParameter(shape: Shapes.arrow, color: color, thinkness: thikness, opacity: opacity)
+            delegate?.shapeesParameter(shape: Shapes.arrow, color: color, width: thikness, opacity: opacity)
         case 2:
-            delegate?.shapeesParameter(shape: Shapes.size, color: color, thinkness: thikness, opacity: opacity)
+            delegate?.shapeesParameter(shape: Shapes.size, color: color, width: thikness, opacity: opacity)
         case 3:
-            delegate?.shapeesParameter(shape: Shapes.rectangle, color: color, thinkness: thikness, opacity: opacity)
+            delegate?.shapeesParameter(shape: Shapes.rectangle, color: color, width: thikness, opacity: opacity)
         case 4:
-            delegate?.shapeesParameter(shape: Shapes.circle, color: color, thinkness: thikness, opacity: opacity)
+            delegate?.shapeesParameter(shape: Shapes.circle, color: color, width: thikness, opacity: opacity)
         case 5:
-            delegate?.shapeesParameter(shape: Shapes.check, color: color, thinkness: thikness, opacity: opacity)
+            delegate?.shapeesParameter(shape: Shapes.check, color: color, width: thikness, opacity: opacity)
         case 6:
-            delegate?.shapeesParameter(shape: Shapes.cross, color: color, thinkness: thikness, opacity: opacity)
+            delegate?.shapeesParameter(shape: Shapes.cross, color: color, width: thikness, opacity: opacity)
         default:
             return
         }

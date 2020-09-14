@@ -1056,7 +1056,7 @@ extension AnnotationController: SignatureControllerDelegate {
 
 extension AnnotationController: ShapesControllerDelegate {
     
-    func shapeesParameter(shape: Shapes, color: UIColor, thinkness: CGFloat, opacity: CGFloat) {
+    func shapeesParameter(shape: Shapes, color: UIColor, width: CGFloat, opacity: CGFloat) {
         
         switch shape {
         case .line:
