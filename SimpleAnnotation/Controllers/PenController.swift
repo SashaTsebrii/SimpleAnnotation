@@ -10,6 +10,7 @@ import UIKit
 
 protocol PenControllerDelegate {
     func penParameter(color: UIColor, thinkness: CGFloat)
+    func cancelPen()
 }
 
 class PenController: UIViewController {
@@ -235,6 +236,20 @@ class PenController: UIViewController {
             thicknessSizeLabel.centerYAnchor.constraint(equalTo: thicknessSizeBackgroundView.centerYAnchor)
         ])
         
+        // closeButton
+        let closeButton = UIButton(frame: .zero)
+        closeButton.setImage(UIImage(named: "none_w"), for: .normal)
+        closeButton.addTarget(self, action: #selector(closeButtonTapped(_:)), for: .touchUpInside)
+        closeButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        view.addSubview(closeButton)
+        NSLayoutConstraint.activate([
+            closeButton.widthAnchor.constraint(equalToConstant: 32),
+            closeButton.heightAnchor.constraint(equalTo: closeButton.widthAnchor),
+            closeButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 16),
+            closeButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16)
+        ])
+        
     }
         
     override func viewDidLoad() {
@@ -291,6 +306,10 @@ class PenController: UIViewController {
         thikness = CGFloat(sender.value)
     }
     
+    @objc fileprivate func closeButtonTapped(_ sender: UIButton) {
+        delegate?.cancelPen()
+    }
+    
     // MARK: Gestures
     
     @objc func handlePanGesture(_ recognizer: UIPanGestureRecognizer) {
@@ -332,15 +351,6 @@ class PenController: UIViewController {
         bluredView.frame = UIScreen.main.bounds
         
         view.insertSubview(bluredView, at: 0)
-        
-    }
-    
-    func close() {
-        
-        UIView.animate(withDuration: 0.3, animations: {
-            let frame = self.view.frame
-            self.view.frame = CGRect(x: 0, y: self.partialView, width: frame.width, height: frame.height)
-        })
         
     }
     

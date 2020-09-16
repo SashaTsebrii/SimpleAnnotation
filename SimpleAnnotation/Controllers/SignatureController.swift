@@ -10,7 +10,7 @@ import UIKit
 
 protocol SignatureControllerDelegate {
     func signatureParameter(signatureImage: UIImage?)
-    func cancel()
+    func cancelSignature()
 }
 
 class SignatureController: UIViewController {
@@ -145,17 +145,17 @@ class SignatureController: UIViewController {
         ])
         
         // closeButto
-        let closeButton = UIButton(frame: .zero)
-        closeButton.setTitle("CLOSE", for: .normal)
-        closeButton.setTitleColor(.black, for: .normal)
-        closeButton.addTarget(self, action: #selector(closeButtonTapped(_:)), for: .touchUpInside)
-        closeButton.translatesAutoresizingMaskIntoConstraints = false
+        let abortButton = UIButton(frame: .zero)
+        abortButton.setTitle("CLOSE", for: .normal)
+        abortButton.setTitleColor(.black, for: .normal)
+        abortButton.addTarget(self, action: #selector(abortButtonTapped(_:)), for: .touchUpInside)
+        abortButton.translatesAutoresizingMaskIntoConstraints = false
         
-        signatureView.addSubview(closeButton)
+        signatureView.addSubview(abortButton)
         NSLayoutConstraint.activate([
-            closeButton.heightAnchor.constraint(equalToConstant: 44),
-            closeButton.bottomAnchor.constraint(equalTo: signatureView.bottomAnchor),
-            closeButton.leadingAnchor.constraint(equalTo: signatureView.leadingAnchor)
+            abortButton.heightAnchor.constraint(equalToConstant: 44),
+            abortButton.bottomAnchor.constraint(equalTo: signatureView.bottomAnchor),
+            abortButton.leadingAnchor.constraint(equalTo: signatureView.leadingAnchor)
         ])
         
         // doneButton
@@ -170,6 +170,20 @@ class SignatureController: UIViewController {
             doneButton.heightAnchor.constraint(equalToConstant: 44),
             doneButton.bottomAnchor.constraint(equalTo: signatureView.bottomAnchor),
             doneButton.trailingAnchor.constraint(equalTo: signatureView.trailingAnchor)
+        ])
+        
+        // closeButton
+        let closeButton = UIButton(frame: .zero)
+        closeButton.setImage(UIImage(named: "none_w"), for: .normal)
+        closeButton.addTarget(self, action: #selector(closeButtonTapped(_:)), for: .touchUpInside)
+        closeButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        view.addSubview(closeButton)
+        NSLayoutConstraint.activate([
+            closeButton.widthAnchor.constraint(equalToConstant: 32),
+            closeButton.heightAnchor.constraint(equalTo: closeButton.widthAnchor),
+            closeButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 16),
+            closeButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16)
         ])
         
     }
@@ -252,11 +266,11 @@ class SignatureController: UIViewController {
     @objc fileprivate func cancelButtonTapped(_ sender: UIButton) {
         print("👆 CANCEL BUTTON")
         
-        delegate?.cancel()
+        delegate?.cancelSignature()
         
     }
     
-    @objc fileprivate func closeButtonTapped(_ sender: UIButton) {
+    @objc fileprivate func abortButtonTapped(_ sender: UIButton) {
         print("👆 CLOSE BUTTON")
         
         signatureView.resetDrawing()
@@ -270,6 +284,10 @@ class SignatureController: UIViewController {
         signatureImageView.image = signatureView.exportDrawing()
         signatureView.isHidden = true
         
+    }
+    
+    @objc fileprivate func closeButtonTapped(_ sender: UIButton) {
+        delegate?.cancelSignature()
     }
     
     // MARK: Helper

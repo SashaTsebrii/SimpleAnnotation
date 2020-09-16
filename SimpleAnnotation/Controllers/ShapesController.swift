@@ -20,6 +20,7 @@ enum Shapes {
 
 protocol ShapesControllerDelegate {
     func shapeesParameter(shape: Shapes, color: UIColor, width: CGFloat, opacity: CGFloat)
+    func cancel()
 }
 
 class ShapesController: UIViewController {
@@ -331,6 +332,20 @@ class ShapesController: UIViewController {
             opacitiesStack.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16)
         ])
         
+        // closeButton
+        let closeButton = UIButton(frame: .zero)
+        closeButton.setImage(UIImage(named: "none_w"), for: .normal)
+        closeButton.addTarget(self, action: #selector(closeButtonTapped(_:)), for: .touchUpInside)
+        closeButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        view.addSubview(closeButton)
+        NSLayoutConstraint.activate([
+            closeButton.widthAnchor.constraint(equalToConstant: 32),
+            closeButton.heightAnchor.constraint(equalTo: closeButton.widthAnchor),
+            closeButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 16),
+            closeButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16)
+        ])
+        
     }
     
     override func viewDidLoad() {
@@ -423,6 +438,10 @@ class ShapesController: UIViewController {
         default:
             return
         }
+    }
+    
+    @objc fileprivate func closeButtonTapped(_ sender: UIButton) {
+        delegate?.cancel()
     }
     
     // MARK: Gestures

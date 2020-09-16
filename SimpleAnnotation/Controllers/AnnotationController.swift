@@ -967,6 +967,10 @@ extension AnnotationController: MarkerControllerDelegate {
         
     }
     
+    func cancelMarker() {
+        removeChildController()
+    }
+    
 }
 
 extension AnnotationController: PenControllerDelegate {
@@ -981,6 +985,10 @@ extension AnnotationController: PenControllerDelegate {
         
     }
     
+    func cancelPen() {
+        removeChildController()
+    }
+    
 }
 
 extension AnnotationController: TextControllerDelegate {
@@ -989,6 +997,10 @@ extension AnnotationController: TextControllerDelegate {
     
     func textParameter(color: UIColor, backgorundColor: UIColor, size: CGFloat) {
         
+    }
+    
+    func cancelText() {
+        removeChildController()
     }
     
 }
@@ -1004,6 +1016,10 @@ extension AnnotationController: HighlightControllerDelegate {
         
     }
     
+    func cancelHighlight() {
+        removeChildController()
+    }
+    
 }
 
 extension AnnotationController: NoteControllerDelegate {
@@ -1012,6 +1028,10 @@ extension AnnotationController: NoteControllerDelegate {
     
     func noteParameter(color: UIColor) {
         
+    }
+    
+    func cancelNote() {
+        removeChildController()
     }
     
 }
@@ -1040,6 +1060,10 @@ extension AnnotationController: StickersControllerDelegate {
         
         removeChildController()
         
+    }
+    
+    func cancelStickers() {
+        removeChildController()
     }
     
 }
@@ -1079,10 +1103,8 @@ extension AnnotationController: SignatureControllerDelegate {
         
     }
     
-    func cancel() {
-        
+    func cancelSignature() {
         removeChildController()
-        
     }
     
 }
@@ -1142,6 +1164,10 @@ extension AnnotationController: ShapesControllerDelegate {
         
         removeChildController()
         
+    }
+    
+    func cancel() {
+        removeChildController()
     }
     
 }
