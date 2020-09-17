@@ -100,6 +100,20 @@ class HighlightController: UIViewController {
             titleLabel.topAnchor.constraint(equalTo: holdView.bottomAnchor, constant: 16)
         ])
         
+        // closeButton
+        let closeButton = UIButton(frame: .zero)
+        closeButton.setTitle("Close", for: .normal)
+        closeButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
+        closeButton.addTarget(self, action: #selector(closeButtonTapped(_:)), for: .touchUpInside)
+        closeButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        view.addSubview(closeButton)
+        NSLayoutConstraint.activate([
+            closeButton.heightAnchor.constraint(equalToConstant: 32),
+            closeButton.centerYAnchor.constraint(equalTo: titleLabel.centerYAnchor),
+            closeButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16)
+        ])
+        
         // colorLabel
         let colorLabel = UILabel(frame: .zero)
         colorLabel.text = "COLOR"
@@ -203,20 +217,6 @@ class HighlightController: UIViewController {
             opacitiesStack.topAnchor.constraint(equalTo: opacityLabel.bottomAnchor, constant: 16),
             opacitiesStack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             opacitiesStack.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16)
-        ])
-        
-        // closeButton
-        let closeButton = UIButton(frame: .zero)
-        closeButton.setImage(UIImage(named: "none_w"), for: .normal)
-        closeButton.addTarget(self, action: #selector(closeButtonTapped(_:)), for: .touchUpInside)
-        closeButton.translatesAutoresizingMaskIntoConstraints = false
-        
-        view.addSubview(closeButton)
-        NSLayoutConstraint.activate([
-            closeButton.widthAnchor.constraint(equalToConstant: 32),
-            closeButton.heightAnchor.constraint(equalTo: closeButton.widthAnchor),
-            closeButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 16),
-            closeButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16)
         ])
         
     }

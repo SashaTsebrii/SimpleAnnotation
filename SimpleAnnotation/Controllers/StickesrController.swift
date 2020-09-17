@@ -79,6 +79,20 @@ class StickersController: UIViewController {
             titleLabel.topAnchor.constraint(equalTo: holdView.bottomAnchor, constant: 16)
         ])
         
+        // closeButton
+        let closeButton = UIButton(frame: .zero)
+        closeButton.setTitle("Close", for: .normal)
+        closeButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
+        closeButton.addTarget(self, action: #selector(closeButtonTapped(_:)), for: .touchUpInside)
+        closeButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        view.addSubview(closeButton)
+        NSLayoutConstraint.activate([
+            closeButton.heightAnchor.constraint(equalToConstant: 32),
+            closeButton.centerYAnchor.constraint(equalTo: titleLabel.centerYAnchor),
+            closeButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16)
+        ])
+        
         // colorLabel
         view.addSubview(collectionView)
         NSLayoutConstraint.activate([
@@ -86,20 +100,6 @@ class StickersController: UIViewController {
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -200)
-        ])
-        
-        // closeButton
-        let closeButton = UIButton(frame: .zero)
-        closeButton.setImage(UIImage(named: "none_w"), for: .normal)
-        closeButton.addTarget(self, action: #selector(closeButtonTapped(_:)), for: .touchUpInside)
-        closeButton.translatesAutoresizingMaskIntoConstraints = false
-        
-        view.addSubview(closeButton)
-        NSLayoutConstraint.activate([
-            closeButton.widthAnchor.constraint(equalToConstant: 32),
-            closeButton.heightAnchor.constraint(equalTo: closeButton.widthAnchor),
-            closeButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 16),
-            closeButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16)
         ])
         
     }
