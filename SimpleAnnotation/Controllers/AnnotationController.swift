@@ -508,11 +508,10 @@ class AnnotationController: UIViewController {
         
         let panGesture = UIPanGestureRecognizer()
         panGesture.addTarget(self, action: #selector(handlePanGesture(_:)))
+        textField.addGestureRecognizer(panGesture)
         
         let rotationGesture = UIRotationGestureRecognizer()
         rotationGesture.addTarget(self, action: #selector(handleRotateGesture(_:)))
-        
-        textField.addGestureRecognizer(panGesture)
         textField.addGestureRecognizer(rotationGesture)
         
         textField.becomeFirstResponder()
@@ -534,6 +533,21 @@ class AnnotationController: UIViewController {
         setUpNoteController()
         annotationView.superview?.bringSubviewToFront(annotationView)
         subtitleLabel.text = "Annoatation"
+        
+        let noteImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 16, height: 16))
+        noteImageView.image = UIImage(named: "notes")
+        noteImageView.tintColor = .yellow
+        noteImageView.translatesAutoresizingMaskIntoConstraints = false
+        
+        let panGesture = UIPanGestureRecognizer()
+        panGesture.addTarget(self, action: #selector(handlePanGesture(_:)))
+        noteImageView.addGestureRecognizer(panGesture)
+        
+        let noteTapGesture = UITapGestureRecognizer()
+        noteTapGesture.addTarget(self, action: #selector(handleNoteTapGesture(_:)))
+        noteImageView.addGestureRecognizer(noteTapGesture)
+        
+        annotationView.addSubview(noteImageView)
         
     }
     
@@ -592,6 +606,13 @@ class AnnotationController: UIViewController {
         
         gestureView.transform = gestureView.transform.rotated(by: gesture.rotation)
         gesture.rotation = 0
+        
+    }
+    
+    @objc fileprivate func handleNoteTapGesture(_ gesture: UITapGestureRecognizer) {
+        print("👋 TAP GESTURE")
+        
+        
         
     }
     
