@@ -83,7 +83,7 @@ class AnnotationController: UIViewController {
     
     fileprivate let canvasView: CanvasView = {
         let view = CanvasView(frame: .zero)
-        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+//        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.backgroundColor = .clear
         view.isUserInteractionEnabled = true
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -92,7 +92,7 @@ class AnnotationController: UIViewController {
     
     fileprivate let annotationView: AnnotationView = {
         let view = AnnotationView(frame: .zero)
-        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+//        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.backgroundColor = .clear
         view.isUserInteractionEnabled = true
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -302,7 +302,20 @@ class AnnotationController: UIViewController {
         ])
         
         previewScrollView.addSubview(canvasView)
+        NSLayoutConstraint.activate([
+            canvasView.topAnchor.constraint(equalTo: pdfView.topAnchor),
+            canvasView.leadingAnchor.constraint(equalTo: pdfView.leadingAnchor),
+            canvasView.trailingAnchor.constraint(equalTo: pdfView.trailingAnchor),
+            canvasView.bottomAnchor.constraint(equalTo: pdfView.bottomAnchor)
+        ])
+        
         previewScrollView.addSubview(annotationView)
+        NSLayoutConstraint.activate([
+            annotationView.topAnchor.constraint(equalTo: pdfView.topAnchor),
+            annotationView.leadingAnchor.constraint(equalTo: pdfView.leadingAnchor),
+            annotationView.trailingAnchor.constraint(equalTo: pdfView.trailingAnchor),
+            annotationView.bottomAnchor.constraint(equalTo: pdfView.bottomAnchor)
+        ])
         
     }
     
@@ -536,7 +549,7 @@ class AnnotationController: UIViewController {
         
         let noteImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 16, height: 16))
         noteImageView.image = UIImage(named: "notes")
-        noteImageView.tintColor = .yellow
+        noteImageView.tintColor = .orange
         noteImageView.translatesAutoresizingMaskIntoConstraints = false
         
         let panGesture = UIPanGestureRecognizer()
