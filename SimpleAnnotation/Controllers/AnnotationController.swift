@@ -83,7 +83,6 @@ class AnnotationController: UIViewController {
     
     fileprivate let canvasView: CanvasView = {
         let view = CanvasView(frame: .zero)
-//        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.backgroundColor = .clear
         view.isUserInteractionEnabled = true
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -92,7 +91,6 @@ class AnnotationController: UIViewController {
     
     fileprivate let annotationView: AnnotationView = {
         let view = AnnotationView(frame: .zero)
-//        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.backgroundColor = .clear
         view.isUserInteractionEnabled = true
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -515,6 +513,7 @@ class AnnotationController: UIViewController {
         textField.contentMode = .center
         textField.delegate = self
         textField.font = UIFont.boldSystemFont(ofSize: 18)
+        textField.isUserInteractionEnabled = true
         textField.translatesAutoresizingMaskIntoConstraints = false
         
         annotationView.addSubview(textField)
@@ -550,6 +549,7 @@ class AnnotationController: UIViewController {
         let noteImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 16, height: 16))
         noteImageView.image = UIImage(named: "notes")
         noteImageView.tintColor = .orange
+        noteImageView.isUserInteractionEnabled = true
         noteImageView.translatesAutoresizingMaskIntoConstraints = false
         
         let panGesture = UIPanGestureRecognizer()
@@ -625,7 +625,9 @@ class AnnotationController: UIViewController {
     @objc fileprivate func handleNoteTapGesture(_ gesture: UITapGestureRecognizer) {
         print("👋 TAP GESTURE")
         
-        
+        let enterTextController = EnterTextController()
+        enterTextController.delegate = self
+        navigationController?.pushViewController(enterTextController, animated: true)
         
     }
     
@@ -1202,6 +1204,14 @@ extension AnnotationController: ShapesControllerDelegate {
     
     func cancel() {
         removeChildController()
+    }
+    
+}
+
+extension AnnotationController: EnterTextControllerDelegate {
+    
+    func enteredText(text: String) {
+        // TODO: Save string to selectec note or text
     }
     
 }

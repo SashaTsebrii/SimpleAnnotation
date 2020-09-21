@@ -99,6 +99,7 @@
 		477CE63724B372F60018A642 /* ImprovedCanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477CE63624B372F60018A642 /* ImprovedCanvasView.swift */; };
 		477CE63924B3789B0018A642 /* SmoothedCanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477CE63824B3789B0018A642 /* SmoothedCanvasView.swift */; };
 		477CE63B24B37B9A0018A642 /* TestCanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477CE63A24B37B9A0018A642 /* TestCanvasView.swift */; };
+		47A199362516635300B222E2 /* EnterTextController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A199352516635300B222E2 /* EnterTextController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -196,6 +197,7 @@
 		477CE63624B372F60018A642 /* ImprovedCanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImprovedCanvasView.swift; sourceTree = "<group>"; };
 		477CE63824B3789B0018A642 /* SmoothedCanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmoothedCanvasView.swift; sourceTree = "<group>"; };
 		477CE63A24B37B9A0018A642 /* TestCanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCanvasView.swift; sourceTree = "<group>"; };
+		47A199352516635300B222E2 /* EnterTextController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterTextController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -366,6 +368,7 @@
 				4742553D24EBE4E600D31DD5 /* TextController.swift */,
 				4742553B24E6B03300D31DD5 /* ShapesController.swift */,
 				4742553F24EC67CA00D31DD5 /* NoteController.swift */,
+				47A199352516635300B222E2 /* EnterTextController.swift */,
 				474255BA24EC946600D31DD5 /* StickesrController.swift */,
 				474255BC24ECBAEA00D31DD5 /* StickerCell.swift */,
 				477026F824ED7430004593BC /* SignatureController.swift */,
@@ -517,6 +520,7 @@
 				4742553A24E533DC00D31DD5 /* HighlightController.swift in Sources */,
 				4742554024EC67CA00D31DD5 /* NoteController.swift in Sources */,
 				477CE62624AA04D40018A642 /* CanvasView.swift in Sources */,
+				47A199362516635300B222E2 /* EnterTextController.swift in Sources */,
 				477CE60924A9FCEF0018A642 /* AppDelegate.swift in Sources */,
 				477CE63324B34CC70018A642 /* SimpleCanvasView.swift in Sources */,
 				473741D62503AB3700D42A5A /* OpacityButton.swift in Sources */,
