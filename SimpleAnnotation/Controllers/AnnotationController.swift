@@ -1063,40 +1063,40 @@ extension AnnotationController: ShapesControllerDelegate {
     func shapeesParameter(shape: Shapes, color: UIColor, width: CGFloat, opacity: CGFloat) {
         
         switch shape {
-        case .line:
-            return
-        case .arrow:
-            let arrowView = ShapeeView(frame: .zero)
-            arrowView.backgroundColor = .clear
-            arrowView.translatesAutoresizingMaskIntoConstraints = false
-            
-            let arrow = UIBezierPath()
-            arrow.addArrow(start: CGPoint(x: 200, y: 200), end: CGPoint(x: 50, y: 50), pointerLineLength: 30, arrowAngle: CGFloat(Double.pi / 4))
-            
-            let arrowLayer = CAShapeLayer()
-            arrowLayer.strokeColor = UIColor.black.cgColor
-            arrowLayer.lineWidth = 3
-            arrowLayer.path = arrow.cgPath
-            arrowLayer.fillColor = UIColor.clear.cgColor
-            arrowLayer.lineJoin = CAShapeLayerLineJoin.round
-            arrowLayer.lineCap = CAShapeLayerLineCap.round
-            
-            arrowView.layer.addSublayer(arrowLayer)
-            annotationView.addSubview(arrowView)
-            NSLayoutConstraint.activate([
-                arrowView.widthAnchor.constraint(equalToConstant: 200),
-                arrowView.heightAnchor.constraint(equalToConstant: 200)
-            ])
-        case .size:
-            return
-        case .rectangle:
-            return
-        case .circle:
-            return
-        case .check:
-            return
-        case .cross:
-            return
+            case .line:
+                return
+            case .arrow:
+                let arrowView = ShapeeView(frame: .zero)
+                arrowView.backgroundColor = .clear
+                arrowView.translatesAutoresizingMaskIntoConstraints = false
+                
+                let arrow = UIBezierPath()
+                arrow.addArrow(start: CGPoint(x: 200, y: 200), end: CGPoint(x: 50, y: 50), pointerLineLength: 30, arrowAngle: CGFloat(Double.pi / 4))
+                
+                let arrowLayer = CAShapeLayer()
+                arrowLayer.strokeColor = UIColor.black.cgColor
+                arrowLayer.lineWidth = 3
+                arrowLayer.path = arrow.cgPath
+                arrowLayer.fillColor = UIColor.clear.cgColor
+                arrowLayer.lineJoin = CAShapeLayerLineJoin.round
+                arrowLayer.lineCap = CAShapeLayerLineCap.round
+                
+                arrowView.layer.addSublayer(arrowLayer)
+                annotationView.addSubview(arrowView)
+                NSLayoutConstraint.activate([
+                    arrowView.widthAnchor.constraint(equalToConstant: 200),
+                    arrowView.heightAnchor.constraint(equalToConstant: 200)
+                ])
+            case .size:
+                return
+            case .rectangle:
+                return
+            case .circle:
+                return
+            case .check:
+                return
+            case .cross:
+                return
         }
         
         removeChildController()
