@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		470CE941250FEC3C0040079E /* SignatureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470CE940250FEC3C0040079E /* SignatureView.swift */; };
+		47329BA5251B604C00C45143 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47329BA4251B604B00C45143 /* TextView.swift */; };
+		47329BA8251B6F3500C45143 /* ShapeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47329BA7251B6F3500C45143 /* ShapeView.swift */; };
+		47329BAC251B773300C45143 /* SignatureImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47329BAB251B773300C45143 /* SignatureImageView.swift */; };
 		473741D425025FB300D42A5A /* ColorButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473741D325025FB300D42A5A /* ColorButton.swift */; };
 		473741D62503AB3700D42A5A /* OpacityButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473741D52503AB3700D42A5A /* OpacityButton.swift */; };
 		4742553A24E533DC00D31DD5 /* HighlightController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4742553924E533DC00D31DD5 /* HighlightController.swift */; };
@@ -100,10 +103,16 @@
 		477CE63924B3789B0018A642 /* SmoothedCanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477CE63824B3789B0018A642 /* SmoothedCanvasView.swift */; };
 		477CE63B24B37B9A0018A642 /* TestCanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477CE63A24B37B9A0018A642 /* TestCanvasView.swift */; };
 		47A199362516635300B222E2 /* EnterTextController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A199352516635300B222E2 /* EnterTextController.swift */; };
+		47A199392519078600B222E2 /* NoteImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A199382519078600B222E2 /* NoteImageView.swift */; };
+		47A1993D2519344400B222E2 /* EditableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A1993C2519344400B222E2 /* EditableView.swift */; };
+		47A19941251A3DC100B222E2 /* EditableImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A19940251A3DC100B222E2 /* EditableImageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		470CE940250FEC3C0040079E /* SignatureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignatureView.swift; sourceTree = "<group>"; };
+		47329BA4251B604B00C45143 /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
+		47329BA7251B6F3500C45143 /* ShapeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeView.swift; sourceTree = "<group>"; };
+		47329BAB251B773300C45143 /* SignatureImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignatureImageView.swift; sourceTree = "<group>"; };
 		473741D325025FB300D42A5A /* ColorButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorButton.swift; sourceTree = "<group>"; };
 		473741D52503AB3700D42A5A /* OpacityButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpacityButton.swift; sourceTree = "<group>"; };
 		4742553924E533DC00D31DD5 /* HighlightController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighlightController.swift; sourceTree = "<group>"; };
@@ -198,6 +207,9 @@
 		477CE63824B3789B0018A642 /* SmoothedCanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmoothedCanvasView.swift; sourceTree = "<group>"; };
 		477CE63A24B37B9A0018A642 /* TestCanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCanvasView.swift; sourceTree = "<group>"; };
 		47A199352516635300B222E2 /* EnterTextController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterTextController.swift; sourceTree = "<group>"; };
+		47A199382519078600B222E2 /* NoteImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteImageView.swift; sourceTree = "<group>"; };
+		47A1993C2519344400B222E2 /* EditableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableView.swift; sourceTree = "<group>"; };
+		47A19940251A3DC100B222E2 /* EditableImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableImageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -350,10 +362,16 @@
 			children = (
 				477CE62524AA04D40018A642 /* CanvasView.swift */,
 				476BB45125010C1800EA2FC5 /* AnnotationView.swift */,
+				47A1993C2519344400B222E2 /* EditableView.swift */,
+				47A19940251A3DC100B222E2 /* EditableImageView.swift */,
 				477026FA24EDA02B004593BC /* StickerImageView.swift */,
 				473741D325025FB300D42A5A /* ColorButton.swift */,
 				473741D52503AB3700D42A5A /* OpacityButton.swift */,
 				470CE940250FEC3C0040079E /* SignatureView.swift */,
+				47A199382519078600B222E2 /* NoteImageView.swift */,
+				47329BA4251B604B00C45143 /* TextView.swift */,
+				47329BA7251B6F3500C45143 /* ShapeView.swift */,
+				47329BAB251B773300C45143 /* SignatureImageView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -508,6 +526,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				47329BA8251B6F3500C45143 /* ShapeView.swift in Sources */,
 				477CE63724B372F60018A642 /* ImprovedCanvasView.swift in Sources */,
 				477CE60D24A9FCEF0018A642 /* AnnotationController.swift in Sources */,
 				477CE62824AA1A9B0018A642 /* Extensions.swift in Sources */,
@@ -515,10 +534,13 @@
 				477CE63524B367E50018A642 /* CachedCanvasView.swift in Sources */,
 				477CE62F24AB618A0018A642 /* TestController.swift in Sources */,
 				477026F924ED7430004593BC /* SignatureController.swift in Sources */,
+				47329BAC251B773300C45143 /* SignatureImageView.swift in Sources */,
 				4742553E24EBE4E600D31DD5 /* TextController.swift in Sources */,
 				477CE63B24B37B9A0018A642 /* TestCanvasView.swift in Sources */,
 				4742553A24E533DC00D31DD5 /* HighlightController.swift in Sources */,
+				47A19941251A3DC100B222E2 /* EditableImageView.swift in Sources */,
 				4742554024EC67CA00D31DD5 /* NoteController.swift in Sources */,
+				47329BA5251B604C00C45143 /* TextView.swift in Sources */,
 				477CE62624AA04D40018A642 /* CanvasView.swift in Sources */,
 				47A199362516635300B222E2 /* EnterTextController.swift in Sources */,
 				477CE60924A9FCEF0018A642 /* AppDelegate.swift in Sources */,
@@ -530,10 +552,12 @@
 				476BB45225010C1800EA2FC5 /* AnnotationView.swift in Sources */,
 				477CE61324A9FCEF0018A642 /* SimpleAnnotation.xcdatamodeld in Sources */,
 				4742553C24E6B03300D31DD5 /* ShapesController.swift in Sources */,
+				47A1993D2519344400B222E2 /* EditableView.swift in Sources */,
 				474255BB24EC946600D31DD5 /* StickesrController.swift in Sources */,
 				473741D425025FB300D42A5A /* ColorButton.swift in Sources */,
 				470CE941250FEC3C0040079E /* SignatureView.swift in Sources */,
 				477026FB24EDA02B004593BC /* StickerImageView.swift in Sources */,
+				47A199392519078600B222E2 /* NoteImageView.swift in Sources */,
 				477CE62424AA04AD0018A642 /* Line.swift in Sources */,
 				477CE60B24A9FCEF0018A642 /* SceneDelegate.swift in Sources */,
 				474255BD24ECBAEA00D31DD5 /* StickerCell.swift in Sources */,

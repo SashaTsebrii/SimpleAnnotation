@@ -507,26 +507,19 @@ class AnnotationController: UIViewController {
         annotationView.superview?.bringSubviewToFront(annotationView)
         subtitleLabel.text = "Annoatation"
         
-        let textField = UITextField(frame: .zero)
-        textField.textColor = .black
-        textField.backgroundColor = .clear
-        textField.contentMode = .center
-        textField.delegate = self
-        textField.font = UIFont.boldSystemFont(ofSize: 18)
-        textField.isUserInteractionEnabled = true
-        textField.translatesAutoresizingMaskIntoConstraints = false
+        let textView = TextView(frame: .zero, textContainer: nil)
+        textView.textColor = .black
+        textView.backgroundColor = .clear
+        textView.contentMode = .center
+        textView.backgroundColor = .red
+        textView.delegate = self
+        textView.font = UIFont.boldSystemFont(ofSize: 18)
+        textView.isUserInteractionEnabled = true
+        textView.translatesAutoresizingMaskIntoConstraints = false
         
-        annotationView.addSubview(textField)
+        annotationView.addSubview(textView)
         
-        let panGesture = UIPanGestureRecognizer()
-        panGesture.addTarget(self, action: #selector(handlePanGesture(_:)))
-        textField.addGestureRecognizer(panGesture)
-        
-        let rotationGesture = UIRotationGestureRecognizer()
-        rotationGesture.addTarget(self, action: #selector(handleRotateGesture(_:)))
-        textField.addGestureRecognizer(rotationGesture)
-        
-        textField.becomeFirstResponder()
+        textView.becomeFirstResponder()
         
     }
     
@@ -546,19 +539,11 @@ class AnnotationController: UIViewController {
         annotationView.superview?.bringSubviewToFront(annotationView)
         subtitleLabel.text = "Annoatation"
         
-        let noteImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 16, height: 16))
+        let noteImageView = NoteImageView(frame: CGRect(x: 0, y: 0, width: 16, height: 16))
         noteImageView.image = UIImage(named: "notes")
         noteImageView.tintColor = .orange
         noteImageView.isUserInteractionEnabled = true
         noteImageView.translatesAutoresizingMaskIntoConstraints = false
-        
-        let panGesture = UIPanGestureRecognizer()
-        panGesture.addTarget(self, action: #selector(handlePanGesture(_:)))
-        noteImageView.addGestureRecognizer(panGesture)
-        
-        let noteTapGesture = UITapGestureRecognizer()
-        noteTapGesture.addTarget(self, action: #selector(handleNoteTapGesture(_:)))
-        noteImageView.addGestureRecognizer(noteTapGesture)
         
         annotationView.addSubview(noteImageView)
         
@@ -579,55 +564,6 @@ class AnnotationController: UIViewController {
         setUpSignatureController()
         annotationView.superview?.bringSubviewToFront(annotationView)
         subtitleLabel.text = "Annoatation"
-        
-    }
-    
-    // MARK: Gesture
-    
-    @objc func handlePanGesture(_ gesture: UIPanGestureRecognizer) {
-        print("👋 PAN GESTURE")
-        
-        let translation = gesture.translation(in: view)
-        
-        guard let gestureView = gesture.view else {
-            return
-        }
-        
-        gestureView.center = CGPoint(x: gestureView.center.x + translation.x, y: gestureView.center.y + translation.y)
-        gesture.setTranslation(.zero, in: view)
-        
-    }
-    
-    @objc func handlePinchGesture(_ gesture: UIPinchGestureRecognizer) {
-        print("👋 PINCH GESTURE")
-        
-        guard let gestureView = gesture.view else {
-            return
-        }
-        
-        gestureView.transform = gestureView.transform.scaledBy(x: gesture.scale, y: gesture.scale)
-        gesture.scale = 1
-        
-    }
-    
-    @objc func handleRotateGesture(_ gesture: UIRotationGestureRecognizer) {
-        print("👋 ROTATE GESTURE")
-        
-        guard let gestureView = gesture.view else {
-            return
-        }
-        
-        gestureView.transform = gestureView.transform.rotated(by: gesture.rotation)
-        gesture.rotation = 0
-        
-    }
-    
-    @objc fileprivate func handleNoteTapGesture(_ gesture: UITapGestureRecognizer) {
-        print("👋 TAP GESTURE")
-        
-        let enterTextController = EnterTextController()
-        enterTextController.delegate = self
-        navigationController?.pushViewController(enterTextController, animated: true)
         
     }
     
@@ -1078,19 +1014,8 @@ extension AnnotationController: StickersControllerDelegate {
     
     func stickersParameter(image: UIImage) {
         
-        let panGesture = UIPanGestureRecognizer()
-        panGesture.addTarget(self, action: #selector(handlePanGesture(_:)))
-        
-        let pinchGesture = UIPinchGestureRecognizer()
-        pinchGesture.addTarget(self, action: #selector(handlePinchGesture(_:)))
-        
-        let rotationGesture = UIRotationGestureRecognizer()
-        rotationGesture.addTarget(self, action: #selector(handleRotateGesture(_:)))
-        
-        let stickerImageView = StickerImageView(image: image)
-        stickerImageView.addGestureRecognizer(panGesture)
-        stickerImageView.addGestureRecognizer(pinchGesture)
-        stickerImageView.addGestureRecognizer(rotationGesture)
+        let stickerImageView = StickerImageView(frame: .zero)
+        stickerImageView.image = image
         
         annotationView.addSubview(stickerImageView)
         
@@ -1110,26 +1035,14 @@ extension AnnotationController: SignatureControllerDelegate {
     
     func signatureParameter(signatureImage: UIImage?) {
         
+        // TODO: Send UIBeziePath instad UIImage.
+        
         if let signatureImage = signatureImage {
-            
-            let panGesture = UIPanGestureRecognizer()
-            
-            panGesture.addTarget(self, action: #selector(handlePanGesture(_:)))
-            let pinchGesture = UIPinchGestureRecognizer()
-            
-            pinchGesture.addTarget(self, action: #selector(handlePinchGesture(_:)))
-            
-            let rotationGesture = UIRotationGestureRecognizer()
-            rotationGesture.addTarget(self, action: #selector(handleRotateGesture(_:)))
-            
-            let signatureImageView = UIImageView(frame: .zero)
+                        
+            let signatureImageView = SignatureImageView(frame: .zero)
             signatureImageView.image = signatureImage
             signatureImageView.backgroundColor = .clear
             signatureImageView.translatesAutoresizingMaskIntoConstraints = false
-            
-            signatureImageView.addGestureRecognizer(panGesture)
-            signatureImageView.addGestureRecognizer(pinchGesture)
-            signatureImageView.addGestureRecognizer(rotationGesture)
             
             annotationView.addSubview(signatureImageView)
             
@@ -1149,25 +1062,13 @@ extension AnnotationController: ShapesControllerDelegate {
     
     func shapeesParameter(shape: Shapes, color: UIColor, width: CGFloat, opacity: CGFloat) {
         
-        let panGesture = UIPanGestureRecognizer()
-        panGesture.addTarget(self, action: #selector(handlePanGesture(_:)))
-        
-        let pinchGesture = UIPinchGestureRecognizer()
-        pinchGesture.addTarget(self, action: #selector(handlePinchGesture(_:)))
-        
-        let rotationGesture = UIRotationGestureRecognizer()
-        rotationGesture.addTarget(self, action: #selector(handleRotateGesture(_:)))
-        
         switch shape {
         case .line:
             return
         case .arrow:
-            let arrowView = UIView(frame: .zero)
+            let arrowView = ShapeeView(frame: .zero)
             arrowView.backgroundColor = .clear
             arrowView.translatesAutoresizingMaskIntoConstraints = false
-            arrowView.addGestureRecognizer(panGesture)
-            arrowView.addGestureRecognizer(pinchGesture)
-            arrowView.addGestureRecognizer(rotationGesture)
             
             let arrow = UIBezierPath()
             arrow.addArrow(start: CGPoint(x: 200, y: 200), end: CGPoint(x: 50, y: 50), pointerLineLength: 30, arrowAngle: CGFloat(Double.pi / 4))
@@ -1216,18 +1117,10 @@ extension AnnotationController: EnterTextControllerDelegate {
     
 }
 
-extension AnnotationController: UITextFieldDelegate {
+extension AnnotationController: UITextViewDelegate {
     
-    // MARK: AnnotationController
+    // MARK: UITextViewDelegate
     
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        
-        if textField.isFirstResponder {
-            textField.resignFirstResponder()
-        }
-        
-        return true
-        
-    }
+    
     
 }
