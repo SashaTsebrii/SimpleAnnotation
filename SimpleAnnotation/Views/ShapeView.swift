@@ -9,9 +9,17 @@
 import UIKit
 
 class ShapeeView: EditableView {
+    
+    var shapeType: Shapes
 
-    override init(frame: CGRect) {
+    init(shape: Shapes, frame: CGRect) {
+        
+        shapeType = shape
+        
         super.init(frame: frame)
+        
+        backgroundColor = .clear
+        translatesAutoresizingMaskIntoConstraints = false
         
         let panGesture = UIPanGestureRecognizer()
         panGesture.addTarget(self, action: #selector(handlePanGesture(_:)))
@@ -30,6 +38,38 @@ class ShapeeView: EditableView {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func draw(_ rect: CGRect) {
+        
+        switch shapeType {
+            case .line:
+                return
+            case .arrow:
+                let arrow = UIBezierPath()
+                arrow.addArrow(start: CGPoint(x: rect.minX, y: rect.midY), end: CGPoint(x: rect.maxX, y: rect.midY), pointerLineLength: 30, arrowAngle: CGFloat(Double.pi / 4))
+                
+                let arrowLayer = CAShapeLayer()
+                arrowLayer.strokeColor = UIColor.black.cgColor
+                arrowLayer.lineWidth = 3
+                arrowLayer.path = arrow.cgPath
+                arrowLayer.fillColor = UIColor.clear.cgColor
+                arrowLayer.lineJoin = CAShapeLayerLineJoin.round
+                arrowLayer.lineCap = CAShapeLayerLineCap.round
+                
+                layer.addSublayer(arrowLayer)
+            case .size:
+                return
+            case .rectangle:
+                return
+            case .circle:
+                return
+            case .check:
+                return
+            case .cross:
+                return
+        }
+        
     }
     
     @objc func handlePanGesture(_ gesture: UIPanGestureRecognizer) {
