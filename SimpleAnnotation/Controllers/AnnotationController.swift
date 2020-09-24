@@ -81,6 +81,24 @@ class AnnotationController: UIViewController {
         return pdfView
     }()
     
+    fileprivate let clearButton: UIButton = {
+        let button = UIButton(frame: .zero)
+        button.setImage(UIImage(named: "clear"), for: .normal)
+        button.addTarget(self, action: #selector(clearButtonTapped(_:)), for: .touchUpInside)
+        button.backgroundColor = .white
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    fileprivate let undoButton: UIButton = {
+        let button = UIButton(frame: .zero)
+        button.setImage(UIImage(named: "undo"), for: .normal)
+        button.addTarget(self, action: #selector(undoButtonTapped(_:)), for: .touchUpInside)
+        button.backgroundColor = .white
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
     fileprivate let canvasView: CanvasView = {
         let view = CanvasView(frame: .zero)
         view.backgroundColor = .clear
@@ -119,12 +137,6 @@ class AnnotationController: UIViewController {
         navigationItem.rightBarButtonItem = saveBarButton
         
         // clearButton
-        let clearButton = UIButton(frame: .zero)
-        clearButton.setImage(UIImage(named: "clear"), for: .normal)
-        clearButton.addTarget(self, action: #selector(clearButtonTapped(_:)), for: .touchUpInside)
-        clearButton.backgroundColor = .white
-        clearButton.translatesAutoresizingMaskIntoConstraints = false
-        
         view.addSubview(clearButton)
         NSLayoutConstraint.activate([
             clearButton.widthAnchor.constraint(equalToConstant: 44),
@@ -134,12 +146,6 @@ class AnnotationController: UIViewController {
         ])
         
         // undoButton
-        let undoButton = UIButton(frame: .zero)
-        undoButton.setImage(UIImage(named: "undo"), for: .normal)
-        undoButton.addTarget(self, action: #selector(undoButtonTapped(_:)), for: .touchUpInside)
-        undoButton.backgroundColor = .white
-        undoButton.translatesAutoresizingMaskIntoConstraints = false
-        
         view.addSubview(undoButton)
         NSLayoutConstraint.activate([
             undoButton.widthAnchor.constraint(equalToConstant: 44),
@@ -458,18 +464,12 @@ class AnnotationController: UIViewController {
     @objc fileprivate func undoButtonTapped(_ sender: UIButton) {
         
         canvasView.undo()
-        removeChildController()
-        canvasView.superview?.bringSubviewToFront(canvasView)
-        subtitleLabel.text = "Canvas"
         
     }
     
-    @objc func clearButtonTapped(_ sender: UIButton) {
+    @objc fileprivate func clearButtonTapped(_ sender: UIButton) {
         
         canvasView.clear()
-        removeChildController()
-        canvasView.superview?.bringSubviewToFront(canvasView)
-        subtitleLabel.text = "Canvas"
         
     }
     
@@ -480,6 +480,9 @@ class AnnotationController: UIViewController {
         canvasView.superview?.bringSubviewToFront(canvasView)
         subtitleLabel.text = "Canvas"
         
+        undoButton.isEnabled = true
+        clearButton.isEnabled = true
+        
     }
     
     @objc fileprivate func markerButtonTapped(_ sender: UIButton) {
@@ -488,6 +491,9 @@ class AnnotationController: UIViewController {
         setUpMarkerController()
         canvasView.superview?.bringSubviewToFront(canvasView)
         subtitleLabel.text = "Canvas"
+        
+        undoButton.isEnabled = true
+        clearButton.isEnabled = true
         
     }
     
@@ -498,6 +504,9 @@ class AnnotationController: UIViewController {
         canvasView.superview?.bringSubviewToFront(canvasView)
         subtitleLabel.text = "Canvas"
         
+        undoButton.isEnabled = true
+        clearButton.isEnabled = true
+        
     }
     
     @objc fileprivate func textButtonTapped(_ sender: UIButton) {
@@ -506,6 +515,9 @@ class AnnotationController: UIViewController {
         setUpTextController()
         annotationView.superview?.bringSubviewToFront(annotationView)
         subtitleLabel.text = "Annoatation"
+        
+        undoButton.isEnabled = false
+        clearButton.isEnabled = false
         
         let textView = TextView(frame: .zero, textContainer: nil)
         textView.textColor = .black
@@ -530,6 +542,9 @@ class AnnotationController: UIViewController {
         annotationView.superview?.bringSubviewToFront(annotationView)
         subtitleLabel.text = "Annoatation"
         
+        undoButton.isEnabled = false
+        clearButton.isEnabled = false
+        
     }
     
     @objc fileprivate func noteButtonTapped(_ sender: UIButton) {
@@ -538,6 +553,9 @@ class AnnotationController: UIViewController {
         setUpNoteController()
         annotationView.superview?.bringSubviewToFront(annotationView)
         subtitleLabel.text = "Annoatation"
+        
+        undoButton.isEnabled = false
+        clearButton.isEnabled = false
         
         let noteImageView = NoteImageView(frame: CGRect(x: 0, y: 0, width: 16, height: 16))
         noteImageView.image = UIImage(named: "notes")
@@ -556,6 +574,9 @@ class AnnotationController: UIViewController {
         annotationView.superview?.bringSubviewToFront(annotationView)
         subtitleLabel.text = "Annoatation"
         
+        undoButton.isEnabled = false
+        clearButton.isEnabled = false
+        
     }
     
     @objc fileprivate func signatureButtonTapped(_ sender: UIButton) {
@@ -564,6 +585,9 @@ class AnnotationController: UIViewController {
         setUpSignatureController()
         annotationView.superview?.bringSubviewToFront(annotationView)
         subtitleLabel.text = "Annoatation"
+        
+        undoButton.isEnabled = false
+        clearButton.isEnabled = false
         
     }
     
