@@ -462,18 +462,21 @@ class AnnotationController: UIViewController {
     }
     
     @objc fileprivate func undoButtonTapped(_ sender: UIButton) {
+        print("👆 UNDO BUTTON")
         
         canvasView.undo()
         
     }
     
     @objc fileprivate func clearButtonTapped(_ sender: UIButton) {
+        print("👆 CLEAR BUTTON")
         
         canvasView.clear()
         
     }
     
     @objc fileprivate func penButtonTapped(_ sender: UIButton) {
+        print("👆 PEN BUTTON")
         
         removeChildController()
         setUpPenController()
@@ -486,6 +489,7 @@ class AnnotationController: UIViewController {
     }
     
     @objc fileprivate func markerButtonTapped(_ sender: UIButton) {
+        print("👆 MARKER BUTTON")
         
         removeChildController()
         setUpMarkerController()
@@ -498,6 +502,7 @@ class AnnotationController: UIViewController {
     }
     
     @objc fileprivate func highlightButtonTapped(_ sender: UIButton) {
+        print("👆 HIGHLIGHT BUTTON")
         
         removeChildController()
         setUpHighlightController()
@@ -510,6 +515,7 @@ class AnnotationController: UIViewController {
     }
     
     @objc fileprivate func textButtonTapped(_ sender: UIButton) {
+        print("👆 TEXT BUTTON")
         
         removeChildController()
         setUpTextController()
@@ -536,6 +542,7 @@ class AnnotationController: UIViewController {
     }
     
     @objc fileprivate func shapesButtonTapped(_ sender: UIButton) {
+        print("👆 SHAPES BUTTON")
         
         removeChildController()
         setUpShapesController()
@@ -548,6 +555,7 @@ class AnnotationController: UIViewController {
     }
     
     @objc fileprivate func noteButtonTapped(_ sender: UIButton) {
+        print("👆 NOTE BUTTON")
         
         removeChildController()
         setUpNoteController()
@@ -568,6 +576,7 @@ class AnnotationController: UIViewController {
     }
     
     @objc fileprivate func stickersButtonTapped(_ sender: UIButton) {
+        print("👆 STICKERS BUTTON")
         
         removeChildController()
         setUpStickersController()
@@ -580,6 +589,7 @@ class AnnotationController: UIViewController {
     }
     
     @objc fileprivate func signatureButtonTapped(_ sender: UIButton) {
+        print("👆 SIGNATURE BUTTON")
         
         removeChildController()
         setUpSignatureController()
