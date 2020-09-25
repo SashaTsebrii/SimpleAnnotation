@@ -1100,7 +1100,12 @@ extension AnnotationController: ShapesControllerDelegate {
         
         switch shape {
             case .line:
-                return
+                let arrowView = ShapeeView(shape: .line, frame: .zero)
+                annotationView.addSubview(arrowView)
+                NSLayoutConstraint.activate([
+                    arrowView.widthAnchor.constraint(equalToConstant: 200),
+                    arrowView.heightAnchor.constraint(equalToConstant: 50)
+                ])
             case .arrow:
                 let arrowView = ShapeeView(shape: .arrow, frame: .zero)
                 annotationView.addSubview(arrowView)

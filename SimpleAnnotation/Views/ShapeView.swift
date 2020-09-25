@@ -44,7 +44,18 @@ class ShapeeView: EditableView {
         
         switch shapeType {
             case .line:
-                return
+                let arrow = UIBezierPath()
+                arrow.addArrow(start: CGPoint(x: rect.minX, y: rect.midY), end: CGPoint(x: rect.maxX, y: rect.midY), pointerLineLength: 0, arrowAngle: CGFloat(Double.pi / 4))
+                
+                let arrowLayer = CAShapeLayer()
+                arrowLayer.strokeColor = UIColor.black.cgColor
+                arrowLayer.lineWidth = 3
+                arrowLayer.path = arrow.cgPath
+                arrowLayer.fillColor = UIColor.clear.cgColor
+                arrowLayer.lineJoin = CAShapeLayerLineJoin.round
+                arrowLayer.lineCap = CAShapeLayerLineCap.round
+                
+                layer.addSublayer(arrowLayer)
             case .arrow:
                 let arrow = UIBezierPath()
                 arrow.addArrow(start: CGPoint(x: rect.minX, y: rect.midY), end: CGPoint(x: rect.maxX, y: rect.midY), pointerLineLength: 30, arrowAngle: CGFloat(Double.pi / 4))
