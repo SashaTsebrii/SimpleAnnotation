@@ -80,7 +80,7 @@ class MarkerController: UIViewController {
         return label
     }()
     
-    let thicknessSlider: UISlider = {
+    lazy var thicknessSlider: UISlider = {
         let slider = UISlider(frame: .zero)
         slider.minimumValue = 10
         slider.maximumValue = 50

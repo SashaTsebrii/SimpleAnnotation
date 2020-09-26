@@ -56,10 +56,8 @@ class PenController: UIViewController {
         return stack
     }()
     
-    let thicknessView: UIView = {
-        let view = UIView(frame: .zero)
-        view.backgroundColor = .white
-        view.translatesAutoresizingMaskIntoConstraints = false
+    let thicknessView: ThicknessView = {
+        let view = ThicknessView(value: 3, frame: .zero)
         return view
     }()
     
@@ -73,7 +71,7 @@ class PenController: UIViewController {
         return label
     }()
     
-    let thicknessSlider: UISlider = {
+    lazy var thicknessSlider: UISlider = {
         let slider = UISlider(frame: .zero)
         slider.minimumValue = 1
         slider.maximumValue = 10
@@ -199,55 +197,26 @@ class PenController: UIViewController {
         ])
         
         // thicknessSlider
-        let thicknessViewBackgroundView = UIView(frame: .zero)
-        thicknessViewBackgroundView.backgroundColor = .clear
-        thicknessViewBackgroundView.translatesAutoresizingMaskIntoConstraints = false
-        
-        let thicknessSizeBackgroundView = UIView(frame: .zero)
-        thicknessSizeBackgroundView.backgroundColor = .clear
-        thicknessSizeBackgroundView.translatesAutoresizingMaskIntoConstraints = false
-        
-        view.addSubview(thicknessViewBackgroundView)
-        thicknessViewBackgroundView.addSubview(thicknessView)
-        view.addSubview(thicknessSizeBackgroundView)
-        thicknessSizeBackgroundView.addSubview(thicknessLabel)
+        view.addSubview(thicknessView)
+        view.addSubview(thicknessSizeLabel)
         view.addSubview(thicknessSlider)
         NSLayoutConstraint.activate([
-            thicknessViewBackgroundView.widthAnchor.constraint(equalToConstant: 32),
-            thicknessViewBackgroundView.heightAnchor.constraint(equalTo: thicknessViewBackgroundView.widthAnchor),
+            thicknessView.widthAnchor.constraint(equalToConstant: 32),
+            thicknessView.heightAnchor.constraint(equalTo: thicknessView.widthAnchor),
             
-            thicknessSizeBackgroundView.widthAnchor.constraint(equalToConstant: 32),
-            thicknessSizeBackgroundView.heightAnchor.constraint(equalTo: thicknessSizeBackgroundView.widthAnchor),
+            thicknessSizeLabel.widthAnchor.constraint(equalToConstant: 32),
+            thicknessSizeLabel.heightAnchor.constraint(equalTo: thicknessSizeLabel.widthAnchor),
             
             thicknessSlider.topAnchor.constraint(equalTo: thicknessLabel.bottomAnchor, constant: 32),
             
-            thicknessViewBackgroundView.centerYAnchor.constraint(equalTo: thicknessSlider.centerYAnchor),
-            thicknessViewBackgroundView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            thicknessView.centerXAnchor.constraint(equalTo: thicknessViewBackgroundView.centerXAnchor),
-            thicknessView.centerYAnchor.constraint(equalTo: thicknessViewBackgroundView.centerYAnchor),
+            thicknessView.centerYAnchor.constraint(equalTo: thicknessSlider.centerYAnchor),
+            thicknessView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             
-            thicknessSizeBackgroundView.centerYAnchor.constraint(equalTo: thicknessSlider.centerYAnchor),
-            thicknessSizeBackgroundView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
-            thicknessLabel.centerXAnchor.constraint(equalTo: thicknessSizeBackgroundView.centerXAnchor),
-            thicknessLabel.centerYAnchor.constraint(equalTo: thicknessSizeBackgroundView.centerYAnchor),
+            thicknessSizeLabel.centerYAnchor.constraint(equalTo: thicknessSlider.centerYAnchor),
+            thicknessSizeLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
             
-            thicknessSlider.leadingAnchor.constraint(equalTo: thicknessViewBackgroundView.trailingAnchor, constant: 16),
-            thicknessSlider.trailingAnchor.constraint(equalTo: thicknessSizeBackgroundView.leadingAnchor, constant: -16)
-        ])
-        
-        thicknessViewBackgroundView.addSubview(thicknessView)
-        NSLayoutConstraint.activate([
-            thicknessView.centerXAnchor.constraint(equalTo: thicknessViewBackgroundView.centerXAnchor),
-            thicknessView.centerYAnchor.constraint(equalTo: thicknessViewBackgroundView.centerYAnchor),
-            
-            thicknessView.widthAnchor.constraint(equalToConstant: 3),
-            thicknessView.heightAnchor.constraint(equalTo: thicknessView.widthAnchor)
-        ])
-        
-        thicknessSizeBackgroundView.addSubview(thicknessSizeLabel)
-        NSLayoutConstraint.activate([
-            thicknessSizeLabel.centerXAnchor.constraint(equalTo: thicknessSizeBackgroundView.centerXAnchor),
-            thicknessSizeLabel.centerYAnchor.constraint(equalTo: thicknessSizeBackgroundView.centerYAnchor)
+            thicknessSlider.leadingAnchor.constraint(equalTo: thicknessView.trailingAnchor, constant: 16),
+            thicknessSlider.trailingAnchor.constraint(equalTo: thicknessSizeLabel.leadingAnchor, constant: -16)
         ])
         
     }
@@ -300,10 +269,19 @@ class PenController: UIViewController {
         
     }
     
-    @objc fileprivate func handleSliderChange(_ sender: UISlider) {
+    @objc func handleSliderChange(_ sender: UISlider) {
         print(sender.value)
         thicknessSizeLabel.text = String(sender.value)
         thikness = CGFloat(sender.value)
+        
+        thicknessView.value = CGFloat(sender.value)
+        thicknessView.frame.size.width = CGFloat(sender.value)
+        
+//        NSLayoutConstraint.activate([
+//            thicknessView.widthAnchor.constraint(equalToConstant: CGFloat(sender.value)),
+//            thicknessView.heightAnchor.constraint(equalTo: thicknessView.widthAnchor)
+//        ])
+        
     }
     
     @objc fileprivate func closeButtonTapped(_ sender: UIButton) {
