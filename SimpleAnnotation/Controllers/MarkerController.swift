@@ -63,10 +63,8 @@ class MarkerController: UIViewController {
         return stack
     }()
     
-    let thicknessView: UIView = {
-        let view = UIView(frame: .zero)
-        view.backgroundColor = .white
-        view.translatesAutoresizingMaskIntoConstraints = false
+    let thicknessView: ThicknessView = {
+        let view = ThicknessView(frame: CGRect(x: 0, y: 0, width: 32, height: 32))
         return view
     }()
     
@@ -75,7 +73,6 @@ class MarkerController: UIViewController {
         label.textColor = .white
         label.font = UIFont.systemFont(ofSize: 16)
         label.textAlignment = .center
-        label.text = "20.0"
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -87,6 +84,10 @@ class MarkerController: UIViewController {
         slider.setValue(20, animated: false)
         slider.addTarget(self, action: #selector(handleSliderChange(_:)), for: .valueChanged)
         slider.translatesAutoresizingMaskIntoConstraints = false
+        
+        thicknessView.value = 20
+        thicknessSizeLabel.text = "20"
+        
         return slider
     }()
     
@@ -215,40 +216,26 @@ class MarkerController: UIViewController {
         ])
         
         // thicknessSlider
-        let thicknessViewBackgroundView = UIView(frame: .zero)
-        thicknessViewBackgroundView.backgroundColor = .clear
-        thicknessViewBackgroundView.translatesAutoresizingMaskIntoConstraints = false
-        
-        let thicknessSizeBackgroundView = UIView(frame: .zero)
-        thicknessSizeBackgroundView.backgroundColor = .clear
-        thicknessSizeBackgroundView.translatesAutoresizingMaskIntoConstraints = false
-        
-        view.addSubview(thicknessViewBackgroundView)
-        thicknessViewBackgroundView.addSubview(thicknessView)
-        view.addSubview(thicknessSizeBackgroundView)
-        thicknessSizeBackgroundView.addSubview(thicknessLabel)
+        view.addSubview(thicknessView)
+        view.addSubview(thicknessSizeLabel)
         view.addSubview(thicknessSlider)
         NSLayoutConstraint.activate([
-            thicknessViewBackgroundView.widthAnchor.constraint(equalToConstant: 32),
-            thicknessViewBackgroundView.heightAnchor.constraint(equalTo: thicknessViewBackgroundView.widthAnchor),
+            thicknessView.widthAnchor.constraint(equalToConstant: 32),
+            thicknessView.heightAnchor.constraint(equalTo: thicknessView.widthAnchor),
             
-            thicknessSizeBackgroundView.widthAnchor.constraint(equalToConstant: 32),
-            thicknessSizeBackgroundView.heightAnchor.constraint(equalTo: thicknessSizeBackgroundView.widthAnchor),
+            thicknessSizeLabel.widthAnchor.constraint(equalToConstant: 32),
+            thicknessSizeLabel.heightAnchor.constraint(equalTo: thicknessSizeLabel.widthAnchor),
             
             thicknessSlider.topAnchor.constraint(equalTo: thicknessLabel.bottomAnchor, constant: 32),
             
-            thicknessViewBackgroundView.centerYAnchor.constraint(equalTo: thicknessSlider.centerYAnchor),
-            thicknessViewBackgroundView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            thicknessView.centerXAnchor.constraint(equalTo: thicknessViewBackgroundView.centerXAnchor),
-            thicknessView.centerYAnchor.constraint(equalTo: thicknessViewBackgroundView.centerYAnchor),
+            thicknessView.centerYAnchor.constraint(equalTo: thicknessSlider.centerYAnchor),
+            thicknessView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             
-            thicknessSizeBackgroundView.centerYAnchor.constraint(equalTo: thicknessSlider.centerYAnchor),
-            thicknessSizeBackgroundView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
-            thicknessLabel.centerXAnchor.constraint(equalTo: thicknessSizeBackgroundView.centerXAnchor),
-            thicknessLabel.centerYAnchor.constraint(equalTo: thicknessSizeBackgroundView.centerYAnchor),
+            thicknessSizeLabel.centerYAnchor.constraint(equalTo: thicknessSlider.centerYAnchor),
+            thicknessSizeLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
             
-            thicknessSlider.leadingAnchor.constraint(equalTo: thicknessViewBackgroundView.trailingAnchor, constant: 16),
-            thicknessSlider.trailingAnchor.constraint(equalTo: thicknessSizeBackgroundView.leadingAnchor, constant: -16)
+            thicknessSlider.leadingAnchor.constraint(equalTo: thicknessView.trailingAnchor, constant: 16),
+            thicknessSlider.trailingAnchor.constraint(equalTo: thicknessSizeLabel.leadingAnchor, constant: -16)
         ])
         
         // opacityLabel
@@ -357,8 +344,18 @@ class MarkerController: UIViewController {
     }
     
     @objc fileprivate func handleSliderChange(_ sender: UISlider) {
-        thicknessSizeLabel.text = String(sender.value)
-        thikness = CGFloat(sender.value)
+        
+        let roundValue = roundf(sender.value);
+        
+        print(sender.value)
+        print(Int(roundValue))
+        
+        thicknessSizeLabel.text = String(Int(roundValue))
+        thikness = CGFloat(roundValue)
+        
+        thicknessView.value = CGFloat(roundValue)
+        thicknessView.frame.size.width = CGFloat(roundValue)
+        
     }
     
     @objc fileprivate func handleOpactityChange(_ sender: UIButton) {
