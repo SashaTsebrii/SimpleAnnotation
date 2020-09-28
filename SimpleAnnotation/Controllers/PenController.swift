@@ -57,7 +57,7 @@ class PenController: UIViewController {
     }()
     
     let thicknessView: ThicknessView = {
-        let view = ThicknessView(value: 3, frame: .zero)
+        let view = ThicknessView(frame: CGRect(x: 0, y: 0, width: 32, height: 32))
         return view
     }()
     
@@ -66,7 +66,6 @@ class PenController: UIViewController {
         label.textColor = .white
         label.font = UIFont.systemFont(ofSize: 16)
         label.textAlignment = .center
-        label.text = "3.0"
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -79,6 +78,10 @@ class PenController: UIViewController {
         slider.setValue(3, animated: false)
         slider.addTarget(self, action: #selector(handleSliderChange(_:)), for: .valueChanged)
         slider.translatesAutoresizingMaskIntoConstraints = false
+        
+        thicknessView.value = 3
+        thicknessSizeLabel.text = "3"
+        
         return slider
     }()
     
@@ -270,17 +273,17 @@ class PenController: UIViewController {
     }
     
     @objc func handleSliderChange(_ sender: UISlider) {
+        
+        let roundValue = roundf(sender.value);
+        
         print(sender.value)
-        thicknessSizeLabel.text = String(sender.value)
-        thikness = CGFloat(sender.value)
+        print(Int(roundValue))
         
-        thicknessView.value = CGFloat(sender.value)
-        thicknessView.frame.size.width = CGFloat(sender.value)
+        thicknessSizeLabel.text = String(Int(roundValue))
+        thikness = CGFloat(roundValue)
         
-//        NSLayoutConstraint.activate([
-//            thicknessView.widthAnchor.constraint(equalToConstant: CGFloat(sender.value)),
-//            thicknessView.heightAnchor.constraint(equalTo: thicknessView.widthAnchor)
-//        ])
+        thicknessView.value = CGFloat(roundValue)
+        thicknessView.frame.size.width = CGFloat(roundValue)
         
     }
     

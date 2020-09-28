@@ -10,7 +10,7 @@ import UIKit
 
 class ThicknessView: UIView {
 
-    var value: CGFloat {
+    var value: CGFloat = 0 {
         didSet {
             valueView.frame.size.width = value
             valueView.frame.size.height = value
@@ -25,10 +25,7 @@ class ThicknessView: UIView {
         return view
     }()
     
-    init(value: CGFloat, frame: CGRect) {
-        
-        self.value = value
-        
+    override init(frame: CGRect) {
         super.init(frame: frame)
         
         backgroundColor = .clear
