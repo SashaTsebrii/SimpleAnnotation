@@ -8,6 +8,16 @@
 
 import UIKit
 
+enum Shapes {
+    case line
+    case arrow
+    case size
+    case rectangle
+    case circle
+    case check
+    case cross
+}
+
 class ShapeeView: EditableView {
     
     var shapeType: Shapes

@@ -565,8 +565,11 @@ class AnnotationController: UIViewController {
         undoButton.isEnabled = false
         clearButton.isEnabled = false
         
-        let noteImageView = NoteImageView(frame: CGRect(x: 0, y: 0, width: 16, height: 16))
+        let note = Note(date: Date(), text: "", color: .yellow, point: .zero)
+        let rect = CGRect(x: 0, y: 0, width: 16, height: 16)
+        let noteImageView = NoteImageView(withNote: note, frame: rect)
         noteImageView.image = UIImage(named: "notes")
+        noteImageView.delegate = self
         noteImageView.tintColor = .orange
         noteImageView.isUserInteractionEnabled = true
         noteImageView.translatesAutoresizingMaskIntoConstraints = false
@@ -1032,7 +1035,7 @@ extension AnnotationController: NoteControllerDelegate {
     
     // MARK: NoteControllerDelegate
     
-    func noteParameter(color: UIColor) {
+    func noteParameter(note: Note?, color: UIColor) {
         
     }
     
@@ -1139,6 +1142,14 @@ extension AnnotationController: EnterTextControllerDelegate {
     
     func enteredText(text: String) {
         // TODO: Save string to selectec note or text
+    }
+    
+}
+
+extension AnnotationController: NoteImageViewDelegate {
+    
+    func noteTapped(none: Note) {
+        
     }
     
 }

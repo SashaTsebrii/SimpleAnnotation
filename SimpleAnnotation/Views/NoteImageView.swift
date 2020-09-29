@@ -8,11 +8,18 @@
 
 import UIKit
 
-
+protocol NoteImageViewDelegate {
+    func noteTapped(none: Note)
+}
 
 class NoteImageView: EditableImageView {
     
-    override init(frame: CGRect) {
+    var delegate: NoteImageViewDelegate?
+    var note: Note
+    
+    init(withNote note: Note, frame: CGRect) {
+        self.note = note
+        
         super.init(frame: frame)
         
         let panGesture = UIPanGestureRecognizer()

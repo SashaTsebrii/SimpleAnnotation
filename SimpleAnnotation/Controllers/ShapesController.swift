@@ -8,16 +8,6 @@
 
 import UIKit
 
-enum Shapes {
-    case line
-    case arrow
-    case size
-    case rectangle
-    case circle
-    case check
-    case cross
-}
-
 protocol ShapesControllerDelegate {
     func shapeesParameter(shape: Shapes, color: UIColor, width: CGFloat, opacity: CGFloat)
     func cancel()

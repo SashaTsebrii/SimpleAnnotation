@@ -9,7 +9,7 @@
 import UIKit
 
 protocol NoteControllerDelegate {
-    func noteParameter(color: UIColor)
+    func noteParameter(note: Note?, color: UIColor)
     func cancelNote()
 }
 
@@ -17,11 +17,12 @@ class NoteController: UIViewController {
     
     // MARK: Variables
     
+    var note: Note?
     var delegate: NoteControllerDelegate?
     
     var color: UIColor = .yellow {
         didSet {
-            delegate?.noteParameter(color: color)
+            delegate?.noteParameter(note: note, color: color)
         }
     }
     

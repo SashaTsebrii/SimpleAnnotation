@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		470CE941250FEC3C0040079E /* SignatureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470CE940250FEC3C0040079E /* SignatureView.swift */; };
 		472C3F51251E7A0500C79280 /* ThicknessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 472C3F50251E7A0500C79280 /* ThicknessView.swift */; };
+		472C3F5425238A5C00C79280 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 472C3F5325238A5C00C79280 /* Note.swift */; };
 		47329BA5251B604C00C45143 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47329BA4251B604B00C45143 /* TextView.swift */; };
 		47329BA8251B6F3500C45143 /* ShapeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47329BA7251B6F3500C45143 /* ShapeView.swift */; };
 		47329BAC251B773300C45143 /* SignatureImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47329BAB251B773300C45143 /* SignatureImageView.swift */; };
@@ -112,6 +113,7 @@
 /* Begin PBXFileReference section */
 		470CE940250FEC3C0040079E /* SignatureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignatureView.swift; sourceTree = "<group>"; };
 		472C3F50251E7A0500C79280 /* ThicknessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThicknessView.swift; sourceTree = "<group>"; };
+		472C3F5325238A5C00C79280 /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		47329BA4251B604B00C45143 /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
 		47329BA7251B6F3500C45143 /* ShapeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeView.swift; sourceTree = "<group>"; };
 		47329BAB251B773300C45143 /* SignatureImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignatureImageView.swift; sourceTree = "<group>"; };
@@ -355,6 +357,7 @@
 			isa = PBXGroup;
 			children = (
 				477CE62324AA04AD0018A642 /* Line.swift */,
+				472C3F5325238A5C00C79280 /* Note.swift */,
 			);
 			path = Structures;
 			sourceTree = "<group>";
@@ -564,6 +567,7 @@
 				47A199392519078600B222E2 /* NoteImageView.swift in Sources */,
 				477CE62424AA04AD0018A642 /* Line.swift in Sources */,
 				477CE60B24A9FCEF0018A642 /* SceneDelegate.swift in Sources */,
+				472C3F5425238A5C00C79280 /* Note.swift in Sources */,
 				474255BD24ECBAEA00D31DD5 /* StickerCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
