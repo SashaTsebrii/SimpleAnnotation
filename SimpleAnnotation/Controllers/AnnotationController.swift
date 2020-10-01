@@ -1150,6 +1150,10 @@ extension AnnotationController: NoteImageViewDelegate {
     
     func noteTapped(none: Note) {
         
+        let enterTextController = EnterTextController()
+        enterTextController.delegate = self
+        navigationController?.pushViewController(enterTextController, animated: true)
+        
     }
     
 }

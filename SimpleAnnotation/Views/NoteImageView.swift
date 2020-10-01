@@ -39,9 +39,7 @@ class NoteImageView: EditableImageView {
     @objc fileprivate func handleTapGesture(_ gesture: UITapGestureRecognizer) {
         print("👋 TAP GESTURE IN NOTE IMAGE VIEW")
 
-//        let enterTextController = EnterTextController()
-//        enterTextController.delegate = self
-//        navigationController?.pushViewController(enterTextController, animated: true)
+        delegate?.noteTapped(none: note)
 
     }
     
