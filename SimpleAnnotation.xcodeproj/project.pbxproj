@@ -81,6 +81,10 @@
 		474255B924EC73D900D31DD5 /* keycap-digit-five_35-fe0f-20e3.png in Resources */ = {isa = PBXBuildFile; fileRef = 4742557D24EC73D800D31DD5 /* keycap-digit-five_35-fe0f-20e3.png */; };
 		474255BB24EC946600D31DD5 /* StickesrController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 474255BA24EC946600D31DD5 /* StickesrController.swift */; };
 		474255BD24ECBAEA00D31DD5 /* StickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 474255BC24ECBAEA00D31DD5 /* StickerCell.swift */; };
+		47428B402527978A004DE906 /* Shape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47428B3F2527978A004DE906 /* Shape.swift */; };
+		47428B4325279801004DE906 /* Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47428B4225279801004DE906 /* Text.swift */; };
+		47428B4625279838004DE906 /* Sticker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47428B4525279838004DE906 /* Sticker.swift */; };
+		47428B492527986A004DE906 /* Signature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47428B482527986A004DE906 /* Signature.swift */; };
 		476BB45225010C1800EA2FC5 /* AnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476BB45125010C1800EA2FC5 /* AnnotationView.swift */; };
 		477026F924ED7430004593BC /* SignatureController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477026F824ED7430004593BC /* SignatureController.swift */; };
 		477026FB24EDA02B004593BC /* StickerImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477026FA24EDA02B004593BC /* StickerImageView.swift */; };
@@ -185,6 +189,10 @@
 		4742557D24EC73D800D31DD5 /* keycap-digit-five_35-fe0f-20e3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "keycap-digit-five_35-fe0f-20e3.png"; sourceTree = "<group>"; };
 		474255BA24EC946600D31DD5 /* StickesrController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickesrController.swift; sourceTree = "<group>"; };
 		474255BC24ECBAEA00D31DD5 /* StickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickerCell.swift; sourceTree = "<group>"; };
+		47428B3F2527978A004DE906 /* Shape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shape.swift; sourceTree = "<group>"; };
+		47428B4225279801004DE906 /* Text.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Text.swift; sourceTree = "<group>"; };
+		47428B4525279838004DE906 /* Sticker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sticker.swift; sourceTree = "<group>"; };
+		47428B482527986A004DE906 /* Signature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Signature.swift; sourceTree = "<group>"; };
 		476BB45125010C1800EA2FC5 /* AnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotationView.swift; sourceTree = "<group>"; };
 		477026F824ED7430004593BC /* SignatureController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignatureController.swift; sourceTree = "<group>"; };
 		477026FA24EDA02B004593BC /* StickerImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickerImageView.swift; sourceTree = "<group>"; };
@@ -358,6 +366,10 @@
 			children = (
 				477CE62324AA04AD0018A642 /* Line.swift */,
 				472C3F5325238A5C00C79280 /* Note.swift */,
+				47428B3F2527978A004DE906 /* Shape.swift */,
+				47428B4225279801004DE906 /* Text.swift */,
+				47428B4525279838004DE906 /* Sticker.swift */,
+				47428B482527986A004DE906 /* Signature.swift */,
 			);
 			path = Structures;
 			sourceTree = "<group>";
@@ -549,6 +561,7 @@
 				47329BA5251B604C00C45143 /* TextView.swift in Sources */,
 				477CE62624AA04D40018A642 /* CanvasView.swift in Sources */,
 				47A199362516635300B222E2 /* EnterTextController.swift in Sources */,
+				47428B402527978A004DE906 /* Shape.swift in Sources */,
 				477CE60924A9FCEF0018A642 /* AppDelegate.swift in Sources */,
 				477CE63324B34CC70018A642 /* SimpleCanvasView.swift in Sources */,
 				473741D62503AB3700D42A5A /* OpacityButton.swift in Sources */,
@@ -560,11 +573,14 @@
 				4742553C24E6B03300D31DD5 /* ShapesController.swift in Sources */,
 				47A1993D2519344400B222E2 /* EditableView.swift in Sources */,
 				474255BB24EC946600D31DD5 /* StickesrController.swift in Sources */,
+				47428B4625279838004DE906 /* Sticker.swift in Sources */,
+				47428B492527986A004DE906 /* Signature.swift in Sources */,
 				473741D425025FB300D42A5A /* ColorButton.swift in Sources */,
 				472C3F51251E7A0500C79280 /* ThicknessView.swift in Sources */,
 				470CE941250FEC3C0040079E /* SignatureView.swift in Sources */,
 				477026FB24EDA02B004593BC /* StickerImageView.swift in Sources */,
 				47A199392519078600B222E2 /* NoteImageView.swift in Sources */,
+				47428B4325279801004DE906 /* Text.swift in Sources */,
 				477CE62424AA04AD0018A642 /* Line.swift in Sources */,
 				477CE60B24A9FCEF0018A642 /* SceneDelegate.swift in Sources */,
 				472C3F5425238A5C00C79280 /* Note.swift in Sources */,
